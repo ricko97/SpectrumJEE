@@ -21,7 +21,7 @@ public class Enterprise implements Serializable {
 	private String domain;
 	@OneToOne(mappedBy="enterprise")
 	private User user;
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	private List<JobOffer>jobOffers;
 	@OneToMany
 	private List<Event>events;

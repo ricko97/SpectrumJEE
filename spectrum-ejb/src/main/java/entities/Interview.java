@@ -16,6 +16,8 @@ public class Interview implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private Date date;
+	@OneToOne
+	private Test test;
 	private static final long serialVersionUID = 1L;
 
 	public Interview() {
@@ -34,6 +36,12 @@ public class Interview implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public Test getTest() {
+		return test;
+	}
+	public void setTest(Test test) {
+		this.test = test;
 	}
    
 }

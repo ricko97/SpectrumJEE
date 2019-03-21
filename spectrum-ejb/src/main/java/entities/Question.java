@@ -16,6 +16,7 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String content;
+	private String answer;
 	private static final long serialVersionUID = 1L;
 
 	public Question() {
@@ -34,6 +35,12 @@ public class Question implements Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
    
 }

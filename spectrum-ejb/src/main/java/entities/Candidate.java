@@ -24,10 +24,12 @@ public class Candidate implements Serializable {
 	private List<Skill>skills;
 	@OneToMany
 	private List<Interest>interests;
-	@ManyToMany
-	private List<Test>tests;
+	@OneToMany(mappedBy="candidate")
+	private List<Candidate_test>candidate_tests;
 	@OneToMany(mappedBy="candidate")
 	private List<Candidacy>candidacies;
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	public Candidate() {
@@ -66,10 +68,16 @@ public class Candidate implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public List<Test> getTests() {
-		return tests;
+	public List<Candidacy> getCandidacies() {
+		return candidacies;
 	}
-	public void setTests(List<Test> tests) {
-		this.tests = tests;
+	public void setCandidacies(List<Candidacy> candidacies) {
+		this.candidacies = candidacies;
+	}
+	public List<Candidate_test> getCandidate_tests() {
+		return candidate_tests;
+	}
+	public void setCandidate_tests(List<Candidate_test> candidate_tests) {
+		this.candidate_tests = candidate_tests;
 	}
 }

@@ -17,11 +17,15 @@ public class Test implements Serializable {
 	@Id
 	private int id;
 	private int duration;
+	private Test_t type;
 	private Date modified_at;
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	private List<Question>questions;
-	@ManyToMany(mappedBy="tests")
-	private List<Candidate>candidates;
+	@OneToMany(mappedBy="test")
+	private List<Candidate_test>candidate_tests;
+	@OneToOne(mappedBy="test")
+	private Interview interview;
+	
 	private static final long serialVersionUID = 1L;
 
 	public Test() {
@@ -54,11 +58,24 @@ public class Test implements Serializable {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-	public List<Candidate> getCandidates() {
-		return candidates;
+	public List<Candidate_test> getCandidate_tests() {
+		return candidate_tests;
 	}
-	public void setCandidates(List<Candidate> candidates) {
-		this.candidates = candidates;
+	public void setCandidate_tests(List<Candidate_test> candidate_tests) {
+		this.candidate_tests = candidate_tests;
 	}
+	public Test_t getType() {
+		return type;
+	}
+	public void setType(Test_t type) {
+		this.type = type;
+	}
+	public Interview getInterview() {
+		return interview;
+	}
+	public void setInterview(Interview interview) {
+		this.interview = interview;
+	}
+
    
 }

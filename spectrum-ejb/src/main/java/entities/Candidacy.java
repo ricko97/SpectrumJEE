@@ -15,6 +15,7 @@ public class Candidacy implements Serializable {
 	@EmbeddedId  
 	private CandidacyPk candidacyPk;
 	private Date date;
+	private CandidacyStatus status;
 	@ManyToOne
 	@JoinColumn(name="jobID", referencedColumnName="id",insertable=false,updatable=false)
 	private JobOffer joboffer;
@@ -50,6 +51,12 @@ public class Candidacy implements Serializable {
 	}
 	public void setCandidacyPk(CandidacyPk candidacyPk) {
 		this.candidacyPk = candidacyPk;
+	}
+	public CandidacyStatus getStatus() {
+		return status;
+	}
+	public void setStatus(CandidacyStatus status) {
+		this.status = status;
 	}
    
 }
