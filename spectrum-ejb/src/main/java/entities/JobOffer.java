@@ -21,7 +21,7 @@ public class JobOffer implements Serializable {
 	private Date start;
 	private Date end;
 	private String description;
-	@OneToMany(mappedBy="joboffer")
+	@OneToMany(mappedBy="joboffer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Candidacy>candidacies;
 	private static final long serialVersionUID = 1L;
 

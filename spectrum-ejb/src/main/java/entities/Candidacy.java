@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -22,6 +23,8 @@ public class Candidacy implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="candidateID", referencedColumnName="id",insertable=false,updatable=false)
 	private Candidate candidate;
+
+	
 	private static final long serialVersionUID = 1L;
 
 	public Candidacy() {

@@ -21,10 +21,10 @@ public class Test implements Serializable {
 	private Date modified_at;
 	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	private List<Question>questions;
-	@OneToMany(mappedBy="test")
-	private List<Candidate_test>candidate_tests;
-	@OneToOne(mappedBy="test")
+	@OneToOne
 	private Interview interview;
+	@OneToMany(mappedBy="test", cascade = CascadeType.REMOVE)
+	private List<TestResult>testResults;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -58,12 +58,7 @@ public class Test implements Serializable {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-	public List<Candidate_test> getCandidate_tests() {
-		return candidate_tests;
-	}
-	public void setCandidate_tests(List<Candidate_test> candidate_tests) {
-		this.candidate_tests = candidate_tests;
-	}
+
 	public Test_t getType() {
 		return type;
 	}

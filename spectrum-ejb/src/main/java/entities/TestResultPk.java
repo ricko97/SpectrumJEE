@@ -5,21 +5,22 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Candidate_testPK implements Serializable{
-
+public class TestResultPk implements Serializable{
+ 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int candidateId;
+	private int testId;
 	
-	private int candidateID;
-	private int testID;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + candidateID;
-		result = prime * result + testID;
+		result = prime * result + candidateId;
+		result = prime * result + testId;
 		return result;
 	}
 	@Override
@@ -30,12 +31,12 @@ public class Candidate_testPK implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Candidate_testPK other = (Candidate_testPK) obj;
-		if (candidateID != other.candidateID)
+		TestResultPk other = (TestResultPk) obj;
+		if (candidateId != other.candidateId)
 			return false;
-		if (testID != other.testID)
+		if (testId != other.testId)
 			return false;
 		return true;
 	}
-
+	
 }

@@ -25,9 +25,9 @@ public class Candidate implements Serializable {
 	@OneToMany
 	private List<Interest>interests;
 	@OneToMany(mappedBy="candidate")
-	private List<Candidate_test>candidate_tests;
-	@OneToMany(mappedBy="candidate")
 	private List<Candidacy>candidacies;
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.REMOVE)
+	private List<TestResult>testResults;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -74,10 +74,5 @@ public class Candidate implements Serializable {
 	public void setCandidacies(List<Candidacy> candidacies) {
 		this.candidacies = candidacies;
 	}
-	public List<Candidate_test> getCandidate_tests() {
-		return candidate_tests;
-	}
-	public void setCandidate_tests(List<Candidate_test> candidate_tests) {
-		this.candidate_tests = candidate_tests;
-	}
+
 }

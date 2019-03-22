@@ -25,6 +25,8 @@ public class Enterprise implements Serializable {
 	private List<JobOffer>jobOffers;
 	@OneToMany
 	private List<Event>events;
+	@OneToMany(cascade = CascadeType.REMOVE)
+	private List<Test>tests;
 	private static final long serialVersionUID = 1L;
 
 	public Enterprise() {
@@ -68,6 +70,12 @@ public class Enterprise implements Serializable {
 	}
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+	public List<Test> getTests() {
+		return tests;
+	}
+	public void setTests(List<Test> tests) {
+		this.tests = tests;
 	}
    
 }
