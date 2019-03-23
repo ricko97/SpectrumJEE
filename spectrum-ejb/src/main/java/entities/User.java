@@ -30,11 +30,11 @@ public class User implements Serializable {
 	private Role role;
 	@Enumerated(EnumType.STRING)
 	private Sexe sexe;
-	@OneToOne
+	@OneToOne(mappedBy="user")
 	private Candidate candidate;
-	@OneToOne
+	@OneToOne(mappedBy="user")
 	private Enterprise enterprise;
-	@OneToOne
+	@OneToOne(mappedBy="user")
 	private Coach coach;
 	@OneToMany
 	private List<Complaint>complaints;
