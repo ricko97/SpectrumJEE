@@ -18,7 +18,7 @@ public class Coach implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String bio;
-	@OneToOne(mappedBy="coach")
+	@OneToOne
 	private User user;
 	@OneToMany
 	private List<Skill>skills;
