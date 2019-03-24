@@ -19,7 +19,8 @@ public class Message implements Serializable {
 	private String content;
 	private Date date;
 	private boolean seen;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="receiver_id")
 	private User receiver;
 	private static final long serialVersionUID = 1L;
 

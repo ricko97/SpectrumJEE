@@ -18,6 +18,9 @@ public class Comment implements Serializable {
 	private int id;
 	private String msg;
 	private Date date;
+	@ManyToOne
+	@JoinColumn(name="post_id")
+	private Post post;
 	private static final long serialVersionUID = 1L;
 
 	public Comment() {
@@ -43,6 +46,12 @@ public class Comment implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public Post getPost() {
+		return post;
+	}
+	public void setPost(Post post) {
+		this.post = post;
 	}
    
 }

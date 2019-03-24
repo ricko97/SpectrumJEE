@@ -16,7 +16,7 @@ public class Interview implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	@OneToOne(mappedBy="interview")
+	@OneToOne
 	private Test test;
 	private static final long serialVersionUID = 1L;
 

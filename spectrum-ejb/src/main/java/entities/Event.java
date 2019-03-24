@@ -22,6 +22,9 @@ public class Event implements Serializable {
 	private int places;
 	private String location;
 	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	@JoinColumn(name="enterprise_id")
+	private Enterprise enterprise;
 
 	public Event() {
 		super();
@@ -67,6 +70,12 @@ public class Event implements Serializable {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
    
 }

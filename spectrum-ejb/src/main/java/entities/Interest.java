@@ -18,7 +18,9 @@ public class Interest implements Serializable {
 	private int id;
 	private String label;
 	private static final long serialVersionUID = 1L;
-
+	@ManyToOne
+	@JoinColumn(name="candidate_id")
+	private Candidate candidate;
 	public Interest() {
 		super();
 	}   
@@ -35,6 +37,12 @@ public class Interest implements Serializable {
 
 	public void setLabel(String label) {
 		this.label = label;
+	}
+	public Candidate getCandidate() {
+		return candidate;
+	}
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
 	}
    
 }

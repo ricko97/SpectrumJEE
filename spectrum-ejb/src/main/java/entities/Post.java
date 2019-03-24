@@ -25,10 +25,11 @@ public class Post implements Serializable {
 	private Date date;
 	private int like;
 	private int dislike;
-    @OneToMany
+    @OneToMany(targetEntity=Comment.class,cascade=CascadeType.ALL)
 	private List<Comment>comments;
-    @ManyToMany
-	private List<User>users;
+    @ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	private static final long serialVersionUID = 1L;
 
 	public Post() {
@@ -87,6 +88,12 @@ public class Post implements Serializable {
 	}
 	public void setType(Post_t type) {
 		this.type = type;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 
    

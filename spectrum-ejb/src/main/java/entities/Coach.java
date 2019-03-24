@@ -22,9 +22,9 @@ public class Coach implements Serializable {
 	private User user;
 	@OneToMany
 	private List<Skill>skills;
-	@OneToMany
+	@OneToMany(targetEntity=Course.class, cascade=CascadeType.ALL)
 	private List<Course>courses;
-	@OneToMany
+	@OneToMany(targetEntity=Coaching.class, cascade=CascadeType.ALL)
 	private List<Coaching>coachings;
 	private static final long serialVersionUID = 1L;
 

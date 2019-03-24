@@ -21,8 +21,11 @@ public class Coaching implements Serializable {
 	private String title;
 	private Date start;
 	private Date end;
-	@OneToMany
+	@OneToMany(targetEntity=Workshop.class, cascade=CascadeType.ALL)
 	private List<Workshop>workshops;
+	@ManyToOne
+	@JoinColumn(name="coach_id")
+	private Coach coach;
 	private static final long serialVersionUID = 1L;
 
 	public Coaching() {
@@ -61,6 +64,12 @@ public class Coaching implements Serializable {
 	}
 	public void setWorkshops(List<Workshop> workshops) {
 		this.workshops = workshops;
+	}
+	public Coach getCoach() {
+		return coach;
+	}
+	public void setCoach(Coach coach) {
+		this.coach = coach;
 	}
    
 }

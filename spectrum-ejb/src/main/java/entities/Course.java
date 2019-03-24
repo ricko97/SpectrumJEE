@@ -18,6 +18,9 @@ public class Course implements Serializable {
 	private int id;
 	private String description;
 	private Date added_at;
+	@ManyToOne
+	@JoinColumn(name="coach_id")
+	private Coach coach;
 	private static final long serialVersionUID = 1L;
 
 	public Course() {
@@ -43,6 +46,12 @@ public class Course implements Serializable {
 
 	public void setAdded_at(Date added_at) {
 		this.added_at = added_at;
+	}
+	public Coach getCoach() {
+		return coach;
+	}
+	public void setCoach(Coach coach) {
+		this.coach = coach;
 	}
    
 }

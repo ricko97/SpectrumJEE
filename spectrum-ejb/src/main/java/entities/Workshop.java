@@ -17,6 +17,9 @@ public class Workshop implements Serializable {
 	private int id;
 	private int places;
 	private Date date;
+	@ManyToOne
+	@JoinColumn(name="coaching_id")
+	private Coaching coaching;
 	private static final long serialVersionUID = 1L;
 
 	public Workshop() {
@@ -42,6 +45,12 @@ public class Workshop implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public Coaching getCoaching() {
+		return coaching;
+	}
+	public void setCoaching(Coaching coaching) {
+		this.coaching = coaching;
 	}
    
 }

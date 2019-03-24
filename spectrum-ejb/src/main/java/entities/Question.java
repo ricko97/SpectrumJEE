@@ -17,6 +17,9 @@ public class Question implements Serializable {
 	private int id;
 	private String content;
 	private String answer;
+	@ManyToOne
+	@JoinColumn(name="test_id")
+	private Test test;
 	private static final long serialVersionUID = 1L;
 
 	public Question() {
@@ -41,6 +44,12 @@ public class Question implements Serializable {
 	}
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+	public Test getTest() {
+		return test;
+	}
+	public void setTest(Test test) {
+		this.test = test;
 	}
    
 }

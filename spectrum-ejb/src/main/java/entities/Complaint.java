@@ -18,6 +18,9 @@ public class Complaint implements Serializable {
 	private int id;
 	private String object;
 	private String msg;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	private static final long serialVersionUID = 1L;
 
 	public Complaint() {
@@ -43,6 +46,12 @@ public class Complaint implements Serializable {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
    
 }

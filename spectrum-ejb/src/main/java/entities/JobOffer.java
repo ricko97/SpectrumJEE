@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,10 @@ public class JobOffer implements Serializable {
 	private Date end;
 	private String description;
 	@OneToMany(mappedBy="joboffer", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Candidacy>candidacies;
+	private List<Candidacy>candidacies = new ArrayList<Candidacy>();
+	@ManyToOne
+	@JoinColumn(name="enterprise_id")
+	private Enterprise enterprise;
 	private static final long serialVersionUID = 1L;
 
 	public JobOffer() {
@@ -61,6 +65,12 @@ public class JobOffer implements Serializable {
 	}
 	public void setCandidacies(List<Candidacy> candidacies) {
 		this.candidacies = candidacies;
+	}
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
 	@Override
 	public int hashCode() {

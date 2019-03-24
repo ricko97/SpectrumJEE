@@ -22,7 +22,7 @@ public class Candidate implements Serializable {
 	private String bio;
 	@OneToMany
 	private List<Skill>skills;
-	@OneToMany
+	@OneToMany(targetEntity=Interest.class,cascade=CascadeType.ALL)
 	private List<Interest>interests;
 	@OneToMany(mappedBy="candidate")
 	private List<Candidacy>candidacies;

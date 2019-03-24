@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +20,15 @@ public class Test implements Serializable {
 	private int duration;
 	private Test_t type;
 	private Date modified_at;
-	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-	private List<Question>questions;
-	@OneToOne
+	@OneToMany(mappedBy="test", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+	private List<Question>questions = new ArrayList<Question>();
+	@OneToOne(mappedBy="test")
 	private Interview interview;
 	@OneToMany(mappedBy="test", cascade = CascadeType.REMOVE)
 	private List<TestResult>testResults;
+	@ManyToOne
+	@JoinColumn(name="enterprise_id")
+	private Enterprise enterprise;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -70,6 +74,18 @@ public class Test implements Serializable {
 	}
 	public void setInterview(Interview interview) {
 		this.interview = interview;
+	}
+	public List<TestResult> getTestResults() {
+		return testResults;
+	}
+	public void setTestResults(List<TestResult> testResults) {
+		this.testResults = testResults;
+	}
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
 
    

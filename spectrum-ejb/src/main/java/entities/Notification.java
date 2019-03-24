@@ -20,6 +20,9 @@ public class Notification implements Serializable {
 	private Date date;
 	private String msg;   
 	private String type;
+	@ManyToOne
+	@JoinColumn(name="receiver_id")
+	private User receiver;
 	private static final long serialVersionUID = 1L;
 
 	public Notification() {
@@ -60,5 +63,11 @@ public class Notification implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-   
+	public User getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(User receiver) {
+		this.receiver = receiver;
+	}
+
 }

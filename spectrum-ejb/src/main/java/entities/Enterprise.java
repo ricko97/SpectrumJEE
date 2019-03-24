@@ -2,7 +2,6 @@ package entities;
 
 import java.io.Serializable;
 import java.lang.String;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,12 +21,13 @@ public class Enterprise implements Serializable {
 	private String domain;
 	@OneToOne
 	private User user;
-	@OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-	private List<JobOffer>jobOffers = new ArrayList<JobOffer>();
-	@OneToMany
-	private List<Event>events = new ArrayList<Event>();
-	@OneToMany(cascade = CascadeType.REMOVE)
-	private List<Test>tests = new ArrayList<Test>();
+	@OneToMany(targetEntity = JobOffer.class, mappedBy= "enterprise", cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER)
+	private List<JobOffer>jobOffers;
+	@OneToMany(targetEntity=Event.class,cascade=CascadeType.ALL)
+	private List<Event>events;
+	@OneToMany(targetEntity=Test.class, cascade = CascadeType.ALL)
+	private List<Test>tests;
 	private static final long serialVersionUID = 1L;
 
 	public Enterprise() {
