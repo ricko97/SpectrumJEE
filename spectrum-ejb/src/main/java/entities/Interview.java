@@ -17,7 +17,7 @@ public class Interview implements Serializable {
 	private int id;
 	private Date date;
 	@OneToOne
-	private Test test;
+	private TestResult testResult;
 	private static final long serialVersionUID = 1L;
 
 	public Interview() {
@@ -37,11 +37,10 @@ public class Interview implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Test getTest() {
-		return test;
+	public TestResult getTestResult() {
+		return testResult;
 	}
-	public void setTest(Test test) {
-		this.test = test;
+	public void setTestResult(TestResult testResult) {
+		this.testResult = testResult;
 	}
-   
 }

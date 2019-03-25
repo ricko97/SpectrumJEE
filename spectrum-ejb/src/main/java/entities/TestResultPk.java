@@ -15,6 +15,18 @@ public class TestResultPk implements Serializable{
 	private int testId;
 	
 	
+	public int getCandidateId() {
+		return candidateId;
+	}
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
+	}
+	public int getTestId() {
+		return testId;
+	}
+	public void setTestId(int testId) {
+		this.testId = testId;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

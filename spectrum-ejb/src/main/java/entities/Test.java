@@ -22,8 +22,6 @@ public class Test implements Serializable {
 	private Date modified_at;
 	@OneToMany(mappedBy="test", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	private List<Question>questions = new ArrayList<Question>();
-	@OneToOne(mappedBy="test")
-	private Interview interview;
 	@OneToMany(mappedBy="test", cascade = CascadeType.REMOVE)
 	private List<TestResult>testResults;
 	@ManyToOne
@@ -69,12 +67,7 @@ public class Test implements Serializable {
 	public void setType(Test_t type) {
 		this.type = type;
 	}
-	public Interview getInterview() {
-		return interview;
-	}
-	public void setInterview(Interview interview) {
-		this.interview = interview;
-	}
+
 	public List<TestResult> getTestResults() {
 		return testResults;
 	}

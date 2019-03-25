@@ -25,7 +25,6 @@ public class JobOffer implements Serializable {
 	@OneToMany(mappedBy="joboffer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Candidacy>candidacies = new ArrayList<Candidacy>();
 	@ManyToOne
-	@JoinColumn(name="enterprise_id")
 	private Enterprise enterprise;
 	private static final long serialVersionUID = 1L;
 
