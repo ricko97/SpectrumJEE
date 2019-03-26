@@ -22,7 +22,7 @@ public class Test implements Serializable {
 	private Date modified_at;
 	@OneToMany(mappedBy="test", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	private List<Question>questions = new ArrayList<Question>();
-	@OneToMany(mappedBy="test", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="test", cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private List<TestResult>testResults;
 	@ManyToOne
 	@JoinColumn(name="enterprise_id")

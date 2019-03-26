@@ -1,5 +1,6 @@
 package services_cand_interv;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -24,12 +25,14 @@ public interface InterviewServiceRemote {
 	public void deleteTest(Test test);
 	public boolean searchTest(int enterpriseId, Test_t testType);
 	public List<Question>getQuestionsFromTest(int testId);
-	public void addTestResult(int candidateId, int testId, TestResult testResult);
+	public void addTestResult(TestResultPk testResultPk, TestResult testResult);
 	public TestResultPk getTestResultPk(int candidateId, int testId);
 	public Interview plannifyInterview(TestResult testResult, Date date);
 	public Interview plannifyInterviewAuto(TestResult testResult);
 	public boolean searchInterview(TestResultPk testResultPk);
-	public List<Integer>availableDate(int gap);
+	public TestResult getTestResult(TestResultPk testResultPk);
+	public boolean isLastMonthDay(Calendar cal);
+	public Calendar getHighestDay();
 	
 	
 }

@@ -2,6 +2,8 @@ package services_cand_interv;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -92,8 +94,13 @@ public class InterviewService implements InterviewServiceRemote {
 	}
 
 	@Override
-	public void addTestResult(int candidateId, int testId, TestResult testResult) {
-		testResult.setTestResultPk(this.getTestResultPk(candidateId, testId));
+	public void addTestResult(TestResultPk testResultPk, TestResult testResult) {
+		testResult.setTestResultPk(testResultPk);
+		if (testResult.getScore()>=0.5)
+			testResult.setPassed(true);
+		else
+			testResult.setPassed(false);
+		
 		em.persist(testResult);
 	}
 
@@ -121,16 +128,54 @@ public class InterviewService implements InterviewServiceRemote {
 	@Override
 	public Interview plannifyInterviewAuto(TestResult testResult) {
 		if(testResult.getPassed()) {
-			int gap=1;
-			List<Integer>hoursAv = new ArrayList<Integer>();
-			do {
-				hoursAv = this.availableDate(gap);
-				gap++;
-			} while (hoursAv.isEmpty());
-			
-			return null;
+			if (!this.searchInterview(testResult.getTestResultPk())) {
+				Calendar cal = Calendar.getInstance();
+				if (this.isLastMonthDay(this.getHighestDay()) && this.availableHours().isEmpty()) {
+					cal.set(getHighestDay().get(Calendar.YEAR), getHighestDay().get(Calendar.MONTH)+1, 1,9,0);
+					System.out.println("1");
+				}else if(this.isLastMonthDay(this.getHighestDay())) {
+					cal.set(getHighestDay().get(Calendar.YEAR), getHighestDay().get(Calendar.MONTH)+1, 1,
+							this.availableHours().get(0),0);
+					System.out.println("2");
+				}else if(this.isWeekendDay(getHighestDay())) {
+					cal.setWeekDate(getHighestDay().get(Calendar.YEAR), getHighestDay().get(Calendar.WEEK_OF_YEAR)+1,1);
+					System.out.println("3");
+				}else if(this.availableHours().isEmpty()){
+					cal.set(getHighestDay().get(Calendar.YEAR), getHighestDay().get(Calendar.MONTH),
+							getHighestDay().get(Calendar.DAY_OF_MONTH)+1,9,0);
+					System.out.println("4");
+				}else {
+					cal.set(getHighestDay().get(Calendar.YEAR), getHighestDay().get(Calendar.MONTH),
+							getHighestDay().get(Calendar.DAY_OF_MONTH),this.availableHours().get(0),0);
+					System.out.println("5");
+				}
+				Interview interview = new Interview();
+				interview.setDate(cal.getTime());
+				interview.setTestResult(testResult);
+				em.persist(interview);
+				return interview;
+			}else
+				return null;
 		}else
 			return null;
+	}
+	
+	@Override
+	public boolean isLastMonthDay(Calendar cal) {
+		if ((cal.get(Calendar.DAY_OF_MONTH)==28 && cal.get(Calendar.MONTH)==1)||
+				(cal.get(Calendar.DAY_OF_MONTH)==31 && cal.get(Calendar.MONTH)!=1)){
+			return true;
+		}
+		return false;	
+	}
+	
+	public boolean isWeekendDay(Calendar cal) {
+		if (cal.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY||
+				cal.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY) {
+			return true;
+		}
+		return false;
+		
 	}
 
 	@Override
@@ -145,25 +190,52 @@ public class InterviewService implements InterviewServiceRemote {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public List<Integer>availableDate(int gap) {
+	public List<Integer>availableHours() {
 		List<Integer>hoursAv = new ArrayList<Integer>();
 		hoursAv.add(9);hoursAv.add(10);hoursAv.add(11);hoursAv.add(14);hoursAv.add(15);
 		hoursAv.add(16);hoursAv.add(17);
 		List<Date>interviewDates = em.createQuery("select i.date from interview i").getResultList();
-		Calendar calendar = Calendar.getInstance();
-		for (Date date : interviewDates) {
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-			if ((cal.get(Calendar.DAY_OF_MONTH)==calendar.get(Calendar.DAY_OF_MONTH)+gap)&&
-					(cal.get(Calendar.MONTH)==calendar.get(Calendar.MONTH))&&
-					(cal.get(Calendar.YEAR)==calendar.get(Calendar.YEAR))){
-				if (hoursAv.contains(cal.get(Calendar.HOUR_OF_DAY))) {
-					hoursAv.remove(cal.get(Calendar.HOUR_OF_DAY));
+		if (!interviewDates.isEmpty()) {
+			for (Date date : interviewDates) {
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(date);
+				if ((cal.get(Calendar.DAY_OF_MONTH)==getHighestDay().get(Calendar.DAY_OF_MONTH))&&
+						(cal.get(Calendar.MONTH)==getHighestDay().get(Calendar.MONTH))&&
+						(cal.get(Calendar.YEAR)==getHighestDay().get(Calendar.YEAR))){
+					if (hoursAv.contains(cal.get(Calendar.HOUR_OF_DAY))) {
+						hoursAv.remove(hoursAv.indexOf(cal.get(Calendar.HOUR_OF_DAY)));
+					}
 				}
 			}
 		}
 		return hoursAv;
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public Calendar getHighestDay() {
+		List<Date>interviewDates = em.createQuery("select i.date from interview i").getResultList();
+		Calendar calendar = Calendar.getInstance();
+		Calendar highest = Calendar.getInstance();
+		highest.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), 
+				calendar.get(Calendar.DAY_OF_MONTH)+1);
+		if (!interviewDates.isEmpty()) {
+			Collections.sort(interviewDates, new Comparator<Date>() {
+				@Override
+				public int compare(Date o1, Date o2) {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+			});
+			highest.setTime(interviewDates.get(interviewDates.size()-1));
+		}
+		
+		return highest;
+	}
+
+	@Override
+	public TestResult getTestResult(TestResultPk testResultPk) {
+		return em.find(TestResult.class, testResultPk);
 	}
 
 
