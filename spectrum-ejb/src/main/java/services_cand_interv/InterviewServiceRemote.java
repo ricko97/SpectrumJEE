@@ -29,9 +29,10 @@ public interface InterviewServiceRemote {
 	public TestResultPk getTestResultPk(int candidateId, int testId);
 	public Interview plannifyInterview(TestResult testResult, Date date);
 	public Interview plannifyInterviewAuto(TestResult testResult);
-	public boolean searchInterview(TestResultPk testResultPk);
+	public Interview searchInterview(TestResultPk testResultPk);
+	public void modifyInterview(Interview interview);
+	public void cancelInterview(int interviewId);
 	public TestResult getTestResult(TestResultPk testResultPk);
-	public boolean isLastMonthDay(Calendar cal);
 	public Calendar getHighestDay();
 	
 	
