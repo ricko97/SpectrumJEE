@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -18,8 +19,8 @@ public class Question implements Serializable {
 	private String content;
 	private String answer;
 	@ManyToOne
-	@JoinColumn(name="test_id")
 	private Test test;
+	private String choice1,choice2,choice3;
 	private static final long serialVersionUID = 1L;
 
 	public Question() {
@@ -50,6 +51,24 @@ public class Question implements Serializable {
 	}
 	public void setTest(Test test) {
 		this.test = test;
+	}
+	public String getChoice1() {
+		return choice1;
+	}
+	public void setChoice1(String choice1) {
+		this.choice1 = choice1;
+	}
+	public String getChoice2() {
+		return choice2;
+	}
+	public void setChoice2(String choices2) {
+		this.choice2 = choices2;
+	}
+	public String getChoice3() {
+		return choice3;
+	}
+	public void setChoice3(String choices3) {
+		this.choice3 = choices3;
 	}
    
 }

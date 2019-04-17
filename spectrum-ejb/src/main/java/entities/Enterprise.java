@@ -21,12 +21,12 @@ public class Enterprise implements Serializable {
 	private String domain;
 	@OneToOne
 	private User user;
-	@OneToMany(targetEntity = JobOffer.class, mappedBy= "enterprise", cascade = CascadeType.ALL, 
+	@OneToMany(mappedBy="enterprise", cascade = CascadeType.ALL, 
 			fetch = FetchType.EAGER)
 	private List<JobOffer>jobOffers;
-	@OneToMany(targetEntity=Event.class,cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="enterprise",cascade=CascadeType.ALL)
 	private List<Event>events;
-	@OneToMany(targetEntity=Test.class, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="enterprise",cascade = CascadeType.ALL)
 	private List<Test>tests;
 	private static final long serialVersionUID = 1L;
 

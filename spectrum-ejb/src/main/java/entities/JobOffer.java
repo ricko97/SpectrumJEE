@@ -21,11 +21,11 @@ public class JobOffer implements Serializable {
 	private int id;
 	private Date start;
 	private Date end;
+	private String title;
 	private String description;
 	@OneToMany(mappedBy="joboffer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Candidacy>candidacies = new ArrayList<Candidacy>();
 	@ManyToOne
-	@JoinColumn(name="enterprise_id")
 	private Enterprise enterprise;
 	private static final long serialVersionUID = 1L;
 
@@ -71,6 +71,12 @@ public class JobOffer implements Serializable {
 	}
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	@Override
 	public int hashCode() {

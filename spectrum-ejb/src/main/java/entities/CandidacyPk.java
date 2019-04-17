@@ -12,6 +12,19 @@ public class CandidacyPk implements Serializable {
 	
 	private int jobID;
 	private int candidateID;
+	
+	public int getJobID() {
+		return jobID;
+	}
+	public void setJobID(int jobID) {
+		this.jobID = jobID;
+	}
+	public int getCandidateID() {
+		return candidateID;
+	}
+	public void setCandidateID(int candidateID) {
+		this.candidateID = candidateID;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

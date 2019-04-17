@@ -21,6 +21,8 @@ public class TestResult implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="candidateId", referencedColumnName="id",insertable=false,updatable=false)
 	private Candidate candidate;
+	@OneToOne(mappedBy="testResult")
+	private Interview interview;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +54,18 @@ public class TestResult implements Serializable {
 	}
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
+	}
+	public TestResultPk getTestResultPk() {
+		return testResultPk;
+	}
+	public void setTestResultPk(TestResultPk testResultPk) {
+		this.testResultPk = testResultPk;
+	}
+	public Interview getInterview() {
+		return interview;
+	}
+	public void setInterview(Interview interview) {
+		this.interview = interview;
 	}
 
    

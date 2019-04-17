@@ -26,7 +26,7 @@ public class Candidate implements Serializable {
 	private List<Interest>interests;
 	@OneToMany(mappedBy="candidate")
 	private List<Candidacy>candidacies;
-	@OneToMany(mappedBy="candidate", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="candidate")
 	private List<TestResult>testResults;
 	
 	
