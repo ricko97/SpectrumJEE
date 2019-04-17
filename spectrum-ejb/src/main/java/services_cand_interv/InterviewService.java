@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entities.Enterprise;
 import entities.Interview;
@@ -27,7 +28,7 @@ public class InterviewService implements InterviewServiceRemote {
 	
 	@Override
 	public int addQuestionToTest(int testId, Question question) {
-		if (!this.searchQuestion(testId, question.getContent())) {
+		if (this.searchQuestion(testId, question.getContent())==null) {
 			question.setTest(em.find(Test.class, testId));
 			em.persist(question);
 			return question.getId();
@@ -36,56 +37,50 @@ public class InterviewService implements InterviewServiceRemote {
 	}
 
 	@Override
-	public void modifyQuestion(int questionId) {
-		Question question = em.find(Question.class, questionId);
+	public void modifyQuestion(Question question) {
 		em.merge(question);
 	}
 
 	@Override
-	public void removeQuestion(int questionId) {
-		Question question = em.find(Question.class, questionId);
-		em.remove(question);
+	public void removeQuestion(Question question) {
+		em.remove(em.contains(question) ? question : em.merge(question));
 	}
 	@Override
-	public boolean searchQuestion(int testId, String content) {
+	public Question searchQuestion(int testId, String content) {
 		for (Question question : em.find(Test.class,testId).getQuestions()) {
 			if (question.getContent().equals(content))
-					return true; 
+					return question; 
 		}
-		return false;
+		return null;
 	}
 
 	@Override
-	public int addTest(Test test, int enterpriseId, List<Question> questions) {
-		if(!this.searchTest(enterpriseId, test.getType())) {
-			for (Question question : questions) {
-				question.setTest(test);
-			}
-			test.setModified_at(new Date());
+	public Test addTest(Test test, int enterpriseId) {
+		if(this.searchTest(enterpriseId, test.getType())==null) {
 			test.setEnterprise(em.find(Enterprise.class, enterpriseId));
 			em.persist(test);
-			return test.getId();
+			return test;
 		}else
-			return 0;
+			return null;
 	}
 
 	@Override
-	public void modifyTest(Test test) {
-		em.merge(test);
+	public Test modifyTest(Test test) {
+		return em.merge(test);
 	}
 
 	@Override
 	public void deleteTest(Test test) {
-		em.remove(test);
+		em.remove(em.contains(test) ? test : em.merge(test));
 	}
 	
 	@Override
-	public boolean searchTest(int enterpriseId, Test_t testType) {
+	public Test searchTest(int enterpriseId, Test_t testType) {
 		for (Test test : em.find(Enterprise.class, enterpriseId).getTests()) {
 			if (test.getType()==testType)
-					return true; 
+					return test; 
 		}
-		return false;
+		return null;
 	}
 
 	@Override
@@ -247,6 +242,23 @@ public class InterviewService implements InterviewServiceRemote {
 	public void cancelInterview(int interviewId) {
 		Interview interview = em.find(Interview.class, interviewId);
 		em.remove(interview);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Test> getAllTest(int enterpriseId) {
+		Enterprise ent = em.find(Enterprise.class, enterpriseId);
+		Query query = em.createQuery("select t from test t where t.enterprise=:e",Test.class);
+		query.setParameter("e", ent);
+
+			return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Interview> getAllInterviews() {
+		Query query = em.createQuery("select i from interview i",Interview.class);
+		return query.getResultList();
 	}
 
 

@@ -53,7 +53,7 @@ public class CandidacyService implements CandidacyServiceRemote {
 
 	@Override
 	public List<Candidacy> getCandidaciesByOffer(int offerId) {
-		List<Candidacy>candidacies = new ArrayList<Candidacy>();
+		List<Candidacy> candidacies = new ArrayList<Candidacy>();
 		for (Candidacy candidacy : this.getAllCandidacies()) {
 			if(candidacy.getCandidacyPk().getJobID()==offerId)
 				candidacies.add(candidacy);
@@ -81,6 +81,11 @@ public class CandidacyService implements CandidacyServiceRemote {
 	@Override
 	public List<Candidacy> getAllCandidacies() {
 		return em.createQuery("select c from candidacy c",Candidacy.class).getResultList();
+	}
+
+	@Override
+	public void modifyCandidacy(Candidacy candidacy) {
+		em.merge(candidacy);
 	}
 
 }

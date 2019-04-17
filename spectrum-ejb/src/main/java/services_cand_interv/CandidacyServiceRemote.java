@@ -11,6 +11,7 @@ import entities.CandidacyPk;
 public interface CandidacyServiceRemote {
 
 	public boolean addCandidacy(int candidateId, int offerId, Candidacy candidacy);
+	public void modifyCandidacy(Candidacy candidacy);
 	public boolean cancelCandidacy(int candidateId, int offerId);
 	public List<Candidacy> getCandidaciesByCand(int candidateId);
 	public List<Candidacy> getCandidaciesByOffer(int offerId);

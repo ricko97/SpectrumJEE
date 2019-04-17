@@ -3,7 +3,9 @@ package services_cand_interv;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -77,6 +79,21 @@ public class JobOfferService implements JobOfferServiceRemote{
 		query.setParameter("e", ent);
 		
 		return query.getResultList();
+	}
+
+	@Override
+	public JobOffer getjobOfferByTitle(String title, int entId) {
+		Enterprise ent = em.find(Enterprise.class, entId);
+		Query query = em.createQuery("select o from jobOffer o where o.enterprise =:e and "
+				+ "o.title=:title");
+		query.setParameter("e", ent);
+		query.setParameter("title", title);
+		try {
+			return (JobOffer) query.getSingleResult();
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 

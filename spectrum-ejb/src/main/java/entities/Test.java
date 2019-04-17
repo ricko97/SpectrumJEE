@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,21 +10,21 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Test
  *
  */
-@Entity
+@Entity(name="test")
 public class Test implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private int duration;
 	private Test_t type;
 	private Date modified_at;
-	@OneToMany(mappedBy="test", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-	private List<Question>questions = new ArrayList<Question>();
+	@OneToMany(mappedBy="test", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<Question>questions;
 	@OneToMany(mappedBy="test", cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private List<TestResult>testResults;
-	@ManyToOne
-	@JoinColumn(name="enterprise_id")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Enterprise enterprise;
 	
 	private static final long serialVersionUID = 1L;

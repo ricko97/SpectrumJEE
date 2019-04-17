@@ -30,9 +30,9 @@ public class User implements Serializable {
 	private Role role;
 	@Enumerated(EnumType.STRING)
 	private Sexe sexe;
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy="user",fetch=FetchType.EAGER)
 	private Candidate candidate;
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy="user",fetch=FetchType.EAGER)
 	private Enterprise enterprise;
 	@OneToOne(mappedBy="user")
 	private Coach coach;

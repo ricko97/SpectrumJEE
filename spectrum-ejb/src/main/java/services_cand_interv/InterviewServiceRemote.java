@@ -17,19 +17,21 @@ import entities.Test_t;
 public interface InterviewServiceRemote {
 
 	public int addQuestionToTest(int testId, Question question);
-	public void modifyQuestion(int questionId);
-	public void removeQuestion(int questionId);
-	public boolean searchQuestion(int testId, String content);
-	public int addTest(Test test, int enterpriseId, List<Question>questions);
-	public void modifyTest(Test test);
+	public void modifyQuestion(Question question);
+	public void removeQuestion(Question question);
+	public Question searchQuestion(int testId, String content);
+	public Test addTest(Test test, int enterpriseId);
+	public Test modifyTest(Test test);
 	public void deleteTest(Test test);
-	public boolean searchTest(int enterpriseId, Test_t testType);
+	public List<Test> getAllTest(int enterpriseId);
+	public Test searchTest(int enterpriseId, Test_t testType);
 	public List<Question>getQuestionsFromTest(int testId);
 	public void addTestResult(TestResultPk testResultPk, TestResult testResult);
 	public TestResultPk getTestResultPk(int candidateId, int testId);
 	public Interview plannifyInterview(TestResult testResult, Date date);
 	public Interview plannifyInterviewAuto(TestResult testResult);
 	public Interview searchInterview(TestResultPk testResultPk);
+	public List<Interview> getAllInterviews();
 	public void modifyInterview(Interview interview);
 	public void cancelInterview(int interviewId);
 	public TestResult getTestResult(TestResultPk testResultPk);

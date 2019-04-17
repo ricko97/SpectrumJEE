@@ -12,6 +12,7 @@ public interface JobOfferServiceRemote {
 	public JobOffer searchJobOffer(int offerId);
 	public List<JobOffer>getJobOffers();
 	public List<JobOffer>getjobOffersByEnt(int EntId);
+	public JobOffer getjobOfferByTitle(String title, int entId);
 	public int addJobOffer(int entId, JobOffer offer);
 	public boolean removeJobOfferFromEnt(int entId, int offerId);
 	public JobOffer searchJobOfferInEnt(int entId, int offerId);
