@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title>#{page_name}</title>
+<h:outputStylesheet name="css/animate.css" />
+<h:outputStylesheet name="css/bootstrap.min.css" />
+<h:outputStylesheet name="css/flatpickr.min.css" />
+<h:outputStylesheet name="css/line-awesome.css" />
+<h:outputStylesheet name="css/line-awesome-font-awesome.min.css" />
+<h:outputStylesheet name="css/font-awesome.min.css" />
+<h:outputStylesheet name="lib/slick/slick.css" />
+<h:outputStylesheet name="lib/slick/slick-theme.css" />
+<h:outputStylesheet name="css/style.css" />
+<h:outputStylesheet name="css/responsive.css" />
+<h:outputScript name="js/jquery.min.js" />
+<h:outputScript name="js/popper.js" />
+<h:outputScript name="js/bootstrap.min.js" />
+<h:outputScript name="js/flatpickr.min.js" />
+<h:outputScript name="lib/slick/slick.min.js" />
+<h:outputScript name="js/script.js" />
+<!--===============================================================================================-->
+	<h:outputScript name="vendor/jquery/jquery-3.2.1.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+<!--===============================================================================================-->
+	<h:outputScript name="vendor/animsition/js/animsition.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+<!--===============================================================================================-->
+	<h:outputScript name="vendor/bootstrap/js/popper.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+	<h:outputScript name="vendor/bootstrap/js/bootstrap.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+<!--===============================================================================================-->
+	<h:outputScript name="vendor/select2/select2.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+<!--===============================================================================================-->
+	<h:outputScript name="vendor/daterangepicker/moment.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+	<h:outputScript name="vendor/daterangepicker/daterangepicker.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+<!--===============================================================================================-->
+	<h:outputScript name="vendor/countdowntime/countdowntime.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+<!--===============================================================================================-->
+<h:outputScript name="js/main.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript" />
+<h:outputScript name="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="1fdd57dac7ab4c6ff40ad032-text/javascript"/>
+	
+</h:head>
+<h:body>
+<ui:include src="/template/header.xhtml" />
+<ui:insert name="menu" />
+<ui:insert name="content" />
+<ui:include src="/template/footer.xhtml" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script type="1fdd57dac7ab4c6ff40ad032-text/javascript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+<script src="../../../../ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="1fdd57dac7ab4c6ff40ad032-|49" defer=""></script>
+
+</h:body>
+</html>
