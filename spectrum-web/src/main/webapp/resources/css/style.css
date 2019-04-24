@@ -350,9 +350,9 @@ header {
 }
 .search-bar {
 	float: left;
-	width: 220px;
+	width: 280px;
 	margin-top: 9px;
-	margin-left: 40px;
+	margin-left: 10px;
 }
 .search-bar form {
 	float: left;
