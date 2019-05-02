@@ -1,68 +1,57 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:ct="http://www.chartistjsf.org/charts"
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
 	<ui:param name="page_name" value="Connexion" />
-	<ui:define name="menu">
+	<ui:define name="header"><h1></h1></ui:define>
+	<ui:define name="content">
 		<h:body>
 
-			<section class="profile-account-setting">
-				<div class="container">
-					<div class="account-tabs-setting">
-						<div class="row">
-							<div class="col-lg-3">
-								<div class="acc-leftbar">
-									<div class="nav nav-tabs" id="nav-tab" role="tablist">
-										<a class="nav-item nav-link active" id="nav-acc-tab"
-											data-toggle="tab" href="#nav-acc" role="tab"
-											aria-controls="nav-acc" aria-selected="true"><i
-											class="fa fa-line-chart"></i>Satistics</a>
-									</div>
-								</div>
-								<!--acc-leftbar end-->
-							</div>
-							<div class="col-lg-9">
-								<div class="tab-content" id="nav-tabContent">
-									<div class="tab-pane fade show active" id="nav-acc"
-										role="tabpanel" aria-labelledby="nav-acc-tab">
-										<div class="acc-setting">
-											
-											<div>
-												<ct:chart id="lineChart" type="line"
-													model="#{lineChartBean.lineModel}">
-													<p:ajax event="itemSelect"
-														listener="#{lineChartBean.itemSelect}"
-														update="lineChartMessage" />
-												</ct:chart>
-											</div>
-											<p:message id="lineChartMessage" for="lineChart"
-												showDetail="true" />
+			<div class="limiter">
+		<div class="container-login100" style="background-image: url('resources/images/bg-01.jpg');">
+			<div class="wrap-login100">
+			<h:form id="form" class="login100-form validate-form">
+			
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
 
-											<div>
-												<ct:chart id="pieChart" type="pie"
-													model="#{pieChartBean.pieChartModel}">
-													<p:ajax event="itemSelect"
-														listener="#{pieChartBean.pieItemSelect}"
-														update="pieChartMessage" />
-												</ct:chart>
-												<p:message id="pieChartMessage" for="pieChart"
-													showDetail="true" />
-											</div>
-										</div>
-										<!--acc-setting end-->
-									</div>
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+					
+					
 
-
-								</div>
-							</div>
-						</div>
+					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+					<h:inputText value="#{loginBean.login}" class="input100" name="username" placeholder="email" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
-					<!--account-tabs-setting end-->
-				</div>
-			</section>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+					<h:inputText class="input100" type="password" name="pass" placeholder="Password" value="#{loginBean.password}" />
+						
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						
+							<h:commandButton class="login100-form-btn" id="btn" action="#{loginBean.doLogin()}" value="login" />
+							
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="#">
+							Forgot Password?
+						</a>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
 
 		</h:body>
 	</ui:define>
