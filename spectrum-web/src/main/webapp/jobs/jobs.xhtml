@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="../template/template.xhtml">
+
+<ui:define name="title">
+	<title>Jobs</title>
+</ui:define>
+<ui:define name="content">
+	<section class="messages-page">
+			<div class="container">
+				<div class="messages-sec">
+					<div class="row">
+						<div class="col-lg-4 col-md-12 no-pdd">
+							<div class="msgs-list">
+							 	<div class="messages-list">
+									<ul>
+										<li class="active">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>Jobs offers</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>Interviews</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>Candidacies</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+									</ul>
+								</div><!--messages-list end-->
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+							<div class="main-conversation-box">
+								<h:form id="form">
+								  <div class="row">
+								  	<ui:repeat var="job" value="#{jobsBean.jobOffers}">
+								   	  <div class="card" style="width: 13rem;margin:20px;">
+										  <img class="card-img-top" src="../resources/images/Java-Jee-Developer.jpg" alt="Card image cap"/>
+										  <div class="card-body">
+										    <h5 class="card-title" style="font-weight:bold;">#{job.title}</h5>
+										    <a href="#" class="btn btn-primary">View</a>
+										    <a href="#" class="btn btn-secondary"><i class="la la-edit"></i></a>
+										    <a href="#" class="btn btn-danger"><i class="la la-remove"></i></a>
+										  </div>
+										</div>
+								   </ui:repeat>
+								  </div>
+								   
+								</h:form>
+							</div>
+						</div>
+					</div>
+				 </div>
+				</div>
+		</section>
+</ui:define>
+</ui:composition>

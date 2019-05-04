@@ -3,7 +3,7 @@
 	<persistence-unit name="spectrum-ejb">
 		<jta-data-source>java:/SpectrumDS</jta-data-source>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name = "hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 		</properties>
 	</persistence-unit>

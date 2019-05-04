@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+     xmlns:pe="http://primefaces.org/ui/extensions">
+     
+    <h:head>
+    	<h:outputStylesheet rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+    	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/animate.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/line-awesome.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/line-awesome-font-awesome.min.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.min.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/jquery.mCustomScrollbar.min.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/lib/slick/slick.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/lib/slick/slick-theme.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/responsive.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/util.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/jquery.range.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/flatpickr.min.css" />
+        <title>#{quizzBean.testType} Quizz</title>
+    </h:head>
+    <h:body> 
+     <h:form>
+      <div class="row">
+      	<div class="col-md-4">
+      		<img src="../resources/images/spectrum.png" alt="" />
+      	</div>
+      </div>
+			<div class="main-section">
+				<div class="container">
+					<div class="main-section-data">
+						<div class="row">
+							<div class="col-lg-8 col-md-8 no-pd" style="margin-left:250px;">
+								<div class="main-ws-sec">
+									<div class="posts-section">
+									   <div class="post-bar">
+											<div class="job_descp">
+												<h3></h3>
+												<ul class="job-dt">
+													<h:outputText value="#{quizzBean.question.content}" style="font-weight: bold;"/>
+												</ul>
+													<p:selectOneRadio id="answer" value="#{quizzBean.answer}" update="messages" layout="grid" columns="1" 
+														requiredMessage="Please select an option">
+													   <f:selectItems value="#{quizzBean.choices}" var="c" itemLabel="#{c}" 
+													   itemValue="#{c}"/>
+													</p:selectOneRadio>
+													<ul class="skill-tags">
+														<li></li>
+													</ul>
+													<ul class="job-dt">
+													<li><h:commandButton class="btn btn-primary btn-sm" rendered="#{quizzBean.questionIndex+1 lt quizzBean.totalQuestion}" 
+													action="#{quizzBean.nextQuestion()}" value="Next" /></li>
+													</ul>
+													<p:growl id="messages" showDetail="false" life="5000" sticky="false"/>
+											</div>
+											<div class="job-status-bar">
+												
+												  	<h:commandLink id="timer" 
+												  	style="color:#{quizzBean.aMinuteLeft() == true ? 'red' : ''};"><i class="la la-clock-o"></i>
+													 <h:outputText  id="min" value="#{quizzBean.minutes}" />
+													 <h:outputText value=":"/>
+													 <h:outputText id="zero" value="#{quizzBean.sec() == true ? '0' : ''}" /><h:outputText/>
+													 <h:outputText id="sec" value="#{quizzBean.sec}" />
+													 <h:outputText value=" left"/>
+													 <p:poll interval="1" listener="#{quizzBean.decrementMin()}" update="min"/>
+													 <p:poll interval="1" listener="#{quizzBean.decrementSec()}" update="sec" />
+													 <p:poll interval="1" listener="#{quizzBean.sec()}" update="zero" />
+													 <p:poll interval="1" listener="#{quizzBean.aMinuteLeft()}" update="timer" />
+													</h:commandLink>  
+													<h:commandButton class="btn btn-danger btn-sm" value="Finish" action="#{quizzBean.finishQuizz}"/>
+												
+												<a style="margin-right:20px;"><i class="la la-eye"></i>#{quizzBean.questionIndex+1}/#{quizzBean.totalQuestion}</a>
+											</div>
+                                       </div>
+                                     </div>
+                                   </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                   </h:form>
+					
+											
+	<script type="text/javascript" src="../resources/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../resources/js/popper.js"></script>
+	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/js/jquery.mCustomScrollbar.js"></script>
+	<script type="text/javascript" src="../resources/lib/slick/slick.min.js"></script>
+	<script type="text/javascript" src="../resources/js/scrollbar.js"></script>
+	<script type="text/javascript" src="../resources/js/script.js"></script>
+	<!-- <script type="text/javascript">
+	$(document).ready(function{
+		   $('#dialog').show();
+		});
+	</script>
+	<script language='javascript'>
+	function happycode(){
+	   //alert('helo');
+		$('#dialog').show();
+	}
+	</script> -->
+    </h:body>
+</html>
+
