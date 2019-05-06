@@ -1,0 +1,41 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      	
+xmlns:p="http://primefaces.org/ui">
+ <h:head>
+  <h2>liste de mes rendez vous </h2>
+ 
+ </h:head>
+  <p:dataTable  value="#{rdvBean.displayAllRDV()}" var="rdv"  border="1">
+   <p:column>
+    <f:facet  name ="header" >la raison</f:facet>
+   </p:column>
+   <br></br>
+    <p:column>
+    <f:facet  name ="header" >etat</f:facet>
+        <h:outputText value="#{rdv.location}" ></h:outputText>
+   
+   </p:column> 
+    <p:column>
+   <h:form>
+    <p:commandButton action="detailRdv.xhtml?faces-redirect=true" value="detail sue ce rendez vous" />
+</h:form>
+        
+   <!--  <h:commandButton action="#{rdvBean.detailRDV(rdv.appointmentId)}" value="detail" />  -->
+    
+  </p:column> 
+   <p:column>
+    <h:form>
+    <p:commandButton action="#{rdvBean.detailRDV(rdv.appointmentId)}" value="fct detail" />
+</h:form>
+        
+   <!--  <h:commandButton action="#{rdvBean.detailRDV(rdv.appointmentId)}" value="detail" />  -->
+    
+  </p:column> 
+    
+    </p:dataTable> 
+    
+    </html>
