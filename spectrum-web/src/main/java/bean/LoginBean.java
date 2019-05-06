@@ -43,10 +43,17 @@ public class LoginBean {
 	}
 
 	public String do_Login(){
+
+		//boolean test=BCrypt.checkpw(password,BCrypt.hashpw(password, BCrypt.gensalt(6)));
+				
+				
+		
 		String navigate_To = "null";
 		user = userService.getUserByEmailAndPassword(login, password);
 		
 		if(user != null ){
+			user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(6)));
+
 			navigate_To = "/pages/Condidate?faces-redirect=true";
 			setLogged_In(true);
 		}else{

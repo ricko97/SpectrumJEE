@@ -23,15 +23,9 @@ public class CourseBean implements Serializable{
 	
 
 
-
-
-
 	private int id; 
 	private Date date;
 	private String desc; 
-
-
-
 
 
 	private List<Course> listemed;
@@ -40,13 +34,7 @@ public class CourseBean implements Serializable{
 	EntityManager em;
 	@EJB
 	private RegisterLocal RegisterLocal;
-	
-	
-	
-	
-	
-	
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -66,6 +54,11 @@ return listemed;
 
 	public void addC(){
 		RegisterLocal.addCourse(new Course(id,date,desc));
+	}
+	
+	
+	public void addC2(){
+		RegisterLocal.addCourse(new Course(desc));
 	}
 
 	public int getId() {
