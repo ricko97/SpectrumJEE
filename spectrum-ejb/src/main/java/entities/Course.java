@@ -23,9 +23,20 @@ public class Course implements Serializable {
 	private Coach coach;
 	private static final long serialVersionUID = 1L;
 
+	public Course(int id, Date added_at, String description) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.added_at = added_at;
+	}
 	public Course() {
 		super();
 	}   
+	
+	public Course(String description) {
+		super();
+		this.description = description;
+	}
 	public int getId() {
 		return this.id;
 	}

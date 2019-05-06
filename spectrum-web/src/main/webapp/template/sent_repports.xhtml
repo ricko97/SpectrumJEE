@@ -1,0 +1,174 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"	
+	template="/template/Coach.xhtml">
+	
+	<ui:define name="title">Repports | Epione Medical Portal</ui:define>
+	<ui:define name="title-header">Repports sent</ui:define>
+	<ui:define name="content">
+                <div class="col-lg-12">
+					<div class="panel panel-default">
+                        <div class="panel-heading">
+                        	View of your sent reports
+                        </div>
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <h:form id="form">
+                            <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                              <div class="row">
+                                <div class="col-sm-12">
+  										<p:dataTable widgetVar="reportTable" var="rep" id="data" value="#{compteRenduBean.user.name}"
+												paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			                 					paginator="true" rows="3" style="margin-bottom:20px; text-align:center;" paginatorPosition="bottom" >
+												
+											<f:facet name="header"> 
+												<p:outputPanel style="text-align:right;">
+													<h:outputText value="Enter a search element :  " />
+													<p:inputText id="globalFilter" onkeyup="PF('reportTable').filter()" style="width : 100 px; font-style:italic;" placeholder=" (e.g. doctor, report, etc...)" />
+													<i class="fa fa-search"> </i>
+												</p:outputPanel>
+											</f:facet>
+
+						 				        <f:facet name="{Exporters}">
+										            <p:outputPanel style="float:right;">
+										                <h:commandLink title="Export your data in excel document">
+										                    <p:graphicImage value="../resources/upload/excel.png" width="20"/>
+										                    <p:dataExporter type="xls" target="data" fileName="report_Xls" />
+										                </h:commandLink>
+										 
+										                <h:commandLink title="Export your data in pdf document">
+										                    <p:graphicImage value="../resources/upload/pdf.png" width="20"/>
+										                    <p:dataExporter type="pdf" target="data" fileName="report_Pdf" />
+										                </h:commandLink>
+										 
+										                <h:commandLink title="Export your data in csv document">
+										                    <p:graphicImage value="../resources/upload/csv.png" width="20"/>
+										                    <p:dataExporter type="csv" target="data" fileName="report_Csv" />
+										                </h:commandLink>
+										 
+										            </p:outputPanel>
+										        </f:facet>
+											
+											<p:column sortBy="#{compteRenduBean.user.id}" filterBy="#{rep.repportId}">
+												<f:facet name="header"> Report ID </f:facet>
+												<h:outputText value="#{compteRenduBean.user.id}" />
+											</p:column>
+											<p:column sortBy="#{compteRenduBean.user.name}" filterBy="#{rep.repportName}">
+												<f:facet name="header"> Report Title </f:facet>
+												<h:outputText value="#{compteRenduBean.user.name}" />
+											</p:column>
+											
+											<p:column sortBy="#{compteRenduBean.user.address}" filterBy="#{rep.diagnostic}">
+												<f:facet name="header"> Diagnostic </f:facet>
+												<h:outputText value="#{compteRenduBean.user.address}" />
+											</p:column>
+											<p:column sortBy="#{compteRenduBean.user.email}" filterBy="#{rep.referentDoctor}">
+												<f:facet name="header"> Referring doctor  </f:facet>
+												<h:outputText value="#{compteRenduBean.user.email}" />
+											</p:column>
+											<p:column>
+												<p:commandLink update=":form:reportDetail" oncomplete="PF('reportShow').show()"  title="See more">
+							                        <h:outputText styleClass="fa fa-info" style="margin:0 auto;" />
+							                        <f:setPropertyActionListener value="#{rep}" target="#{compteRenduBean.selectedReport}" />
+												</p:commandLink>
+											</p:column>
+										</p:dataTable>
+
+
+
+ 		                          </div>
+ 		                      
+ 		                      </div>
+                            
+                            </div>
+                            
+                            <!-- /.table-responsive -->
+ 							<div class="well">
+                            <p:panel header="Report info" toggleable="true" closable="true" id="tbl"
+                            		modal="true" visible="false" showEffect="fade" hideEffect="fade" resizable="false" toggleSpeed="500" closeSpeed="500" widgetVar="reportShow">
+ 								
+						        
+ 								<p:outputPanel id="reportDetail">
+ 									
+  									<p:panelGrid columns="1"  rendered="#{not empty compteRenduBean.selectedReport}" var="car">
+ 										            <h:panelGrid columns="7" style="width:100%">
+										                <p:graphicImage width="130px" height="130px" alt="image disease" value="../resources/upload/user7.jpg" /> 
+										 				<p:outputLabel value=" " />
+										                <p:panel>
+										                    <h:panelGrid border="0" columns="2" cellpadding="5">
+										                        <h:outputText value="Repport ID: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.id}" style="font-weight: bold"/>
+										 						<h:outputLabel value=" " /> <h:outputLabel value=" " />
+										 						
+										                        <h:outputText value="Report Title: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.name}" style="font-weight: bold"/>
+										 						<h:outputLabel value=" " /> <h:outputLabel value=" " />
+										 						
+										                        <h:outputText value="Referring doctor: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.email}" style="font-weight: bold"/>
+										                    </h:panelGrid>
+										                </p:panel>
+										 				<h:outputLabel value=" " />
+										 				<h:outputLabel value=" " />
+										                <p:panel>
+										                    <h:panelGrid border="0" columns="2" cellpadding="5">
+										                        <h:outputText value="Disease declared: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.id}" style="font-weight: bold"/>
+										 						<h:outputLabel value=" " /> <h:outputLabel value=" " />
+										 						
+										                        <h:outputText value="Symptoms: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.name}" style="font-weight: bold"/>
+										 						<h:outputLabel value=" " /> <h:outputLabel value=" " />
+										 						
+										                        <h:outputText value="Abnormalities: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.address}" style="font-weight: bold"/>
+										                    </h:panelGrid>
+										                </p:panel>
+												        <p:graphicImage width="200px" height="130px" alt="image disease" value="../resources/upload/#{compteRenduBean.selectedReport.imageDisease}" /> 
+										 
+										            </h:panelGrid>
+										            <h:panelGrid columns="2">
+										                <p:panel>
+										                    <h:panelGrid border="0" columns="2" cellpadding="5">
+										                        <h:outputText value="Diagnostic: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.email}" style="font-weight: bold"/>
+										 						<h:outputLabel value=" " /> <h:outputLabel value=" " />
+										 						
+										                        <h:outputText value="Patient name: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.username}" style="font-weight: bold"/>
+										 						
+										                    </h:panelGrid>
+										                </p:panel>
+										                <p:panel>
+										                    <h:panelGrid border="0" columns="1" cellpadding="5">
+										                        <h:outputText value="Summary: " />
+										                        <h:outputText value=" #{compteRenduBean.selectedReport.phone}" style="font-weight: bold"/>
+										 						<h:outputLabel value=" " /> <h:outputLabel value=" " />
+										                    </h:panelGrid>
+										                </p:panel>
+										            </h:panelGrid>
+										
+ 									</p:panelGrid>
+									
+ 								</p:outputPanel>
+ 								
+                            </p:panel>
+                            </div>
+                            
+ 		                  </h:form>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+	</ui:define>
+
+
+</ui:composition>
+            
