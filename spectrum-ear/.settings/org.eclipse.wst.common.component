@@ -8,5 +8,14 @@
         <dependent-module archiveName="spectrum-ejb.jar" deploy-path="/" handle="module:/resource/spectrum-ejb/spectrum-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="javax.mail-api.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/mail/javax.mail-api/1.5.2/javax.mail-api-1.5.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activation.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/activation/activation/1.1/activation-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javax.mail.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

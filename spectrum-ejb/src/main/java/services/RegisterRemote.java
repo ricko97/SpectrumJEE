@@ -17,7 +17,7 @@ public interface RegisterRemote {
 
 	void createCoach(User coach);
 
-	List<User> findAllUsers(int id);
+	List<User> findAllUsers();
 
 	void updateparameter(String email, int userId);
 

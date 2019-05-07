@@ -19,37 +19,37 @@
 		     				
 					 		<h:panelGrid columns="2" cellspacing="5" styleClass="col-lg-12">
 							
-								<h:outputLabel value="" /> <h:outputLabel value="" /> 
+								
 
 
 <h:outputLabel value="Id:" />
 <h:inputText value="#{medecinBean.id}" styleClass="form-control" />
-<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+	
 
 <h:outputLabel value="Name:" />
 <h:inputText value="#{medecinBean.user.name}" styleClass="form-control"/>
-<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+
 
 <h:outputLabel value="Email:" />
 <h:inputText value="#{medecinBean.user.email}" styleClass="form-control"/>
-<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+	
 
 	
 
 
 
 <h:outputLabel value="Password:" />
-<h:inputSecret value="" styleClass="form-control"/>
-<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+<h:inputSecret value="#{medecinBean.user.password}" styleClass="form-control"/>
+
 
 <h:outputLabel value="Re_enter Password:" />
 <h:inputSecret value="#{medecinBean.user.password}" styleClass="form-control"/>
-<h:outputLabel value="" /> <h:outputLabel value="" /> 
+
 
 
 <h:outputLabel value="photo" /> 				
 		<h:inputFile value="#{compteRenduBean.user.picture}" mode="simple" />		
-			<h:outputLabel value="" /> <h:outputLabel value="" /> 
+		
 
 <h:commandButton action="#{medecinBean.verifierpass()}" styleClass="btn btn-primary btn-md btn-block" type="submit" value="add account" />
 
@@ -63,7 +63,7 @@
   <div class="col-lg-5">
                    
                                	<div>
-	                            	<button class="btn btn-info btn-md" value="" type="submit">View all sent reports</button>
+	                            	<button class="btn btn-info btn-md"  type="submit">View all sent reports</button>
 	                           	</div>
                          
                         <!-- .panel-body -->

@@ -145,14 +145,13 @@ public class Register implements RegisterLocal, RegisterRemote {
 	}
 	
 	
+	
 	@Override
-	public List<User> findAllUsers(int id) {
-		List<User> users = em.createQuery("SELECT c FROM user c WHERE c.id=:id", User.class).getResultList();
-		
-		System.out.println(users);
-		
-		return users;
-	} 
+	public List<User> findAllUsers() {
+		String jpql = "SELECT u FROM user u";
+		Query query = em.createQuery(jpql);
+		return query.getResultList();
+	}
 	
 	@Override
 	public void updatepara(User p ) {

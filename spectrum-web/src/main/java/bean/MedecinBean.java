@@ -107,7 +107,7 @@ public class MedecinBean implements Serializable{
 		//user = RegisterLocal.getUserPassword( password);
 		
 		if(!validation_Password(password)){
-			//user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(6)));
+			user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(6)));
 			//password =BCrypt.hashpw("string", BCrypt.gensalt(6));
 			RegisterLocal.createCoach(user);
 			navigate_To = "/pages/login2?faces-redirect=true";

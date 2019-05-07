@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/templateVerifPass.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+
+
+	<ui:define name="title">Register</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+	<div class="wrap-input100 validate-input" data-validate="Valid email is required">
+						<h:inputText class="input100"  a:placeholder="Email" value="#{mailBean.mailAdress}"/>
+						
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<h:inputText class="input100"  a:placeholder="Phone" value="#{mailBean.name}"/>
+						
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					
+					
+					
+					
+					
+	
+					
+					<div class="container-login100-form-btn" >
+							
+							<h:commandButton style="background:#2196F3;cursor: pointer;" class="login100-form-btn" value="Send Mail" action="#{mailBean.sendMail}"/>
+					</div>
+
+			
+
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

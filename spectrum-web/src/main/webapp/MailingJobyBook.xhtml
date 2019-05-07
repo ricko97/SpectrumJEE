@@ -6,7 +6,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui">
 
-<!-- Mirrored from codeminifier.com/new-job-stock/job-stock/search-new.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Apr 2019 11:28:14 GMT -->
+<!-- Mirrored from codeminifier.com/new-job-stock/job-stock/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Apr 2019 11:29:41 GMT -->
 <h:head>
 	<!-- Basic Page Needs
 	================================================== -->
@@ -31,20 +31,20 @@
 			<nav class="navbar navbar-default navbar-fixed navbar-light white bootsnav">
 
 				<div class="container">            
-					<h:commandButton type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"/>
+					<h:commandButton  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"/>
 						<i class="fa fa-bars"></i>
-					
+				
 					<!-- Start Header Navigation -->
 					<div class="navbar-header">
 						<a class="navbar-brand" href="index.html">
-							<img src="assets/img/logo.png" class="logo logo-scrolled" alt=""/>
+							<img src="job-stock/assets/img/logo.png" class="logo logo-scrolled" alt=""/>
 						</a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="navbar-menu">
 						<ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
-							<li class="active"><h:inputText type="text" class="form-control" placeholder="Find Freelancer"/></li>
+							<li class="active"><h:inputText  type="text" class="form-control" placeholder="Find Freelancer"/></li>
 							<li class="dropdown megamenu-fw"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Brows</a>
 								<ul class="dropdown-menu megamenu-content" role="menu">
 									<li>
@@ -53,11 +53,11 @@
 												<h6 class="title">Main Pages</h6>
 												<div class="content">
 													<ul class="menu-col">
-														<li><a href="index.html">Home</a></li>
-														<li><a href="index-2.html">Home</a></li>
-														<li><a href="index-3.html">Home</a></li>
-														<li><a href="index-4.html">Home</a></li>
-														<li><a href="index-5.html">Home</a></li>
+														<li><a href="index.html">Home Page 1</a></li>
+														<li><a href="index-2.html">Home Page 2</a></li>
+														<li><a href="index-3.html">Home Page 3</a></li>
+														<li><a href="index-4.html">Home Page 4</a></li>
+														<li><a href="index-5.html">Home Page 5</a></li>
 														<li><a href="freelancing.html">Freelancing</a></li>
 														<li><a href="signin-signup.html">Sign In / Sign Up</a></li>
 														<li><a href="search-job.html">Search Job</a></li>
@@ -135,101 +135,77 @@
 			<div class="clearfix"></div>
 			
 			<!-- Title Header Start -->
-			<div class="inner-header-title no-br advance-header-title" style="background-image:url(job-stock/assets/img/banner-10.jpg);">
+			<section class="inner-header-title" style="background-image:url(job-stock/assets/img/banner-10.jpg);">
 				<div class="container">
-					<h2><span>Work There.</span> Find the dream job</h2>
-					<p><span>704</span> new job in the last <span>7</span> days.</p>
+					<h1>JobyBook Mail Send</h1>
 				</div>
-			</div>
+			</section>
 			<div class="clearfix"></div>
 			<!-- Title Header End -->
 			
-			<!-- bottom form section start -->
-			
-			
-			
-			<div class="bottom-search-form">
+			<!-- Contact Page Section Start -->
+			<section class="contact-page">
 				<div class="container">
-				<div class="item-click">
+				<h2>JobyBook</h2>
 				
-				
-			<!-- 	/////////////////////////////////////////////////-->
-			
-<!-- 			<ui:repeat var="appr" value="#{sendToCoach.listemed}"> -->
-			<h:dataTable value="#{sendToCoach.listemed}" var="r1" target="#{sendToCoach.userSelected}">
-			
-			<h:column>
-					<div class="brows-job-list">
-								<div class="col-md-6 col-sm-5">
-									<div class="brows-job-position">
-									 
-										
-										<a href="job-detail.html"><h3><!--  #{disponible.offer.title}--> Spectrum</h3></a>
-										<p>
-										<h:outputText value="#{r1.name}" ></h:outputText>	<span class="brows-job-sallery"><!-- <i class="fa fa-money"></i> #{disponible.horaireDispo}--></span>
-											<!--  <span class="job-type bg-trans-warning cl-warning" >#{disponible.type}</span>-->
-										</p>
-										<h:outputText value="#{sendToCoach.user.name}"></h:outputText>
-										
-										
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<div class="brows-job-location">
-										<p><i class="fa fa-map-marker"> </i><!-- #{disponible.nomEmploye}--></p>
-									</div>
-								</div>
-								<div class="col-md-2 col-sm-2">
-									<div class="brows-job-link">
-									<h:commandButton  class="btn btn-login"  action="#{sendToCoach.doSupp()}"
-									value="Sponsor Act">
-									<f:setPropertyActionListener value="#{r}"
-										target="#{sponsorBean.eventsSelected}"></f:setPropertyActionListener>
-								</h:commandButton>
-									 <h:commandButton action="#{sendToCoach.doSupp()}"  value="Choose" />
-									</div>
-								</div>
-							</div>
-			</h:column>	
-			</h:dataTable>
-<!-- 			</ui:repeat> -->
-						
-					
-					</div>
-				
-					<!-- 	/////////////////////////////////////////////////-->
-					
-					<!-- 	div zar9a ta7t el taswira -->
-					<!-- 		<form class="bt-form">
-					<div class="col-md-3 col-sm-6">
-							<h:inputText type="text" class="form-control" placeholder="Skills, Designations, Keyword"/>
-						</div> 
-						<div class="col-md-3 col-sm-6">
-							<h:inputText type="text" class="form-control" placeholder="Searc By location"/>
-						</div> -->
-						<!--<div class="col-md-3 col-sm-6">
-							<select class="form-control">
-							  <option>By Category</option>
-							  <option>Information Technology</option>
-							  <option>Mechanical</option>
-							  <option>Hardware</option>
-							</select>
-						</div>-->
-						<!--<div class="col-md-3 col-sm-6">
-							<button type="submit" class="btn btn-primary">Search Job</button>
+					<div class="col-md-4 col-sm-4">
+						<div class="contact-box">
+							<i class="fa fa-map-marker"></i>
+							<p>#Street 2122, Near ESPRIT<br>
+							</br>Tunisia TN</p>
 						</div>
-					</form>-->
+					</div>
+					
+					<div class="col-md-4 col-sm-4">
+						<div class="contact-box">
+							<i class="fa fa-envelope"></i>
+							<p>JobyBook<br></br>jobybool@gmail.com</p>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-4">
+						<div class="contact-box">
+							<i class="fa fa-phone"></i>
+							<p>+216 71.111.222<br></br>+216 71.222.222</p>
+						</div>
+					</div>
+					
 				</div>
-			</div>
-			<!-- Bottom Search Form Section End -->
+			</section>
+			<!-- contact section End -->
 			
-			<!-- ========== Begin: Brows job Category ===============  -->
-			
-			
-			<!-- ========== Begin: Brows job Category End ===============  -->
+			<!-- contact form -->
+			<section class="contact-form">
+				<div class="container">
+					<h2>Send Mail</h2>
+					<h:form>
+					<div class="col-md-6 col-sm-6">
+						
+				  <h:inputText type="text" class="form-control" placeholder="Your mail header" value="#{mailBean.name}"/> 
+						
+					</div>
+					
+					
+					<div class="col-md-6 col-sm-6">
+						<h:inputText type="text" class="form-control" placeholder="Your e mail" value="#{mailBean.mailAdress}"/>
+					</div>
+					
+					<div class="col-md-12 col-sm-12">
+						<h:inputTextarea  class="form-control textarea" placeholder="Mail content" value="#{mailBean.header}"/>
+										
+					</div>
+					
+					<div class="col-md-12 col-sm-12">
+						<h:commandButton type="submit" class="btn btn-primary" value="Send" actionListener="#{mailBean.sendMail}"/>
+					</div>
+					</h:form>
+				</div>
+				
+			</section>
+			<!-- Contact form End -->
 			
 			<!-- Footer Section Start -->
-			<div class="footer">
+			<footer class="footer">
 				<div class="row lg-menu">
 					<div class="container">
 						<div class="col-md-4 col-sm-4">
@@ -253,8 +229,7 @@
 							<h3 class="widgettitle widget-title">About Job Stock</h3>
 							<div class="textwidget">
 							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
-							<p>7860 North Park Place<br>
-							</br>
+							<p>7860 North Park Place<br></br>
 							San Francisco, CA 94120</p>
 							<p><strong>Email:</strong> Support@careerdesk</p>
 							<p><strong>Call:</strong> <a href="tel:+15555555555">555-555-1234</a></p>
@@ -307,12 +282,12 @@
 							<div class="footer-widget">
 							<h3 class="widgettitle widget-title">Connect Us</h3>
 							<div class="textwidget">
-							<form class="footer-form">
-								<h:inputText type="text" class="form-control" placeholder="Your Name"/> 
+							<h:form class="footer-form">
+								<h:inputText  type="text" class="form-control" placeholder="Your Name"/> 
 								<h:inputText type="text" class="form-control" placeholder="Email"/>
-								<h:inputTextarea class="form-control" placeholder="Message"/>
+								<textarea class="form-control" placeholder="Message"></textarea>
 								<h:commandButton type="submit" class="btn btn-primary" value="Login"/>
-							</form>
+							</h:form>
 							</div>
 							</div>
 						</div>
@@ -323,7 +298,7 @@
 						<p>Copyright Job Stock © 2017. All Rights Reserved </p>
 					</div>
 				</div>
-			</div>
+			</footer>
 			<div class="clearfix"></div>
 			<!-- Footer Section End -->
 			
@@ -343,17 +318,17 @@
 								<div role="tabpanel" class="tab-pane fade in active" id="login">
 									<img src="job-stock/assets/img/logo.png" class="img-responsive" alt="" />
 									<div class="subscribe wow fadeInUp">
-										<form class="form-inline" method="post">
+										<h:form class="form-inline" method="post">
 											<div class="col-sm-12">
 												<div class="form-group">
-													<h:inputText type="email"  name="email" class="form-control" placeholder="Username" required=""/>
+													<h:inputText  type="email"  name="email" class="form-control" placeholder="Username" required=""/>
 													<h:inputText type="password" name="password" class="form-control"  placeholder="Password" required=""/>
 													<div class="center">
-													<h:commandButton type="submit" id="login-btn" class="submit-btn" value="Login"/> 
+													<h:commandButton  type="submit" id="login-btn" class="submit-btn" value="Login"/> 
 													</div>
 												</div>
 											</div>
-										</form>
+										</h:form>
 									</div>
 								</div>
 
@@ -367,7 +342,7 @@
 													<h:inputText type="email"  name="email" class="form-control" placeholder="Username" required=""/>
 													<h:inputText type="password" name="password" class="form-control"  placeholder="Password" required=""/>
 													<div class="center">
-													<h:commandButton type="submit" id="subscribe" class="submit-btn" value="Create Account"/>  
+													<h:commandButton  type="submit" id="subscribe" class="submit-btn" value=" Create Account" /> 
 													</div>
 												</div>
 											</div>
@@ -376,45 +351,11 @@
 							</div>
 							</div>
 						</div>
-					</div>
+						</div>
 				</div>
 			</div>   
 			<!-- End Sign Up Window -->
-			
-			<!-- Apply Form Code -->
-			<div class="modal fade" id="apply-job" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-body">
-							<div class="apply-job-box">
-								<img src="job-stock/assets/img/com-1.jpg" class="img-responsive" alt=""/>
-								<h4>Product Designer</h4>
-								<p>Google Pvt.</p>
-							</div>
-							<div class="apply-job-form">
-								<h:form class="form-inline" method="post">
-									<div class="col-sm-12">
-										<div class="form-group">
-											<h:inputText type="text"  name="name" class="form-control" placeholder="Your Name" required=""/>
-											<h:inputText type="email"  name="email" class="form-control" placeholder="Your Email" required=""/>
-											<h:inputTextarea class="form-control" placeholder="About You / Paste your CV"/>
-											<div class="fileUpload">
-												<span>Upload CV</span>
-												<h:inputText type="file" class="upload" />
-											</div>
-											<div class="center">
-											<h:commandButton type="submit" id="subscribe" class="submit-btn" value="Apply Now"/>  
-											</div>
-										</div>
-									</div>
-								</h:form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>   
-			<!-- End Apply Form -->
-			<h:commandButton class="w3-button w3-teal w3-xlarge w3-right" onclick="openRightMenu()"/><i class="spin fa fa-cog" aria-hidden="true"></i>
+			<button class="w3-button w3-teal w3-xlarge w3-right" onclick="openRightMenu()"><i class="spin fa fa-cog" aria-hidden="true"></i></button>
 			<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-right" style="display:none;right:0;" id="rightMenu">
 				<button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
 				<ul id="styleOptions" title="switch styling">
@@ -461,7 +402,6 @@
 			<script type="text/javascript" src="job-stock/assets/plugins/js/slick.min.js"></script>
 			<script type="text/javascript" src="job-stock/assets/plugins/js/gmap3.min.js"></script>
 			<script type="text/javascript" src="job-stock/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
-			
 			<!-- Custom Js -->
 			<script src="job-stock/assets/js/custom.js"></script>
 			<script src="job-stock/assets/js/jQuery.style.switcher.js"></script>
@@ -479,9 +419,8 @@
 					document.getElementById("rightMenu").style.display = "none";
 				}
 			</script>
-			
 		</div>
 	</body>
 
-<!-- Mirrored from codeminifier.com/new-job-stock/job-stock/search-new.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Apr 2019 11:28:14 GMT -->
+<!-- Mirrored from codeminifier.com/new-job-stock/job-stock/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Apr 2019 11:29:41 GMT -->
 </html>
