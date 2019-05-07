@@ -20,12 +20,13 @@ public class JobOfferService implements JobOfferServiceRemote{
 	EntityManager em;
 	
 	@Override
-	public boolean modifyJobOffer(int entId, JobOffer offer) {
-		if (this.searchJobOfferInEnt(entId, offer.getId())!=null) {
-			em.merge(offer);
-			return true;
-		}else
-			return false;
+	public void modifyJobOffer(JobOffer offer) {
+//		if (this.searchJobOfferInEnt(entId, offer.getId())!=null) {
+//			em.merge(offer);
+//			return true;
+//		}else
+//			return false;
+		em.merge(offer);
 	}
 
 	@Override
@@ -40,27 +41,18 @@ public class JobOfferService implements JobOfferServiceRemote{
 	
 	
 	@Override
-	public int addJobOffer(int entId, JobOffer offer) {
-		if (this.searchJobOfferInEnt(entId, offer.getId())==null) {
+	public void addJobOffer(int entId, JobOffer offer) {
 			Enterprise enterprise = em.find(Enterprise.class, entId);
 			offer.setEnterprise(enterprise);
 			em.persist(offer);
-			return offer.getId();
-		}else
-			return 0;
 		
 	}
 
 
 	@Override
-	public boolean removeJobOfferFromEnt(int entId, int offerId) {
-		JobOffer offer = this.searchJobOfferInEnt(entId, offerId);
-		if (offer!=null) {
-			em.find(Enterprise.class, entId).getJobOffers().remove(offer);
-			em.remove(offer);
-			return true;
-		}else
-			return false;
+	public void removeJobOffer(int offerId) {
+		JobOffer offer = em.find(JobOffer.class, offerId);
+		em.remove(offer);
 	}
 
 	@Override
@@ -95,6 +87,11 @@ public class JobOfferService implements JobOfferServiceRemote{
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public Enterprise getEntById(int entId) {
+		return em.find(Enterprise.class, entId);
 	}
 
 

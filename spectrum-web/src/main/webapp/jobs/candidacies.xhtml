@@ -1,0 +1,158 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="../template/template.xhtml">
+
+<ui:define name="title">
+	<title>Jobs</title>
+</ui:define>
+<ui:define name="content">
+	<section class="messages-page">
+			<div class="container">
+				<div class="messages-sec">
+					<div class="row">
+						<div class="col-lg-4 col-md-12 no-pdd">
+							<div class="msgs-list">
+							 	<div class="messages-list">
+									<ul>
+									 <h:form>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Job offers" outcome="jobs"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Interviews" outcome="interviews"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="active">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Candidacies" outcome="candidacies"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+									 </h:form>
+									</ul>
+								</div><!--messages-list end-->
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+							<div class="main-conversation-box">
+								<h:form id="form">
+								  <div class="row">
+								  	<table class="table table-striped">
+										  <thead class="thead-dark">
+										    <tr>
+										      <th scope="col">#</th>
+										      <th scope="col">Candidate</th>
+										      <th scope="col">Email</th>
+										      <th scope="col">Job offer</th>
+										      <th scope="col">Applied at</th>
+										      <th scope="col">Status</th>
+										      <th scope="col">Action</th>
+										    </tr>
+										  </thead>
+										  <tbody>
+								  			<ui:repeat var="candidacy" value="#{candidacyBean.candidacies}" varStatus="status">
+										    <tr class="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'table-success':''}">
+										      <th scope="row">#{status.index+1}</th>
+										      <td>#{candidacy.name}</td>
+										      <td>#{candidacy.email}</td>
+										      <td>#{candidacy.offerTitle}</td>
+										      <td>
+										      	<h:outputText value="#{candidacy.date}">
+										      		<f:convertDateTime dateStyle="full" pattern="dd-MM-yyyy 'at' HH:mm z"/>
+										      	</h:outputText>
+										      </td>
+										      <td>#{candidacy.status}</td>
+										      <td>
+										      	<h:commandLink value="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'selected':'select'}"
+											     style="font-size: 12px;
+											     color:#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'green':'blue'}">
+											    	<f:setPropertyActionListener target="#{candidacyBean.selectedCandidacy}" value="#{candidacy}" />
+											    </h:commandLink>
+										       <div class="btn-group">
+									            <button class="btn btn-primary btn-sm dropdown-toggle"
+									               type="button"
+									               id="dropdownMenuButton" data-toggle="dropdown">
+									            Actions
+									            </button>
+									            <div class="dropdown-menu">
+									            	<h5 class="dropdown-header text-primary">Change status</h5>
+									               <h:commandButton style="" disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}" 
+														class="btn btn-sm btn-outline-primary btn-block" value="Processing" action="#{candidacyBean.processing()}"/>
+													<h:commandButton style="" disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}" 
+														class="btn btn-sm btn-outline-primary btn-block" value="Accepted" action="#{candidacyBean.accepted}"/>
+													<h:commandButton style="" disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}" 
+														class="btn btn-sm btn-outline-primary btn-block" value="Rejected" action="#{candidacyBean.rejected}"/>
+									               <div class="dropdown-divider"></div>
+									               <h:commandButton style="" disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}" 
+														class="btn btn-sm btn-outline-success btn-block" value="Candidate profile"/>
+													<h:commandButton disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}"
+														class="btn btn-sm btn-outline-success btn-block" value="Pass tests" action="#{candidacyBean.sendTests()}" 
+														onclick="return confirm('Allow this candidate to pass online quizzes ?')"/>
+									            </div>
+									         </div>
+										      </td>
+										    </tr>  
+								  			</ui:repeat>
+										  </tbody>
+									</table>
+								  </div> 
+								</h:form>
+							</div>
+						</div>
+					</div>
+				 </div>
+				</div>
+		</section>
+		
+		<div class="modal fade" id="TestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Send a test to candidate</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true"></span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <div class="row">
+						<p:selectOneRadio id="test" value="#{candidacyBean.testToSend}" update="messages" layout="grid" columns="1">
+						<f:selectItems value="#{candidacyBean.testTypes}" var="c" itemLabel="#{c}" itemValue="#{c}"/>
+						</p:selectOneRadio>	
+					</div>
+					<div class="row">
+						<br/><h:outputText value="Custom message"></h:outputText>
+					</div>
+					<div class="row">
+						<p:inputTextarea value="#{candidacyBean.msg}">
+						</p:inputTextarea>
+					</div>
+					<div class="row">
+						<h:messages style="color:red;"></h:messages>
+					</div>
+			      </div>
+			      <div class="modal-footer">
+			      <h:commandButton value="Send" class="btn btn-secondary"/>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+</ui:define>
+</ui:composition>

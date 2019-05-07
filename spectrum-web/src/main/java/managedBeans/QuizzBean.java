@@ -1,11 +1,11 @@
 package managedBeans;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 //import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
 import entities.Question;
 import entities.Test;
 import entities.TestResult;
@@ -27,12 +28,8 @@ import jobservices.VerifyRecaptcha;
 
 @ManagedBean
 @SessionScoped
-public class QuizzBean implements Serializable{
+public class QuizzBean{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@EJB
 	InterviewService interviewService;
@@ -42,7 +39,7 @@ public class QuizzBean implements Serializable{
 	CandidacyService candidacyService;
 	
 	private Test test;
-	private Integer enterpriseId =1;
+	private Integer enterpriseId = 1;
 	private Integer candidateId;
 	private String email;
 	private Test_t testType;
@@ -73,6 +70,7 @@ public class QuizzBean implements Serializable{
     	min = 0;//test.getDuration()-1;
     	minutes = 0;//test.getDuration()-1;
     	sec = 59;
+    	System.out.println(totalQuestion+"*****************"+questions.size());
     }
     
     public String nextQuestion() {
@@ -105,7 +103,15 @@ public class QuizzBean implements Serializable{
     	DecimalFormat df = new DecimalFormat("0.00");
     	result.setScore(Float.parseFloat(df.format(calculScore())));
     	interviewService.addTestResult(pk, result);
-    	interviewService.plannifyInterviewAuto(result);
+    	Date dateInt = interviewService.plannifyInterviewAuto(result).getDate();
+    	if (result.getScore()>=0.5) {
+    		interviewService.envoyerMail(result.getCandidate().getUser().getEmail(), 
+    				result.getTest().getEnterprise().getUser().getName()+" Interview Scheduled", 
+    				"Hello Mme, Mr "+result.getCandidate().getUser().getName()+" \n\n"
+    						+ "You sucessfully passed the "+result.getTest().getType().toString()+" test, so "
+    								+ "an interview has been scheduled for "+dateInt.toString()+".\n\n"
+    										+ "Cordially.\nSpectrum Team.");
+    	}
     	return navigateTo;
     }
     
@@ -180,7 +186,7 @@ public class QuizzBean implements Serializable{
     }
 	
 	public String startQuizz() {
-		if (submit_form().equals("Success")) {
+		if (("Success").equals(submit_form())) {
 			User user = candidacyService.getCandidateByEmail(email);
 			if (user==null) {
 				FacesContext context = FacesContext.getCurrentInstance();
@@ -200,6 +206,7 @@ public class QuizzBean implements Serializable{
 		return null;
 		
 	}
+
 	
 	public String getAnswer() {
 		return answer;

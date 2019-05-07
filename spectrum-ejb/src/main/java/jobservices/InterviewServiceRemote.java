@@ -32,10 +32,12 @@ public interface InterviewServiceRemote {
 	public Interview plannifyInterviewAuto(TestResult testResult);
 	public Interview searchInterview(TestResultPk testResultPk);
 	public List<Interview> getAllInterviews();
+	public List<Interview> getInterviewsByEnt(int entId);
 	public void modifyInterview(Interview interview);
 	public void cancelInterview(int interviewId);
 	public TestResult getTestResult(TestResultPk testResultPk);
 	public Calendar getHighestDay();
+	public void envoyerMail(String receiver, String subj, String msg);
 	
 	
 }

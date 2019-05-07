@@ -17,27 +17,38 @@
 							<div class="msgs-list">
 							 	<div class="messages-list">
 									<ul>
+									 <h:form>
 										<li class="active">
 											<div class="usr-msg-details">
 												<div class="usr-mg-info">
-													<h3>Jobs offers</h3>
+													<h3>
+														<h:link value="Job offers" outcome="jobs"/>
+														<h:commandButton style="margin-left:150px;" class="btn btn-dark btn-sm"
+														value="PDF" action="#{jobsBean.jobOffersPdf()}"/>
+														<a style="margin-left:0px;" class="btn btn-secondary btn-sm post-jb">New</a>
+													</h3>
 												</div><!--usr-mg-info end-->
 											</div><!--usr-msg-details end-->
 										</li>
 										<li class="">
 											<div class="usr-msg-details">
 												<div class="usr-mg-info">
-													<h3>Interviews</h3>
+													<h3>
+														<h:link value="Interviews" outcome="interviews"/>
+													</h3>
 												</div><!--usr-mg-info end-->
 											</div><!--usr-msg-details end-->
 										</li>
 										<li class="">
 											<div class="usr-msg-details">
 												<div class="usr-mg-info">
-													<h3>Candidacies</h3>
+													<h3>
+														<h:link value="Candidacies" outcome="candidacies"/>
+													</h3>
 												</div><!--usr-mg-info end-->
 											</div><!--usr-msg-details end-->
 										</li>
+									  </h:form>
 									</ul>
 								</div><!--messages-list end-->
 							</div>
@@ -46,19 +57,41 @@
 							<div class="main-conversation-box">
 								<h:form id="form">
 								  <div class="row">
-								  	<ui:repeat var="job" value="#{jobsBean.jobOffers}">
-								   	  <div class="card" style="width: 13rem;margin:20px;">
-										  <img class="card-img-top" src="../resources/images/Java-Jee-Developer.jpg" alt="Card image cap"/>
+								  	<ui:repeat var="job" value="#{jobsBean.jobOffers}" varStatus="status">
+								   	  <div class="card #{job.id eq jobsBean.selectedJob.id ?'border-primary':''}" 
+								   	  style="width: 13rem;margin:20px;">
+										  <img class="card-img-top" src="../resources/images/jobs/#{job.image}" alt="Card image cap"/>
 										  <div class="card-body">
-										    <h5 class="card-title" style="font-weight:bold;">#{job.title}</h5>
-										    <a href="#" class="btn btn-primary">View</a>
-										    <a href="#" class="btn btn-secondary"><i class="la la-edit"></i></a>
-										    <a href="#" class="btn btn-danger"><i class="la la-remove"></i></a>
+										  <h:commandLink value="#{job.id eq jobsBean.selectedJob.id ?'selected':'select'}"
+										     style="font-size: 12px;
+										     color:#{job.id eq jobsBean.selectedJob.id ?'green':''}">
+										    	<f:setPropertyActionListener target="#{jobsBean.selectedJob}" value="#{job}" />
+										    </h:commandLink>
+										    <h5 class="card-title" style="font-weight:bold;">#{job.title}
+										    </h5>
+										    <a class="btn btn-primary btn-sm" data-toggle="#{job.id eq jobsBean.selectedJob.id ?'modal':''}" 
+										    data-target="#JobModal"><i class="la la-eye"></i></a>
+										    <a style="margin-right:3px;" class="#{job.id eq jobsBean.selectedJob.id ?'post_project':''}
+										    btn btn-secondary btn-sm"><i class="la la-edit"></i></a>
+										    <div class="btn-group">
+									            <button class="btn btn-primary btn-sm dropdown-toggle"
+									               type="button"
+									               id="dropdownMenuButton" data-toggle="dropdown">
+									            Actions
+									            </button>
+									            <div class="dropdown-menu">
+									               <h:commandButton style="" disabled="#{job.id eq jobsBean.selectedJob.id ?'false':'true'}" 
+											class="btn btn-sm btn-outline-primary btn-block" value="Show candidacies" action="#{jobsBean.showcand()}"/>
+									               <div class="dropdown-divider"></div>
+									               <h:commandButton style="" disabled="#{job.id eq jobsBean.selectedJob.id ?'false':'true'}" 
+											class="btn btn-sm btn-outline-danger btn-block" value="Delete" action="#{jobsBean.deleteJob()}"
+											onclick="return confirm('This Job offer will be deleted. continue ?')"/>
+									            </div>
+									         </div>
 										  </div>
 										</div>
 								   </ui:repeat>
-								  </div>
-								   
+								  </div> 
 								</h:form>
 							</div>
 						</div>
@@ -66,5 +99,125 @@
 				 </div>
 				</div>
 		</section>
+		
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+		    <h:outputText value="This is a Modal Dialog." />
+		</p:dialog> 
+		<div class="post-popup job_post">
+			<div class="post-project">
+				<h3>#{jobsBean.jobtToAdd.title}</h3>
+				<div class="post-project-fields">
+					<h:form enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Title </span>
+								<h:inputText required="true" value="#{jobsBean.jobtToAdd.title}" style="font-weight:bold;">
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-calendar"></i>
+								<span>End date (jj-MM-yyyy) </span>
+								<h:inputText required="true" value="#{jobsBean.jobtToAdd.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Job Image </span>
+								
+								<h:inputFile value="#{jobsBean.file}"/>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-align-left"></i>
+								<span>Description </span>
+								<h:inputTextarea required="true" value="#{jobsBean.jobtToAdd.description}" style="font-weight:bold;">
+								</h:inputTextarea>
+							</div>
+							<h:commandButton class="active" value="Save" action="#{jobsBean.save}">
+							</h:commandButton>
+						</div>
+					</h:form>
+				</div>
+				<a href="#" title="" style="color:black;"><i class="la la-times-circle"></i></a>
+			</div>
+		</div>
+		
+		<div class="post-popup pst-pj">
+			<div class="post-project">
+				<h3>#{jobsBean.selectedJob.title}</h3>
+				<div class="post-project-fields">
+					<h:form enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Title </span>
+								<h:inputText required="true" value="#{jobsBean.selectedJob.title}" style="font-weight:bold;">
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-calendar"></i>
+								<span>End date (jj-MM-yyyy)</span>
+								<h:inputText required="true" value="#{jobsBean.selectedJob.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Job Image </span>
+								
+								<h:inputFile value="#{jobsBean.file}"/>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-align-left"></i>
+								<span>Description </span>
+								<h:inputTextarea required="true" value="#{jobsBean.selectedJob.description}" style="font-weight:bold;">
+								</h:inputTextarea>
+							</div>
+							<h:commandButton class="active" value="Save" action="#{jobsBean.editJob}">
+							</h:commandButton>
+						</div>
+					</h:form>
+				</div>
+				<a href="#" title="" style="color:black;"><i class="la la-times-circle"></i></a>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+			<div class="modal fade" id="JobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">#{jobsBean.selectedJob.title}</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true"></span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <div class="row">
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-calendar"></i>
+								<span>Start date: </span>
+								<h:outputText value="#{jobsBean.selectedJob.start}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:outputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-calendar"></i>
+								<span>End date: </span>
+								<h:outputText value="#{jobsBean.selectedJob.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:outputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-align-left"></i>
+								<span>Description: </span>
+								<h:outputText value="#{jobsBean.selectedJob.description}" style="font-weight:bold;">
+								</h:outputText>
+							</div>
+						</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 </ui:define>
 </ui:composition>

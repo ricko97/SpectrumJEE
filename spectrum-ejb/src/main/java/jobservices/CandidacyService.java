@@ -15,6 +15,9 @@ import javax.persistence.TypedQuery;
 import entities.Candidacy;
 import entities.CandidacyPk;
 import entities.CandidacyStatus;
+import entities.Candidate;
+import entities.Enterprise;
+import entities.Test;
 import entities.User;
 
 @Stateful
@@ -29,7 +32,7 @@ public class CandidacyService implements CandidacyServiceRemote {
 		if (this.searchCandidacy(candidateId, offerId)==null) {
 			candidacy.setCandidacyPk(this.getCandidacyPk(candidateId, offerId));
 			candidacy.setDate(new Date());
-			candidacy.setStatus(CandidacyStatus.pending);
+			candidacy.setStatus(CandidacyStatus.sent);
 			em.persist(candidacy);
 			return true;
 		}else
@@ -51,17 +54,23 @@ public class CandidacyService implements CandidacyServiceRemote {
 	public List<Candidacy> getCandidaciesByCand(int candidateId) {
 		List<Candidacy>candidacies = new ArrayList<Candidacy>();
 		for (Candidacy candidacy : this.getAllCandidacies()) {
-			if(candidacy.getCandidacyPk().getCandidateID()==candidateId)
+			if(candidacy.getCandidate().getId()==candidateId)
+				candidacy.setOfferTitle(candidacy.getOfferTitle());
+				candidacy.setEmail(candidacy.getEmail());
+				candidacy.setName(candidacy.getName());
 				candidacies.add(candidacy);
 		}
 		return candidacies;
 	}
 
 	@Override
-	public List<Candidacy> getCandidaciesByOffer(int offerId) {
+	public List<Candidacy> getCandidaciesByOffer(int offerId, int entId) {
 		List<Candidacy> candidacies = new ArrayList<Candidacy>();
-		for (Candidacy candidacy : this.getAllCandidacies()) {
-			if(candidacy.getCandidacyPk().getJobID()==offerId)
+		for (Candidacy candidacy : this.getCandidaciesByEnt(entId)) {
+			if(candidacy.getJoboffer().getId()==offerId)
+				candidacy.setOfferTitle(candidacy.getOfferTitle());
+				candidacy.setEmail(candidacy.getEmail());
+				candidacy.setName(candidacy.getName());
 				candidacies.add(candidacy);
 		}
 		return candidacies;
@@ -88,6 +97,20 @@ public class CandidacyService implements CandidacyServiceRemote {
 	public List<Candidacy> getAllCandidacies() {
 		return em.createQuery("select c from candidacy c",Candidacy.class).getResultList();
 	}
+	
+	@Override
+	public List<Candidacy> getCandidaciesByEnt(int entId) {
+		List<Candidacy>candidacies = new ArrayList<Candidacy>();
+		for (Candidacy candidacy :getAllCandidacies()) {
+			if (candidacy.getJoboffer().getEnterprise().getId()==entId) {
+				candidacy.setOfferTitle(candidacy.getJoboffer().getTitle());
+				candidacy.setEmail(candidacy.getCandidate().getUser().getEmail());
+				candidacy.setName(candidacy.getCandidate().getUser().getName());
+				candidacies.add(candidacy);
+			}	
+		}
+		return candidacies;
+	}
 
 	@Override
 	public void modifyCandidacy(Candidacy candidacy) {
@@ -104,6 +127,15 @@ public class CandidacyService implements CandidacyServiceRemote {
 			Logger.getAnonymousLogger().info("user not found => "+e.getMessage());
 		}
 		return null;
+	}
+
+	@Override
+	public void addTestsToCand(int candId, int entId) {
+		Candidate cand = em.find(Candidate.class, candId);
+		for (Test test : em.find(Enterprise.class, entId).getTests()) {
+			cand.getPassedTests().add(test);
+		}
+		em.merge(cand);
 	}
 
 }
