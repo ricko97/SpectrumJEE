@@ -13,9 +13,12 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+//import javax.faces.bean.ManagedProperty;
 //import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import entities.Enterprise;
+import entities.Interview;
 import entities.Question;
 import entities.Test;
 import entities.TestResult;
@@ -37,9 +40,12 @@ public class QuizzBean{
 	VerifyRecaptcha verifyRecaptcha;
 	@EJB
 	CandidacyService candidacyService;
+
+	private String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 	
 	private Test test;
 	private Integer enterpriseId = 1;
+	private Enterprise enterprise;
 	private Integer candidateId;
 	private String email;
 	private Test_t testType;
@@ -64,9 +70,7 @@ public class QuizzBean{
         choices.add(question.getChoice3());
         choices.add(question.getChoice1());
         choices.add(question.getChoice2());
-        testType = Test_t.Technical;
         userAnswers = new ArrayList<String>();
-        test = interviewService.searchTest(enterpriseId, testType);
     	min = 0;//test.getDuration()-1;
     	minutes = 0;//test.getDuration()-1;
     	sec = 59;
@@ -103,12 +107,13 @@ public class QuizzBean{
     	DecimalFormat df = new DecimalFormat("0.00");
     	result.setScore(Float.parseFloat(df.format(calculScore())));
     	interviewService.addTestResult(pk, result);
-    	Date dateInt = interviewService.plannifyInterviewAuto(result).getDate();
+    	Interview interview = interviewService.plannifyInterviewAuto(result);
+    	Date dateInt = interview.getDate();
     	if (result.getScore()>=0.5) {
-    		interviewService.envoyerMail(result.getCandidate().getUser().getEmail(), 
-    				result.getTest().getEnterprise().getUser().getName()+" Interview Scheduled", 
-    				"Hello Mme, Mr "+result.getCandidate().getUser().getName()+" \n\n"
-    						+ "You sucessfully passed the "+result.getTest().getType().toString()+" test, so "
+    		interviewService.envoyerMail(interviewService.getCandidateById(candidateId).getUser().getEmail(), 
+    				test.getEnterprise().getUser().getName()+" Interview Scheduled", 
+    				"Hello Mme, Mr "+interviewService.getCandidateById(candidateId).getUser().getName()+" \n\n"
+    						+ "You sucessfully passed the "+test.getType().toString()+" test, so "
     								+ "an interview has been scheduled for "+dateInt.toString()+".\n\n"
     										+ "Cordially.\nSpectrum Team.");
     	}
@@ -122,7 +127,6 @@ public class QuizzBean{
 				score++;
 		}
 		return score/questions.size();
-    	
     }
     public void decrementSec() {
 		if (sec>0) {
@@ -186,21 +190,39 @@ public class QuizzBean{
     }
 	
 	public String startQuizz() {
+		testType = Test_t.Technical;
+		test = interviewService.searchTest(enterpriseId, testType);
+		if(test==null) {
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage( "Quizz not available"));
+            return null;
+		}else {
+			User user = candidacyService.getCandidateByEmail(email);
+			candidateId = user.getCandidate().getId();
+			TestResultPk t = new TestResultPk();
+			t.setCandidateId(candidateId);
+			t.setTestId(test.getId());
+			if (interviewService.getTestResult(t)!=null) {
+				FacesContext context = FacesContext.getCurrentInstance();
+	            context.addMessage(null, new FacesMessage( "Quizz already completed") );
+	            return null;
+			}
+		}
+		
+		return "quizz";
+		
+	}
+	
+	public String loginQuizz() {
 		if (("Success").equals(submit_form())) {
 			User user = candidacyService.getCandidateByEmail(email);
 			if (user==null) {
 				FacesContext context = FacesContext.getCurrentInstance();
 	            context.addMessage(null, new FacesMessage( "Email not found") );
 			}else {
-				candidateId = user.getCandidate().getId();
-				TestResultPk t = new TestResultPk();
-				t.setCandidateId(candidateId);
-				t.setTestId(test.getId());
-				if (interviewService.getTestResult(t)!=null) {
-					FacesContext context = FacesContext.getCurrentInstance();
-		            context.addMessage(null, new FacesMessage( "Quizz already completed") );
-				}else
-					return "quizz?faces-redirect=true";
+					
+					enterprise = interviewService.getEnterpriseById(enterpriseId);
+					return "quizzes?faces-redirect=true";
 			}
 		}
 		return null;
@@ -226,6 +248,14 @@ public class QuizzBean{
 
 	public List<String> getChoices() {
 		return choices;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public void setChoices(List<String> choices) {
@@ -330,6 +360,14 @@ public class QuizzBean{
 
 	public void setUserAnswers(List<String> userAnswers) {
 		this.userAnswers = userAnswers;
+	}
+
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
 
 }

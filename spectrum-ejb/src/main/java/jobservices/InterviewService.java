@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Candidate;
 import entities.Enterprise;
 import entities.Interview;
 import entities.Question;
@@ -344,5 +345,15 @@ public class InterviewService implements InterviewServiceRemote {
              throw new RuntimeException(e);
             }    
     }
+
+	@Override
+	public Candidate getCandidateById(int candId) {
+		return em.find(Candidate.class, candId);
+	}
+
+	@Override
+	public Enterprise getEnterpriseById(int entId) {
+		return em.find(Enterprise.class, entId);
+	}
 
 }

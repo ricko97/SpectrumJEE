@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import entities.Candidate;
+import entities.Enterprise;
 import entities.Interview;
 import entities.Question;
 import entities.Test;
@@ -38,6 +40,8 @@ public interface InterviewServiceRemote {
 	public TestResult getTestResult(TestResultPk testResultPk);
 	public Calendar getHighestDay();
 	public void envoyerMail(String receiver, String subj, String msg);
+	public Candidate getCandidateById(int candId);
+	public Enterprise getEnterpriseById(int entId);
 	
 	
 }

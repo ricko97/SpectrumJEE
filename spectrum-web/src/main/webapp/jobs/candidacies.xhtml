@@ -81,7 +81,7 @@
 										      <td>#{candidacy.status}</td>
 										      <td>
 										      	<h:commandLink value="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'selected':'select'}"
-											     style="font-size: 12px;
+											     style="font-size: 12px;margin-bottom:10px;
 											     color:#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'green':'blue'}">
 											    	<f:setPropertyActionListener target="#{candidacyBean.selectedCandidacy}" value="#{candidacy}" />
 											    </h:commandLink>
@@ -104,7 +104,12 @@
 														class="btn btn-sm btn-outline-success btn-block" value="Candidate profile"/>
 													<h:commandButton disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}"
 														class="btn btn-sm btn-outline-success btn-block" value="Pass tests" action="#{candidacyBean.sendTests()}" 
-														onclick="return confirm('Allow this candidate to pass online quizzes ?')"/>
+														onclick="return confirm('Allow this candidate to pass online quizzes ?')"
+														rendered="#{candidacy.status =='accepted'}"/>
+													<h:commandButton disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}"
+														class="btn btn-sm btn-outline-success btn-block" value="Launch Visioconferencing" action="#{candidacyBean.sendTests()}" 
+														onclick="return confirm('Allow this candidate to pass online quizzes ?')"
+														rendered="#{candidacy.status =='accepted'}"/>
 									            </div>
 									         </div>
 										      </td>

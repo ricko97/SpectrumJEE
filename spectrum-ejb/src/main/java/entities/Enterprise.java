@@ -19,6 +19,7 @@ public class Enterprise implements Serializable {
 	private int id;
 	private String activity;
 	private String domain;
+	private String skypeVC;
 	@OneToOne
 	private User user;
 	@OneToMany(mappedBy="enterprise", cascade = CascadeType.ALL, 
@@ -77,6 +78,12 @@ public class Enterprise implements Serializable {
 	}
 	public void setTests(List<Test> tests) {
 		this.tests = tests;
+	}
+	public String getSkypeVC() {
+		return skypeVC;
+	}
+	public void setSkypeVC(String skypeVC) {
+		this.skypeVC = skypeVC;
 	}
    
 }

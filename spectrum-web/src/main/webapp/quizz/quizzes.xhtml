@@ -6,13 +6,9 @@
       xmlns:p="http://primefaces.org/ui"
      xmlns:pe="http://primefaces.org/ui/extensions">
      
-     
-     <f:metadata>
-        <f:viewParam name="id" value="#{quizzBean.id}" />
-         <f:event type="preRenderView" listener="#{quizzBean.init()}" />
-    </f:metadata>
     <h:head>
 <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="../resources/images/icons/favicon.ico" />
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../resources/vendor/bootstrap/css/bootstrap.min.css" />
 <!--===============================================================================================-->
@@ -38,34 +34,40 @@
     </h:head>
     <h:body> 
      <div class="limiter">
-		<div class="container-login100" style="background-image: url('../resources/images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<h:form class="login100-form validate-form">
-					<span style="margin-left:75px;" class="">
-						<img src="../resources/images/spectrum.png"/>
-					</span>
-					<span class="login100-form-title p-b-34 p-t-27">
-						Online Quizz
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<h:inputText required="true" class="input100" type="text" id="username" 
-						value="#{quizzBean.email}" requiredMessage="Enter your email address" label="Email Address"
-						validatorMessage="Enter a valid email address">
-						<f:validateRegex pattern=".+\@.+\..+"></f:validateRegex>
-						</h:inputText>
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div style="margin-left:30px;" class="g-recaptcha" data-sitekey="6LfA44sUAAAAADoXe-8VYytnwwvZVQNEEZ9VL1Kt"></div>
-					<h:messages style="margin-left:80px;"></h:messages>
-					<div class="container-login100-form-btn">
-						<h:commandButton id="login" action="#{quizzBean.loginQuizz}" class="login100-form-btn" value="Login"/>
-					</div>
-				</h:form>
-			  </div>
+			<div class="jumbotron">
+				<p><img src="../resources/images/spectrum.png"/></p>
+			   <h1>Online Quizz - #{quizzBean.enterprise.user.name}</h1>
+			   <p>
+			      Spectrum is a professional social network. We help you to get hired as soon as possible.
+			   </p>
+			</div><br/>
+			<h:messages></h:messages>
+		   <h:form>
+			<div class="row">
+				<div class="card" style="width: 18rem;margin:10px;">
+				  <img class="card-img-top" src="../resources/images/bg-03.jpg" alt="Card image cap"/>
+				  <div class="card-body">
+				    <p class="card-text">Technical Test</p>
+				    <h:commandButton action="#{quizzBean.startQuizz}" class="card-text btn btn-primary" value="Start"/>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;margin:10px;">
+				  <img class="card-img-top" src="../resources/images/bg-03.jpg" alt="Card image cap"/>
+				  <div class="card-body">
+				    <p class="card-text">PsychoTechnical Test</p>
+				    <p class="card-text"><h:commandButton action="#{quizzBean.startQuizz}" class="btn btn-primary" value="Start"/></p>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;margin:10px;">
+				  <img class="card-img-top" src="../resources/images/bg-03.jpg" alt="Card image cap"/>
+				  <div class="card-body">
+				    <p class="card-text">Linguistic Test</p>
+				    <p class="card-text"><h:commandButton action="#{quizzBean.startQuizz}" class="btn btn-primary" value="Start"/></p>
+				  </div>
+				</div>
 			</div>
-		</div>
+		   </h:form>
+			</div>
 					
 											
 	<!--===============================================================================================-->
