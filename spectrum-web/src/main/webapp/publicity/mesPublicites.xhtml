@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+		<h:body>
+				<section class="profile-account-setting">
+				<div class="container">
+					<div class="account-tabs-setting">
+						<div class="row">
+							<div class="col-lg-3">
+								<div class="acc-leftbar">
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									
+									<h:commandLink action="/mesStats?faces-redirect=true" value="my stats"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+										
+											</h:commandLink>
+									</div>
+									</h:form>
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<h:commandLink action="/mesReclamations?faces-redirect=true" value="My reclamations"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+									</h:commandLink>
+									</div>
+									</h:form>
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<h:commandLink action="/mesPublicites?faces-redirect=true" value="My publicities"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+									</h:commandLink>
+									</div>
+									</h:form>
+									
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<h:commandLink action="/addPublicite?faces-redirect=true" value="New Publicity"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+									</h:commandLink>
+									</div>
+									</h:form>
+								</div>
+								<!--acc-leftbar end-->
+							</div>
+							<div class="col-lg-9">
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane show active" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+							  		<div class="acc-setting">
+							  			<h3>My Publicities</h3>
+							  			<div class="requests-list">
+							  			<ui:repeat  value="#{publicityBean.mine}" var="publicity" varStatus="loop" class="requests-list">
+							  				<div class="request-details">
+							  					<div class="noty-user-img">
+							  						<img src="resources/files/#{publicity.photo}" alt=""/>
+							  					</div>
+							  					<div class="request-info">
+							  						<h3>#{publicity.name}</h3>
+							  						<H4>#{publicity.description}</H4>
+							  					</div>
+							  					<div class="accept-feat">
+							  					<h:form>
+							  						<ul>
+							  							<li><h:commandButton class="close-req" action="#{publicityBean.deletePublicity(publicity)}" value="X" /></li>
+							  						</ul>
+							  						</h:form>
+							  					</div>
+							  					
+							  					
+							  				</div><!--request-detailse end-->
+							  				</ui:repeat>
+							  				
+							  			</div><!--requests-list end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--account-tabs-setting end-->
+				</div>
+			</section>
+			
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+

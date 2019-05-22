@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+		<h:body>
+				<section class="cover-sec">
+			<img src="resources/images/resources/cover-img.jpg" alt=""/>
+		</section>
+<main>
+			<div class="main-section">
+				<div class="container">
+					<div class="main-section-data">
+						<div class="row">
+							<div class="col-lg-3">
+								<div class="main-left-sidebar">
+									<div class="user_profile">
+										<div class="user-pro-img">
+											<img src="resources/images/resources/user-pro-img.png" alt=""/><a
+												href="#" title=""><i class="fa fa-camera"></i></a>
+										</div>
+										<div class="user_pro_status">
+										<div class="row">
+										<div class="col-lg-1">
+										</div>
+										<div class="col-lg-9">
+											<h:form>
+												
+												   <div class="row">													
+														<h:outputText value="HR:      " />
+														<p:rating value="#{reclamationBean.ratingRH}" />													
+													</div>
+													<br/>
+													<div class="row">
+													
+														<h:outputText value="Working conditions :" />
+														<p:rating value="#{reclamationBean.ratingLogistic}" />
+													
+													</div>
+													<br/>
+													<div class="row">
+													
+														<h:outputText value="Salary : " />
+														<p:rating value="#{reclamationBean.ratingSalary}" />
+													
+													</div>
+													<br/>
+													<div class="row">
+													
+														<h:outputText value="Schedule : " />
+														<p:rating value="#{reclamationBean.ratingSchedule}" />
+													
+													</div>
+													<br/>
+													<div class="row">
+														
+														<h:inputText value="#{reclamationBean.comment}" a:placeholder="Comment ...."></h:inputText>
+												
+													</div>
+													<br/>
+													<br/>
+													<div class="row">
+													<ul class="flw-hr">
+													<li><h:commandButton value="Rate" class="accept-req" action="#{reclamationBean.addReclamation()}" />
+ 													</li>
+ 													</ul>
+ 													</div>
+													
+												
+											</h:form>
+											</div>
+											</div>
+										
+											
+										</div><!--user_pro_status end-->
+										<!--user-pro-img end-->
+										
+									</div>
+									<!--user_profile end-->
+
+								</div>
+								<!--main-left-sidebar end-->
+							</div>
+							<div class="col-lg-6">
+								<div class="main-ws-sec">
+									<div class="user-tab-sec">
+										<h3>#{reclamationBean.entreprise.nom}</h3>
+										<div class="star-descp">
+											<div class="row">
+													
+														<h:outputText value="HR:      " />
+														<p:rating value="#{reclamationBean.ratingRHAVG}" readonly="true" />
+													
+													</div>
+													<br/>
+													<div class="row">
+													
+														<h:outputText value="Working conditions :" />
+														<p:rating value="#{reclamationBean.ratingLogisticAVG}"   readonly="true"/>
+													
+													</div>
+													<br/>
+													<div class="row">
+													
+														<h:outputText value="Salary : " />
+														<p:rating value="#{reclamationBean.ratingSalaryAVG}"  readonly="true" />
+													
+													</div>
+													<br/>
+													<div class="row">
+													
+														<h:outputText value="Schedule : " />
+														<p:rating value="#{reclamationBean.ratingScheduleAVG}"  readonly="true" />
+													
+													</div>
+										</div><!--star-descp end-->
+										</div>
+										</div>
+										</div> 
+						</div>
+					</div>
+					<!-- main-section-data end-->
+				</div>
+			</div>
+</main>
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+

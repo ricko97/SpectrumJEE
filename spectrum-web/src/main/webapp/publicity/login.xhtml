@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="header"><h1></h1></ui:define>
+	<ui:define name="content">
+		<h:body>
+
+			<div class="limiter">
+		<div class="container-login100" style="background-image: url('resources/images/bg-01.jpg');">
+			<div class="wrap-login100">
+			<h:form id="form" class="login100-form validate-form">
+			
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+					
+					
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+					<h:inputText value="#{loginBean.login}" class="input100" name="username" placeholder="email" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+					<h:inputSecret class="input100" type="password" name="pass" placeholder="Password" value="#{loginBean.password}" />
+						
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						
+							<h:commandButton class="login100-form-btn" id="btn" action="#{loginBean.doLogin()}" value="login" />
+							
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="#">
+							Forgot Password?
+						</a>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+

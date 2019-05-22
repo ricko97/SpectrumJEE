@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+		<h:body>
+			<section class="companies-info">
+			<div class="container">
+				<div class="company-title">
+					<h3>Top 5 Companies</h3>
+				</div><!--company-title end-->
+				<div class="companies-list">
+					<div class="row">
+					<ui:repeat  value="#{reclamationBean.companies}" var="company" varStatus="loop">
+									
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="company_profile_info">
+								<div class="company-up-info">
+									<img src="resources/images/resources/cmp-icon1.png" alt=""/>
+									<h3>#{company.nom}</h3>
+								</div>
+								 <h:form>
+								<h:commandLink action="#{reclamationBean.toDetails()}" class="view-more-pro" value="View Profile">
+								<f:setPropertyActionListener target="#{reclamationBean.id}" value="#{company.id}" />
+								</h:commandLink>
+								</h:form>
+								
+							</div><!--company_profile_info end-->
+						</div>
+				   	
+				   </ui:repeat>	
+					</div>
+				</div><!--companies-list end-->
+				
+			</div>
+		</section><!--companies-info end-->
+			
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+

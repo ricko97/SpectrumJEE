@@ -1,0 +1,151 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	
+	
+	<ui:define name="menu">
+		<h:body>
+
+			<section class="profile-account-setting">
+				<div class="container">
+					<div class="account-tabs-setting">
+						<div class="row">
+							<div class="col-lg-3">
+								<div class="acc-leftbar">
+								<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									
+									<h:commandLink action="/mesStats?faces-redirect=true" value="my stats"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+										
+											</h:commandLink>
+									</div>
+									</h:form>
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<h:commandLink action="/mesReclamations?faces-redirect=true" value="My reclamations"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+									</h:commandLink>
+									</div>
+									</h:form>
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<h:commandLink action="/mesPublicites?faces-redirect=true" value="My publicities"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+									</h:commandLink>
+									</div>
+									</h:form>
+									
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<h:commandLink action="/addPublicite?faces-redirect=true" value="New Publicity"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+									</h:commandLink>
+									</div>
+									</h:form>
+									
+								</div>
+								<!--acc-leftbar end-->
+							</div>
+							<div class="col-lg-9">
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-acc"
+										role="tabpanel" aria-labelledby="nav-acc-tab">
+										<div class="acc-setting">
+										<br/>
+										<br/>
+											<H1>Check your company's Total rating level</H1>
+											<br/>
+											<div>
+												<ct:chart id="lineChart" type="line"
+													model="#{lineChartBean.lineModel}">
+													<p:ajax event="itemSelect"
+														listener="#{lineChartBean.itemSelect}"
+														update="lineChartMessage" />
+												</ct:chart>
+											</div>
+											<p:message id="lineChartMessage" for="lineChart"
+												showDetail="true" />
+											<br/> <br/>
+											<H1>RH rating</H1>
+											<br/>
+											<div>
+												<ct:chart id="pieChart" type="pie"
+													model="#{pieChartBean.pieChartModel}">
+													<p:ajax event="itemSelect"
+														listener="#{pieChartBean.pieItemSelect}"
+														update="pieChartMessage" />
+												</ct:chart>
+												<p:message id="pieChartMessage" for="pieChart"
+													showDetail="true" />
+											</div>
+											<br/> <br/>
+											<H1>Salary rating</H1>
+											<br/>
+											<div>
+												<ct:chart id="pieChartLog" type="pie"
+													model="#{pieChartBean.pieChartModelLogistic}">
+													<p:ajax event="itemSelect"
+														listener="#{pieChartBean.pieItemSelect}"
+														update="pieChartMessageLog" />
+												</ct:chart>
+												<p:message id="pieChartMessageLog" for="pieChartLog"
+													showDetail="true" />
+											</div>
+											<br/> <br/>
+											<H1>Logistic rating</H1>
+											<br/>
+											<div>
+												<ct:chart id="pieChartHR" type="pie"
+													model="#{pieChartBean.pieChartModelHR}">
+													<p:ajax event="itemSelect"
+														listener="#{pieChartBean.pieItemSelect}"
+														update="pieChartMessageHR" />
+												</ct:chart>
+												<p:message id="pieChartMessageHR" for="pieChartHR"
+													showDetail="true" />
+											</div>
+											<br/> <br/>
+											<H1>Schedule rating</H1>
+											<br/>
+											<div>
+												<ct:chart id="pieChartSchedule" type="pie"
+													model="#{pieChartBean.pieChartModelSchedule}">
+													<p:ajax event="itemSelect"
+														listener="#{pieChartBean.pieItemSelect}"
+														update="pieChartMessageSchedule" />
+												</ct:chart>
+												<p:message id="pieChartMessageSchedule" for="pieChartSchedule"
+													showDetail="true" />
+											</div>
+										</div>
+										<!--acc-setting end-->
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--account-tabs-setting end-->
+				</div>
+			</section>
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+

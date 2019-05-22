@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+		<h:body>
+			<section class="profile-account-setting">
+				<div class="container">
+					<div class="account-tabs-setting">
+						<div class="row">
+							<div class="col-lg-3">
+								<div class="acc-leftbar">
+									<h:form>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									
+									<h:commandLink action="/targets?faces-redirect=true" value="Targets"
+									class="nav-item nav-link active" id="nav-acc-tab"
+											data-toggle="tab" role="tab"
+											aria-controls="nav-acc" aria-selected="true" >
+										
+											</h:commandLink>
+									</div>
+									</h:form>
+									
+									
+								</div>
+								<!--acc-leftbar end-->
+							</div>
+							<div class="col-lg-9">
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-deactivate"
+										role="tabpanel" aria-labelledby="nav-deactivate-tab">
+										<div class="acc-setting">
+							  			<h3>My Targets</h3>
+							  			<div class="requests-list">
+							  			<ui:repeat  value="#{targetBean.targets}" var="publicity" varStatus="loop" class="requests-list">
+							  				<div class="request-details">
+							  					<div class="noty-user-img">
+							  						<img src="resources/images/resources/r-img1.png" alt=""/>
+							  					</div>
+							  					<div class="request-info">
+							  						<h3>#{publicity.name}</h3>
+							  						
+							  					</div>
+							  					<div class="accept-feat">
+							  					<h:form>
+							  						<ul>
+							  							<li><h:commandButton class="accept-req" action="#{targetBean.displayTarget(publicity)}" value="Update" /></li>
+							  							<li><h:commandButton class="close-req" action="#{targetBean.deleteTarget(publicity)}" value="X" /></li>
+							  						</ul>
+							  						</h:form>
+							  					</div>
+							  					
+							  						
+							  						
+							  					
+							  					
+							  				</div><!--request-detailse end-->
+							  				</ui:repeat>
+							  				
+							  			</div><!--requests-list end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+										<div class="acc-setting">
+											<h3>New Target</h3>
+											<h:form enctype="multipart/form-data" prependId="false">
+
+												<div class="cp-field">
+													<h5>Title</h5>
+													<div class="cpp-fiel">
+														<h:inputText value="#{targetBean.name}" required="true" requiredMessage="Please enter a name"></h:inputText>
+													</div>
+												</div>
+
+												<div class="save-stngs pd3">
+													<ul>
+														<li><h:commandButton value="Save" type="submit"
+																action="#{targetBean.saveFile}" class="accept-req" ></h:commandButton></li>
+
+													</ul>
+												</div>
+
+											</h:form>
+										</div>
+										<!--acc-setting end-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--account-tabs-setting end-->
+				
+			</section>
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+
