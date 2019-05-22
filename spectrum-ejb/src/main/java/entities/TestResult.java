@@ -21,7 +21,7 @@ public class TestResult implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="candidateId", referencedColumnName="id",insertable=false,updatable=false)
 	private Candidate candidate;
-	@OneToOne(mappedBy="testResult")
+	@OneToOne(mappedBy="testResult", cascade=CascadeType.PERSIST)
 	private Interview interview;
 	
 	private static final long serialVersionUID = 1L;

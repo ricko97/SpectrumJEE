@@ -1,0 +1,418 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="../template/template.xhtml">
+
+<ui:define name="title">
+	<title>Jobs</title>
+</ui:define>
+<header>
+			<div class="container">
+				<div class="header-data">
+					<div class="logo">
+						<a href="index.html" title=""><img src="../resources/images/logo.png" alt=""/></a>
+					</div><!--logo end-->
+					<div class="search-bar">
+						<form>
+							<input type="text" name="search" placeholder="Search..."/>
+							<button type="submit"><i class="la la-search"></i></button>
+						</form>
+					</div><!--search-bar end-->
+					<nav>
+						<ul>
+							<li>
+								<a href="index.html" title="">
+									<span><img src="../resources/images/icon1.png" alt=""/></span>
+									Home
+								</a>
+							</li>
+							<li>
+								<a href="companies.html" title="">
+									<span><img src="../resources/images/icon2.png" alt=""/></span>
+									Companies
+								</a>
+							</li>
+							<li>
+								<a href="profiles.html" title="">
+									<span><img src="../resources/images/icon4.png" alt=""/></span>
+									Profiles
+								</a>
+								<ul>
+									<li><a href="user-profile.html" title="">User Profile</a></li>
+									<li><a href="my-profile-feed.html" title="">my-profile-feed</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="jobs.html" title="">
+									<span><img src="../resources/images/icon5.png" alt=""/></span>
+									Jobs
+								</a>
+							</li>
+							<li>
+								<a href="#" title="" class="not-box-open">
+									<span><img src="../resources/images/icon6.png" alt=""/></span>
+									Messages
+								</a>
+								<div class="notification-box msg">
+									<div class="nt-title">
+										<h4>Setting</h4>
+										<a href="#" title="">Clear all</a>
+									</div>
+									<div class="nott-list">
+										<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="../resources/images/resources/ny-img1.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="messages.html" title="">Jassica William</a> </h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="../resources/images/resources/ny-img2.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="messages.html" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet.</p>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="../resources/images/resources/ny-img3.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="messages.html" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="view-all-nots">
+						  					<a href="messages.html" title="">View All Messsages</a>
+						  				</div>
+									</div><!--nott-list end-->
+								</div><!--notification-box end-->
+							</li>
+							<li>
+								<a href="#" title="" class="not-box-open">
+									<span><img src="../resources/images/icon7.png" alt=""/></span>
+									Notification
+								</a>
+								<div class="notification-box">
+									<div class="nt-title">
+										<h4>Setting</h4>
+										<a href="#" title="">Clear all</a>
+									</div>
+									<div class="nott-list">
+										<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="../resources/images/resources/ny-img1.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="../resources/images/resources/ny-img2.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="../resources/images/resources/ny-img3.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="..resources/images/resources/ny-img2.png" alt=""/>
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+							  					<span>2 min ago</span>
+							  				</div><!--notification-info -->
+						  				</div>
+						  				<div class="view-all-nots">
+						  					<a href="#" title="">View All Notification</a>
+						  				</div>
+									</div><!--nott-list end-->
+								</div><!--notification-box end-->
+							</li>
+						</ul>
+					</nav><!--nav end-->
+					<div class="menu-btn">
+						<a href="#" title=""><i class="fa fa-bars"></i></a>
+					</div><!--menu-btn end-->
+					<div class="user-account">
+						<div class="user-info">
+							<img src="../resources/images/resources/user.png" alt=""/>
+							<a href="#" title="">John</a>
+							<i class="la la-sort-down"></i>
+						</div>
+						<div class="user-account-settingss">
+							<h3>Online Status</h3>
+							<ul class="on-off-status">
+								<li>
+									<div class="fgt-sec">
+										<input type="radio" name="cc" id="c5"/>
+										<label for="c5">
+											<span></span>
+										</label>
+										<small>Online</small>
+									</div>
+								</li>
+								<li>
+									<div class="fgt-sec">
+										<input type="radio" name="cc" id="c6"/>
+										<label for="c6">
+											<span></span>
+										</label>
+										<small>Offline</small>
+									</div>
+								</li>
+							</ul>
+							<h3>Custom Status</h3>
+							<div class="search_form">
+								<form>
+									<input type="text" name="search"/>
+									<button type="submit">Ok</button>
+								</form>
+							</div><!--search_form end-->
+							<h3>Setting</h3>
+							<ul class="us-links">
+								<li><a href="profile-account-setting.html" title="">Account Setting</a></li>
+								<li><a href="#" title="">Privacy</a></li>
+								<li><a href="#" title="">Faqs</a></li>
+								<li><a href="#" title="">Terms and Conditions</a></li>
+							</ul>
+							<h3 class="tc"><a href="#" title="">Logout</a></h3>
+						</div><!--user-account-settingss end-->
+					</div>
+				</div><!--header-data end-->
+			</div>
+		</header><!--header end-->
+<ui:define name="content">
+	<section class="messages-page">
+			<div class="container">
+				<div class="messages-sec">
+					<div class="row">
+						<div class="col-lg-4 col-md-12 no-pdd">
+							<div class="msgs-list">
+							 	<div class="messages-list">
+									<ul>
+									 <h:form>
+										<li class="active">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Job offers" outcome="jobs"/>
+														<h:commandButton style="margin-left:150px;" class="btn btn-dark btn-sm"
+														value="PDF" action="#{jobsBean.jobOffersPdf()}"/>
+														<a style="margin-left:0px;" class="btn btn-secondary btn-sm post-jb">New</a>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Interviews" outcome="interviews"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Candidacies" outcome="candidacies"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+									  </h:form>
+									</ul>
+								</div><!--messages-list end-->
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+							<div class="main-conversation-box">
+								<h:form id="form">
+								  <div class="row">
+								  	<ui:repeat var="job" value="#{jobsBean.jobOffers}" varStatus="status">
+								   	  <div class="card #{job.id eq jobsBean.selectedJob.id ?'border-primary':''}" 
+								   	  style="width: 13rem;margin:20px;">
+										  <img class="card-img-top" src="../resources/images/jobs/#{job.image}" alt="Card image cap"/>
+										  <div class="card-body">
+										  <h:commandLink value="#{job.id eq jobsBean.selectedJob.id ?'selected':'select'}"
+										     style="font-size: 12px;
+										     color:#{job.id eq jobsBean.selectedJob.id ?'green':''}">
+										    	<f:setPropertyActionListener target="#{jobsBean.selectedJob}" value="#{job}" />
+										    </h:commandLink>
+										    <h5 class="card-title" style="font-weight:bold;">#{job.title}
+										    </h5>
+										    <a class="btn btn-primary btn-sm" data-toggle="#{job.id eq jobsBean.selectedJob.id ?'modal':''}" 
+										    data-target="#JobModal"><i class="la la-eye"></i></a>
+										    <a style="margin-right:3px;" class="#{job.id eq jobsBean.selectedJob.id ?'post_project':''}
+										    btn btn-secondary btn-sm"><i class="la la-edit"></i></a>
+										    <div class="btn-group">
+									            <button class="btn btn-primary btn-sm dropdown-toggle"
+									               type="button"
+									               id="dropdownMenuButton" data-toggle="dropdown">
+									            Actions
+									            </button>
+									            <div class="dropdown-menu">
+									               <h:commandButton style="" disabled="#{job.id eq jobsBean.selectedJob.id ?'false':'true'}" 
+											class="btn btn-sm btn-outline-primary btn-block" value="Show candidacies" action="#{jobsBean.showcand()}"/>
+									               <div class="dropdown-divider"></div>
+									               <h:commandButton style="" disabled="#{job.id eq jobsBean.selectedJob.id ?'false':'true'}" 
+											class="btn btn-sm btn-outline-danger btn-block" value="Delete" action="#{jobsBean.deleteJob()}"
+											onclick="return confirm('This Job offer will be deleted. continue ?')"/>
+									            </div>
+									         </div>
+										  </div>
+										</div>
+								   </ui:repeat>
+								  </div> 
+								</h:form>
+							</div>
+						</div>
+					</div>
+				 </div>
+				</div>
+		</section>
+		
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+		    <h:outputText value="This is a Modal Dialog." />
+		</p:dialog> 
+		<div class="post-popup job_post">
+			<div class="post-project">
+				<h3>#{jobsBean.jobtToAdd.title}</h3>
+				<div class="post-project-fields">
+					<h:form enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Title </span>
+								<h:inputText required="true" value="#{jobsBean.jobtToAdd.title}" style="font-weight:bold;">
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-calendar"></i>
+								<span>End date (jj-MM-yyyy) </span>
+								<h:inputText required="true" value="#{jobsBean.jobtToAdd.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Job Image </span>
+								
+								<h:inputFile value="#{jobsBean.file}"/>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-align-left"></i>
+								<span>Description </span>
+								<h:inputTextarea required="true" value="#{jobsBean.jobtToAdd.description}" style="font-weight:bold;">
+								</h:inputTextarea>
+							</div>
+							<h:commandButton class="active" value="Save" action="#{jobsBean.save}">
+							</h:commandButton>
+						</div>
+					</h:form>
+				</div>
+				<a href="#" title="" style="color:black;"><i class="la la-times-circle"></i></a>
+			</div>
+		</div>
+		
+		<div class="post-popup pst-pj">
+			<div class="post-project">
+				<h3>#{jobsBean.selectedJob.title}</h3>
+				<div class="post-project-fields">
+					<h:form enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Title </span>
+								<h:inputText required="true" value="#{jobsBean.selectedJob.title}" style="font-weight:bold;">
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-calendar"></i>
+								<span>End date (jj-MM-yyyy)</span>
+								<h:inputText required="true" value="#{jobsBean.selectedJob.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<span>Job Image </span>
+								
+								<h:inputFile value="#{jobsBean.file}"/>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:10px;">
+								<i class="la la-align-left"></i>
+								<span>Description </span>
+								<h:inputTextarea required="true" value="#{jobsBean.selectedJob.description}" style="font-weight:bold;">
+								</h:inputTextarea>
+							</div>
+							<h:commandButton class="active" value="Save" action="#{jobsBean.editJob}">
+							</h:commandButton>
+						</div>
+					</h:form>
+				</div>
+				<a href="#" title="" style="color:black;"><i class="la la-times-circle"></i></a>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+			<div class="modal fade" id="JobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">#{jobsBean.selectedJob.title}</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true"></span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <div class="row">
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-calendar"></i>
+								<span>Start date: </span>
+								<h:outputText value="#{jobsBean.selectedJob.start}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:outputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-calendar"></i>
+								<span>End date: </span>
+								<h:outputText value="#{jobsBean.selectedJob.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:outputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-align-left"></i>
+								<span>Description: </span>
+								<h:outputText value="#{jobsBean.selectedJob.description}" style="font-weight:bold;">
+								</h:outputText>
+							</div>
+						</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+</ui:define>
+</ui:composition>

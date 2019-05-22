@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="../template/template.xhtml">
+
+<ui:define name="title">
+	<title>Jobs</title>
+</ui:define>
+<ui:define name="content">
+	<section class="messages-page">
+			<div class="container">
+				<div class="messages-sec">
+					<div class="row">
+						<div class="col-lg-4 col-md-12 no-pdd">
+							<div class="msgs-list">
+							 	<div class="messages-list">
+									<ul>
+									 <h:form>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Job offers" outcome="jobs"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="active">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Interviews" outcome="interviews"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+										<li class="">
+											<div class="usr-msg-details">
+												<div class="usr-mg-info">
+													<h3>
+														<h:link value="Candidacies" outcome="candidacies"/>
+													</h3>
+												</div><!--usr-mg-info end-->
+											</div><!--usr-msg-details end-->
+										</li>
+									 </h:form>
+									</ul>
+								</div><!--messages-list end-->
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+							<div class="main-conversation-box">
+								<h:form id="form">
+								  <div class="row">
+								  	<table class="table table-striped">
+										  <thead class="thead-dark">
+										    <tr>
+										      <th scope="col">#</th>
+										      <th scope="col">Date</th>
+										      <th scope="col">Candidate</th>
+										      <th scope="col">Test Passed</th>
+										      <th scope="col">Action</th>
+										    </tr>
+										  </thead>
+										  <tbody>
+								  			<ui:repeat var="interview" value="#{interviewBean.interviews}" varStatus="status">
+										    <tr class="#{interview.id eq interviewBean.selectedInterview.id ?'table-success':''}">
+										      <th scope="row">#{status.index+1}</th>
+										      <td>
+										      	<h:outputText value="#{interview.date}">
+										      		<f:convertDateTime dateStyle="full" pattern="dd-MM-yyyy 'at' HH:mm z"/>
+										      	</h:outputText>
+										      </td>
+										      <td>#{interview.candidate}</td>
+										      <td>#{interview.test}</td>
+										      <td>
+										      	<h:commandLink value="#{interview.id eq interviewBean.selectedInterview.id ?'selected':'select'}"
+											     style="font-size: 12px;
+											     color:#{interview.id eq interviewBean.selectedInterview.id ?'green':'blue'}">
+											    	<f:setPropertyActionListener target="#{interviewBean.selectedInterview}" value="#{interview}" />
+											    </h:commandLink>
+										      	<h:commandButton class="btn btn-danger btn-sm" value="Delete" action="#{interviewBean.cancel}"
+												onclick="return confirm('Delete this interview ?')" style="margin-left:5px;" />
+										      </td>
+										    </tr>  
+								  			</ui:repeat>
+										  </tbody>
+									</table>
+								  </div> 
+								</h:form>
+							</div>
+						</div>
+					</div>
+				 </div>
+				</div>
+		</section>
+		
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+		    <h:outputText value="This is a Modal Dialog." />
+		</p:dialog> 
+		<div class="post-popup job_post">
+			<div class="post-project">
+				<h3>#{job.title}</h3>
+				<div class="post-project-fields">
+					<form>
+						<div class="row">
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<span>Title </span>
+								<h:inputText value="#{job.title}" style="font-weight:bold;">
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-calendar"></i>
+								<span>End date </span>
+								<h:inputText value="#{job.end}" style="font-weight:bold;">
+									<f:convertDateTime pattern = "dd-MM-yyyy"></f:convertDateTime>
+								</h:inputText>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<span>Job Image </span>
+								<p:fileUpload value="#{jobBean.image}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" mode="simple"
+								 skinSimple="false" description="Select Job Image"/>
+							</div>
+							<div class="col-lg-12" style="margin-bottom:30px;">
+								<i class="la la-align-left"></i>
+								<span>Description </span>
+								<h:inputText value="#{job.description}" style="font-weight:bold;">
+								</h:inputText>
+							</div>
+							<h:commandButton value="Save" action="#{jobBean.editJob(job)}">
+							</h:commandButton>
+						</div>
+					</form>
+				</div>
+				<a href="#" title="" style="color:black;"><i class="la la-times-circle"></i></a>
+			</div>
+		</div>
+</ui:define>
+</ui:composition>

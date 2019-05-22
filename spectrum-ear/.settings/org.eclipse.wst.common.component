@@ -8,5 +8,8 @@
         <dependent-module archiveName="spectrum-ejb.jar" deploy-path="/" handle="module:/resource/spectrum-ejb/spectrum-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="joda-time.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/joda-time/joda-time/2.9.4/joda-time-2.9.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

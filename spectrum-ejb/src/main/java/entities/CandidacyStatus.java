@@ -1,5 +1,5 @@
 package entities;
 
 public enum CandidacyStatus {
-	pending,accepted,rejected
+	sent,processing,accepted,rejected
 }

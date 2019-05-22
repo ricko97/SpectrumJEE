@@ -28,6 +28,9 @@ public class Candidate implements Serializable {
 	private List<Candidacy>candidacies;
 	@OneToMany(mappedBy="candidate")
 	private List<TestResult>testResults;
+	@OneToMany
+	private List<Test>passedTests;
+	
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -73,6 +76,12 @@ public class Candidate implements Serializable {
 	}
 	public void setCandidacies(List<Candidacy> candidacies) {
 		this.candidacies = candidacies;
+	}
+	public List<Test> getPassedTests() {
+		return passedTests;
+	}
+	public void setPassedTests(List<Test> passedTests) {
+		this.passedTests = passedTests;
 	}
 
 }

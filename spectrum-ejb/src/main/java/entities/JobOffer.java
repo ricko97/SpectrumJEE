@@ -23,6 +23,7 @@ public class JobOffer implements Serializable {
 	private Date end;
 	private String title;
 	private String description;
+	private String image;
 	@OneToMany(mappedBy="joboffer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Candidacy>candidacies = new ArrayList<Candidacy>();
 	@ManyToOne
@@ -77,6 +78,12 @@ public class JobOffer implements Serializable {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	@Override
 	public int hashCode() {

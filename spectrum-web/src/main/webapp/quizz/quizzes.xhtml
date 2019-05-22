@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+     xmlns:pe="http://primefaces.org/ui/extensions">
+     
+    <h:head>
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="../resources/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/bootstrap/css/bootstrap.min.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/iconic/css/material-design-iconic-font.min.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/animate/animate.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/css-hamburgers/hamburgers.min.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/animsition/css/animsition.min.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/select2/select2.min.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/vendor/daterangepicker/daterangepicker.css" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/css/util.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/main.css" />
+<!--===============================================================================================-->
+        <title>Login Quizz</title>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+    </h:head>
+    <h:body> 
+     <div class="limiter">
+			<div class="jumbotron">
+				<p><img src="../resources/images/spectrum.png"/></p>
+			   <h1>Online Quizz - #{quizzBean.enterprise.user.name}</h1>
+			   <p>
+			      Spectrum is a professional social network. We help you to get hired as soon as possible.
+			   </p>
+			</div><br/>
+			<h:messages></h:messages>
+		   <h:form>
+			<div class="row">
+				<div class="card" style="width: 18rem;margin:10px;">
+				  <img class="card-img-top" src="../resources/images/bg-03.jpg" alt="Card image cap"/>
+				  <div class="card-body">
+				    <p class="card-text">Technical Test</p>
+				    <h:commandButton action="#{quizzBean.startQuizz}" class="card-text btn btn-primary" value="Start"/>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;margin:10px;">
+				  <img class="card-img-top" src="../resources/images/bg-03.jpg" alt="Card image cap"/>
+				  <div class="card-body">
+				    <p class="card-text">PsychoTechnical Test</p>
+				    <p class="card-text"><h:commandButton action="#{quizzBean.startQuizz}" class="btn btn-primary" value="Start"/></p>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;margin:10px;">
+				  <img class="card-img-top" src="../resources/images/bg-03.jpg" alt="Card image cap"/>
+				  <div class="card-body">
+				    <p class="card-text">Linguistic Test</p>
+				    <p class="card-text"><h:commandButton action="#{quizzBean.startQuizz}" class="btn btn-primary" value="Start"/></p>
+				  </div>
+				</div>
+			</div>
+		   </h:form>
+			</div>
+					
+											
+	<!--===============================================================================================-->
+	<script src="../resources/vendor/jquery/jquery-3.2.1.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+<!--===============================================================================================-->
+	<script src="../resources/vendor/animsition/js/animsition.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+<!--===============================================================================================-->
+	<script src="../resources/vendor/bootstrap/js/popper.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+	<script src="../resources/vendor/bootstrap/js/bootstrap.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+<!--===============================================================================================-->
+	<script src="../resources/vendor/select2/select2.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+<!--===============================================================================================-->
+	<script src="../resources/vendor/daterangepicker/moment.min.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+	<script src="../resources/vendor/daterangepicker/daterangepicker.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+<!--===============================================================================================-->
+	<script src="../resources/vendor/countdowntime/countdowntime.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+<!--===============================================================================================-->
+	<script src="../resources/js/main.js" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="1fdd57dac7ab4c6ff40ad032-text/javascript"></script>
+	<script type="1fdd57dac7ab4c6ff40ad032-text/javascript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+<script src="../../../../ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="1fdd57dac7ab4c6ff40ad032-|49"></script>
+
+    </h:body>
+</html>
