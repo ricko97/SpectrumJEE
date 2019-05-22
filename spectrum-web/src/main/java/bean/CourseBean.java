@@ -60,7 +60,9 @@ return listemed;
 	public void addC2(){
 		RegisterLocal.addCourse(new Course(desc));
 	}
-
+	public void del(int id){
+		RegisterLocal.deletecourse(id);
+	}
 	public int getId() {
 		return id;
 	}

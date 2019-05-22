@@ -3,6 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
 
 	<ui:define name="content">
@@ -34,24 +35,14 @@
 							<!--user_pro_status end-->
 							<ul class="social_links">
 								<li><a href="#" title=""><i class="la la-globe"></i>
-										www.example.com</a></li>
+										www.Spectrum.com</a></li>
 								<li><a href="#" title=""><i
 										class="fa fa-facebook-square"></i>
 										Http://www.facebook.com/john...</a></li>
 								<li><a href="#" title=""><i class="fa fa-twitter"></i>
 										Http://www.Twitter.com/john...</a></li>
-								<li><a href="#" title=""><i
-										class="fa fa-google-plus-square"></i>
-										Http://www.googleplus.com/john...</a></li>
-								<li><a href="#" title=""><i
-										class="fa fa-behance-square"></i>
-										Http://www.behance.com/john...</a></li>
-								<li><a href="#" title=""><i class="fa fa-pinterest"></i>
-										Http://www.pinterest.com/john...</a></li>
-								<li><a href="#" title=""><i class="fa fa-instagram"></i>
-										Http://www.instagram.com/john...</a></li>
-								<li><a href="#" title=""><i class="fa fa-youtube"></i>
-										Http://www.youtube.com/john...</a></li>
+							
+							
 							</ul>
 						</div>
 						<!--user_profile end-->
@@ -128,6 +119,7 @@
 				<div class="col-lg-6">
 					<div class="main-ws-sec">
 						<div class="user-tab-sec">
+						
 							<h:outputText style="font-size:25px;"
 								value="#{sendToCoach.user.name}" />
 							<div class="star-descp">
@@ -145,7 +137,7 @@
 								<ul>
 									<li data-tab="feed-dd" class="active"><a href="#" title="">
 											<h:graphicImage value="/resources/images/ic1.png" alt="" />
-											s<span>Feed</span>
+											<span>Feed</span>
 									</a></li>
 									<li data-tab="info-dd"><a href="#" title=""> <h:graphicImage
 												value="/resources/images/ic2.png" alt="" /> <span>Info</span>
@@ -162,17 +154,11 @@
 
 							<div class="product-feed-tab" id="info-dd">
 								<div class="user-profile-ov">
-									<h3>Overview</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Quisque tempor aliquam felis, nec condimentum ipsum commodo
-										id. Vivamus sit amet augue nec urna efficitur tincidunt.
-										Vivamus consectetur aliquam lectus commodo viverra. Nunc eu
-										augue nec arcu efficitur faucibus. Aliquam accumsan ac magna
-										convallis bibendum. Quisque laoreet augue eget augue fermentum
-										scelerisque. Vivamus dignissim mollis est dictum blandit. Nam
-										porta auctor neque sed congue. Nullam rutrum eget ex at
-										maximus. Lorem ipsum dolor sit amet, consectetur adipiscing
-										elit. Donec eget vestibulum lorem.</p>
+							  <span style="font-weight:bold">Overview</span>
+									
+                              <h:inputTextarea value="#{medecinBean.name}" styleClass="form-control" />	
+                              <h:outputLabel>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</h:outputLabel>
+                              									
 								</div>
 								<!--user-profile-ov end-->
 								<div class="user-profile-ov st2">

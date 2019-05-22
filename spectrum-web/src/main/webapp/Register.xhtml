@@ -46,11 +46,10 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required" >
-						<h:message for="validateSalaire" style="color:red"/>
-						<h:inputSecret id="validateSalaire" class="input100"  a:placeholder="Password" value="#{medecinBean.user.password}" required="true" requiredMessage="weak password">
+						<h:message for="validatepassword" style="color:red"/>
+						<h:inputSecret id="validatepassword" class="input100"  a:placeholder="Password" value="#{medecinBean.user.password}" required="true" requiredMessage="weak password">
 						
-						<f:validateDoubleRange minimum="8" maximum="25" for="validateSalaire"/>
-						
+						<f:validateRegex pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
 						</h:inputSecret>
 						
 						

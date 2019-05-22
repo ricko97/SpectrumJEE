@@ -31,14 +31,16 @@
 					</div>
 					
 					<div class="container-login100-form-btn" >
-							<h:commandButton style="background:#2196F3;cursor: pointer;" class="login100-form-btn" value="login" action="#{loginBean.do_Login()}"/>
+							<h:commandButton style="background:#2196F3;cursor: pointer;" class="login100-form-btn" value="login" action="#{loginBean.do_Login()}" />
+							<h:message for="btn"/>
 					</div>
 
 			<div class="container-login100-form-btn">
-							<h:commandButton class="login100-form-btn" style="background:#2196F3 ;cursor: pointer; " value="Singup" action="#{loginBean.do_Logout()}"/>
+							<h:commandButton id ="btn" class="login100-form-btn" style="background:#2196F3 ;cursor: pointer; " value="Singup" action="#{loginBean.do_Logout()}"/>
 					</div>
 	<div class="container-login100-form-btn">
 							<h:commandButton class="login100-form-btn" style="background:#2196F3 ;cursor: pointer; " value="Forgot password" action="#{loginBean.do_Logout2()}"/>
+					
 					</div>
 
 			

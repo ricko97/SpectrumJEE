@@ -41,7 +41,7 @@ public interface RegisterLocal {
 	void updateSkillDetails(Skill skillDetails);
 	List<Course> findAll();
 	List<Coaching> findAllcoaching();
-	void deletecourse(Course p);
+	void deletecourse(int id);
 	void deletecoaching(Coaching p);
 	void updatecoaching(Coaching p);
 	void updatecourse(Course p);
@@ -57,6 +57,7 @@ public interface RegisterLocal {
 	void deleteUser(int id);
 	User getUserPassword(String password);
 	List<Course> getAllCourse();
+	void deleteEmployeById(int id);
 
 	
 

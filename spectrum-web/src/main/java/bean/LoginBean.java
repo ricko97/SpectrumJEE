@@ -53,7 +53,7 @@ public class LoginBean {
 		
 		if(user != null ){
 			//user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(6)));
-			navigate_To = "/pages/Condidate?faces-redirect=true";
+			navigate_To = "first_page_coach?faces-redirect=true";
 			setLogged_In(true);
 		}else{
 			FacesContext.getCurrentInstance().addMessage("form:btn", new FacesMessage("Bad credentials"));
@@ -65,12 +65,12 @@ public class LoginBean {
 	public String do_Logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		
-		return "/pages/Register?faces-redirect=true";
+		return "Register?faces-redirect=true";
 	}
 	public String do_Logout2(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		
-		return "/pages/verifpassparmail?faces-redirect=true";
+		return "verifpassparmail?faces-redirect=true";
 	}
 
 	public boolean isLogged_In() {

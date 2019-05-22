@@ -22,11 +22,30 @@ public class sendToCoach implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
+	//private int id;
 	private String address;
 	private Date birth;
 	private String Name;
 	private String password;
+	private String email;
+	private String username;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	private boolean logged_In;
 	private Integer appreciation;
 
@@ -72,6 +91,17 @@ public class sendToCoach implements Serializable {
 		return serialVersionUID;
 	}
 
+	
+	
+
+	public  void  removeEmploye(int  id)
+	{  RegisterLocal.deleteEmployeById(id);
+	}
+	
+	
+	
+	
+	
 	public void doSupp1() {		
 			user1 = RegisterLocal.findById(userSelected.getId());
 			RegisterLocal.deleteUser(user1.getId());
@@ -128,6 +158,10 @@ public class sendToCoach implements Serializable {
 	public void addAppreciation() {
 		RegisterLocal.createCoach(new User(Name));
 	}
+	
+	public void addCandidate() {
+		RegisterLocal.createCoach(new User(Name,username,email));
+	}
 
 	public void doAdd() {
 		RegisterLocal.createCoach(user);
@@ -138,7 +172,7 @@ public class sendToCoach implements Serializable {
 	}
 
 	public void updateUser(User user) {
-		id = user.getId();
+	//	id = user.getId();
 		address = user.getAddress();
 		birth = user.getBirth();
 		Name = user.getName();
@@ -152,7 +186,7 @@ public class sendToCoach implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	/*
 	public int getId() {
 		return id;
 	}
@@ -160,7 +194,7 @@ public class sendToCoach implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+*/
 	public String getAddress() {
 		return address;
 	}

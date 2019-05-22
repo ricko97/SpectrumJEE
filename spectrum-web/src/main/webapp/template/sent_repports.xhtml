@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui"	
 	template="/template/Coach.xhtml">
 	
-	<ui:define name="title">Repports | Epione Medical Portal</ui:define>
+	<ui:define name="title">Repports </ui:define>
 	<ui:define name="title-header">Repports sent</ui:define>
 	<ui:define name="content">
                 <div class="col-lg-12">
@@ -22,7 +22,8 @@
                             <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                               <div class="row">
                                 <div class="col-sm-12">
-  										<p:dataTable widgetVar="reportTable" var="rep" id="data" value="#{compteRenduBean.user.name}"
+                               
+  										<p:dataTable widgetVar="reportTable" var="emp" id="data" value="#{sendToCoach.listemed}"
 												paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 			                 					paginator="true" rows="3" style="margin-bottom:20px; text-align:center;" paginatorPosition="bottom" >
 												
@@ -54,23 +55,24 @@
 										            </p:outputPanel>
 										        </f:facet>
 											
-											<p:column sortBy="#{compteRenduBean.user.id}" filterBy="#{rep.repportId}">
-												<f:facet name="header"> Report ID </f:facet>
-												<h:outputText value="#{compteRenduBean.user.id}" />
-											</p:column>
-											<p:column sortBy="#{compteRenduBean.user.name}" filterBy="#{rep.repportName}">
-												<f:facet name="header"> Report Title </f:facet>
-												<h:outputText value="#{compteRenduBean.user.name}" />
-											</p:column>
-											
-											<p:column sortBy="#{compteRenduBean.user.address}" filterBy="#{rep.diagnostic}">
-												<f:facet name="header"> Diagnostic </f:facet>
-												<h:outputText value="#{compteRenduBean.user.address}" />
-											</p:column>
-											<p:column sortBy="#{compteRenduBean.user.email}" filterBy="#{rep.referentDoctor}">
-												<f:facet name="header"> Referring doctor  </f:facet>
-												<h:outputText value="#{compteRenduBean.user.email}" />
-											</p:column>
+											 <p:column sortBy="#{emp.name}">
+                    <f:facet name="header">ID</f:facet>
+                    <h:link value="#{emp.id}" >
+                        <f:param name="empid" value="#{emp.id}"/>
+                    </h:link>
+                </p:column>
+                <p:column sortBy="#{emp.name}">
+                    <f:facet name="header">Name</f:facet>
+                    #{emp.name}
+                </p:column>
+                 <p:column sortBy="#{emp.username}">
+                    <f:facet name="header">userame</f:facet>
+                    #{emp.username}
+                </p:column>
+                <p:column sortBy="#{emp.email}">
+                    <f:facet name="header">Email</f:facet>
+                    #{emp.email}
+                </p:column>
 											<p:column>
 												<p:commandLink update=":form:reportDetail" oncomplete="PF('reportShow').show()"  title="See more">
 							                        <h:outputText styleClass="fa fa-info" style="margin:0 auto;" />

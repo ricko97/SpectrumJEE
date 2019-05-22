@@ -37,7 +37,9 @@
 <h:inputText value="#{courseBean.course.description}" styleClass="form-control"/>
 <h:outputLabel value="" /> <h:outputLabel value="" /> 	
 
-
+<h:outputLabel value="Course File" /> 				
+		<h:inputFile value="#{courseBean.course.description}" mode="simple" />		
+			<h:outputLabel value="" /> <h:outputLabel value="" /> 
 
 <h:commandButton action="#{courseBean.doAdd()}" styleClass="btn btn-primary btn-md btn-block" type="submit" value="add course" />
 
@@ -51,7 +53,7 @@
   <div class="col-lg-5">
                    
                                	<div>
-	                            	<button class="btn btn-info btn-md" value="" type="submit">View all sent reports</button>
+	                            	<button class="btn btn-info btn-md" value="" type="submit">Delete course</button>
 	                           	</div>
                          
                         <!-- .panel-body -->
