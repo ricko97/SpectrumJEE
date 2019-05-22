@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -47,6 +48,10 @@ public class User implements Serializable {
 	private List<Notification>notifications;
 	@OneToMany
 	private List<User>followings;
+	@OneToMany(fetch=FetchType.EAGER)
+	Set<Actualite>actualites;
+	@OneToMany
+	Set<Commentaire>commentaires;
 	private static final long serialVersionUID = 1L;
 
 	public User() {

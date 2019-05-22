@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/template/template.xhtml">
+<ui:param name="page_name" value="Contrats Management" />
+<ui:define name="content">
+<h:panelGroup>
+<h:form>
+<h:commandLink value="Déconnexion" action="#{loginBean.doLogout()}" />
+<table>
+<tr><td><h:outputText value="Date"></h:outputText></td>
+<td><h:inputText value="#{contratmanagementbean.date}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Salaire"></h:outputText></td>
+<td><h:inputText value="#{contratmanagementbean.salaire}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Type"></h:outputText></td>
+<td><h:inputText value="#{contratmanagementbean.type}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Id Contrat"></h:outputText></td>
+<td><h:inputSecret value="#{contratmanagementbean.idcont}"></h:inputSecret></td></tr>
+<tr><td colspan="2"><h:commandLink value="Ajouter Contrat"
+action="#{contratmanagementbean.AjoutContrat()}" /></td></tr>
+
+</table>
+
+<h:dataTable value="#{contratmanagementbean.getCns()}" var="contrat" border="1">
+<h:column><f:facet name="header"><h:outputText value="date"
+/></f:facet>
+<h:outputText value="#{contrat.date}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Type"
+/></f:facet>
+<h:outputText value="#{contrat.type}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Salaire"
+/></f:facet>
+<h:outputText value="#{contrat.salaire}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="IdContrat"
+/></f:facet>
+<h:outputText value="#{contrat.ID}" /></h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{contratmanagementbean.removeEmploye(contrat.ID)}"
+value="Supprimer" />
+<h:commandButton action="#{ajoutembean.modifier(employe)}" value="Modifier" />
+</h:column>
+<ui:define name="title" > Choisir une fonctionnalité : </ui:define><br/>
+<ui:define name="content">
+
+</ui:define>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+</ui:define>
+
+</ui:composition>

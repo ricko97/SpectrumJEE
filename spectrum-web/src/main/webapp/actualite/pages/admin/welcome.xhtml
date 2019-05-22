@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+		<h:panelGroup>
+			<center>
+				<h:form>
+					<h:outputFormat value="Bonjour!">
+						<f:param value="#{loginBean.password}" />
+					</h:outputFormat>
+					<h:commandLink value="Déconnexion" action="#{loginBean.doLogout()}" />
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<label>Actualite</label><h:inputText value="#{ajoutembean.actualiteString}"></h:inputText><h:commandButton
+								action="#{ajoutembean.ajouterActualite()}" value="Partager" />
+					<h:dataTable value="#{ajoutembean.getActualites()}" var="actualite"
+						border="0">
+						<h:column>
+							<h1><h:outputText value="#{actualite.getOwner().getName()}" /></h1>
+						</h:column>
+						<h:column>
+							<h:outputText value="#{actualite.getContent()}" />
+						</h:column>
+						<h:column><label>Commentaires</label><h:inputText  binding="#{input1}"></h:inputText><h:commandButton
+								action="#{ajoutembean.ajouterCommentaire(actualite,input1.value)}" value="Commenter" /></h:column>
+						<h:column>
+							<h:dataTable  value="#{actualite.getCommentaires()}"
+								var="commentaire" border="0">
+								
+								<h:column>
+								<h:outputText value="#{commentaire.getContent()}" />
+								</h:column>
+							</h:dataTable>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+						</h:column>
+						<ui:define name="title"> Choisir une fonctionnalité : </ui:define>
+						<br />
+						<ui:define name="content">
+						</ui:define>
+					</h:dataTable>
+				</h:form>
+			</center>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>
