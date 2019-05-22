@@ -17,6 +17,7 @@ public class Enterprise implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String name;
 	private String activity;
 	private String domain;
 	@OneToOne
@@ -77,6 +78,12 @@ public class Enterprise implements Serializable {
 	}
 	public void setTests(List<Test> tests) {
 		this.tests = tests;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
    
 }

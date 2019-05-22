@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+
+<html  xmlns="http://www.w3.org/1999/xhtml" 
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<head>
+  <title>Title of document</title>
+  <meta charset="utf-8" />
+<title>test Index</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="css/animate.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/line-awesome.css" />
+<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
+<link rel="stylesheet" type="text/css" href="lib/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+</head>
+
+<body>
+ <h1>ccdcdcd</h1>
+ <h:form>
+      <h:inputText id="inputTxt" pt:placeholder="ddsdsq" value="#{enterprisebean.mail}" />
+      <h:outputText id="output" value="#{enterprisebean.mail}" />
+      <h:commandButton id="submit2" value="submit2"  action="index?faces-redirect=true" />
+      <h:commandButton id="submit1" value="submit1" action="#{enterprisebean.loadAllUser() }" />
+      
+      
+ </h:form>
+ <h:form enctype="multipart/form-data">
+          <h:inputFile  value="#{enterprisebean.imageG}" mode="advanced" dragDropSupport="false"  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />   
+          <h:commandButton id="submit3" value="upload" action="#{enterprisebean.addGas() }" />
+      </h:form>
+      <h:graphicImage value="#{enterprisebean.imageG2}" />
+     
+ <h:link styleClass="btn btn-default btn-lg " >
+    <i class="fa fa-plus-square btn-lg" />
+</h:link>
+ <div class="suggestions full-width">
+										<div class="sd-title">
+											<h3>Followers</h3>
+											<i class="la la-ellipsis-v"></i>
+										</div><!--sd-title end-->
+										<div class="suggestions-list">
+										<ui:repeat var="u" value="#{enterprisebean.userList}">
+											<div class="suggestion-usd">
+												<img src="images/resources/s1.png" alt="" />
+												<div class="sgt-text">
+													<h4>#{u.getName()} </h4>
+													<span>Graphic Designer</span>
+												</div>
+												<span><i class="la la-plus"></i></span>
+											</div>
+										</ui:repeat>
+											<div class="view-more">
+												<a href="#" title="">View More</a>
+											</div>
+										</div><!--suggestions-list end-->
+									</div><!--suggestions end-->
+	        <h:form>
+				<div class="companies-list">
+					<div class="row">
+					<ui:repeat var="u" value="#{enterprisebean.coworkerList}">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="company_profile_info">
+								<div class="company-up-info">
+									<img src="images/resources/pf-icon1.png" alt="" />
+									<h3>#{u.getName()}</h3>
+									<h4>#{u.getRole()}</h4>
+									<ul>
+										<li><h:commandButton id="inspect" value="Inspect"  styleClass="btn btn-success" action="#{enterprisebean.inspect(u)}" /></li>
+										
+										<li><a href="#" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+									   <c:set var="test" scope="session" value="${enterprisebean.admin}" />
+									   
+				                        <c:if test="${test == true}">
+				                        
+				                          
+                                           <h:commandButton id="submit2" value="submit2"  action="index?faces-redirect=true" />
+									        <h:commandButton id="remove" value="remove"  styleClass="btn btn-primary" action="#{enterprisebean.removeuser(u)}" />
+										  
+										
+									   </c:if>
+									</ul>
+								</div>
+								<a href="#" title="" class="view-more-pro">View Profile</a>
+							</div><!--company_profile_info end-->
+						</div>
+						</ui:repeat>
+					</div>
+				</div><!--companies-list end-->
+				</h:form>
+									
+</body>
+
+</html>

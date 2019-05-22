@@ -24,6 +24,7 @@ public class User implements Serializable {
 	private String address;
 	private String username;
 	private String password;
+	private String enterpriseName;
 	private Date birth;
 	private String picture;
 	@Enumerated(EnumType.STRING)
@@ -160,5 +161,11 @@ public class User implements Serializable {
 	}
 	public void setNotifications(List<Notification> notifications) {
 		this.notifications = notifications;
+	}
+	public String getEnterpriseName() {
+		return enterpriseName;
+	}
+	public void setEnterpriseName(String enterpriseName) {
+		this.enterpriseName = enterpriseName;
 	}
 }
