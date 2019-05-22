@@ -1,4 +1,4 @@
-package services;
+package coach;
 
 import java.io.Serializable;
 import java.util.Properties;
