@@ -17,6 +17,7 @@ public class Enterprise implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String name;
 	private String activity;
 	private String domain;
 	private String skypeVC;
@@ -84,6 +85,11 @@ public class Enterprise implements Serializable {
 	}
 	public void setSkypeVC(String skypeVC) {
 		this.skypeVC = skypeVC;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
    
 }
