@@ -106,10 +106,7 @@
 														class="btn btn-sm btn-outline-success btn-block" value="Pass tests" action="#{candidacyBean.sendTests()}" 
 														onclick="return confirm('Allow this candidate to pass online quizzes ?')"
 														rendered="#{candidacy.status =='accepted'}"/>
-													<h:commandButton disabled="#{candidacy.candidacyPk eq candidacyBean.selectedCandidacy.candidacyPk ?'false':'true'}"
-														class="btn btn-sm btn-outline-success btn-block" value="Launch Visioconferencing" action="#{candidacyBean.sendTests()}" 
-														onclick="return confirm('Allow this candidate to pass online quizzes ?')"
-														rendered="#{candidacy.status =='accepted'}"/>
+													<a class="btn btn-sm btn-outline-success btn-block" target="_blank" href="#{candidacyBean.launchVC()}">Launch Visioconferencing</a>
 									            </div>
 									         </div>
 										      </td>

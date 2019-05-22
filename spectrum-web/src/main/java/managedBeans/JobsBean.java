@@ -94,7 +94,7 @@ public class JobsBean {
 		jobtToAdd.setStart(new Date());
 		jobOfferService.addJobOffer(enterpriseId, jobtToAdd);
 		file = null;
-		jobtToAdd = null;
+		jobtToAdd = new JobOffer();
 		return "jobs";
 	}
 	

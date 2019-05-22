@@ -1,5 +1,9 @@
 package managedBeans;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +12,12 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 //import javax.faces.bean.ViewScoped;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import entities.Candidacy;
 import entities.CandidacyStatus;
@@ -41,6 +51,18 @@ public class CandidacyBean {
 		candidacies = new ArrayList<Candidacy>();
 		candidacies = candidacyService.getCandidaciesByEnt(enterpriseId);
 	}
+	
+	public String launchVC() {
+		String link = interviewService.getEnterpriseById(enterpriseId).getSkypeVC();
+		String msg = "Hello Mme, Mr "+selectedCandidacy.getCandidate().getUser().getName()+"\n\n"
+				+ "You're invited to rejoin this interview.\n"
+				+ "Click on the link below\n"
+				+ link+"\n\n\n"
+				+ "Spectrum Team.";
+		return link;
+		
+	}
+	
 	
 	public String sendTests() {
 				String msg = "Hello Mme, Mr "+selectedCandidacy.getCandidate().getUser().getName()+"\n\n"
