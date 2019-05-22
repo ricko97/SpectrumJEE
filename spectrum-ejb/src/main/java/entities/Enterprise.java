@@ -85,6 +85,7 @@ public class Enterprise implements Serializable {
 	}
 	public void setSkypeVC(String skypeVC) {
 		this.skypeVC = skypeVC;
+	}
 	public String getName() {
 		return name;
 	}

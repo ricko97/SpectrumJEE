@@ -1,4 +1,4 @@
-package managedBeans.enterpriseBeans;
+package enterpriseBeans;
 
 
 
@@ -29,13 +29,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Part;
 
+import enterpriseServices.EntrepriseDao;
+import enterpriseServices.EntrepriseDaoRemote;
+import enterpriseServices.userDao;
 import entities.Enterprise;
 import entities.Role;
 import entities.Sexe;
 import entities.User;
-import sessionBean.EntrepriseDao;
-import sessionBean.EntrepriseDaoRemote;
-import sessionBean.userDao;
 
 @ManagedBean
 @SessionScoped

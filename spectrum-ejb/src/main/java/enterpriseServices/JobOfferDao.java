@@ -1,4 +1,4 @@
-package sessionBean;
+package enterpriseServices;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import entities.JobOffer;
 @LocalBean
 public class JobOfferDao implements JobOfferDaoRemote {
 
-	@PersistenceContext
+	@PersistenceContext(name="spectrum-ejb")
 	EntityManager em;
     /**
      * Default constructor. 

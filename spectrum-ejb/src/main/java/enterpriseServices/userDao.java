@@ -1,4 +1,4 @@
-package sessionBean;
+package enterpriseServices;
 
 
 
@@ -20,7 +20,7 @@ import entities.User;
 @Stateless
 @LocalBean
 public class userDao implements userDaoRemote {
-	@PersistenceContext
+	@PersistenceContext(name="spectrum-ejb")
 	EntityManager em;
 /**
  * Default constructor. 

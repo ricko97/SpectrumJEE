@@ -1,4 +1,4 @@
-package sessionBean;
+package enterpriseServices;
 import entities.Enterprise;
 
 import java.util.List;
