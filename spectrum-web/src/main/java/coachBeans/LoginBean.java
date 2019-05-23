@@ -59,7 +59,7 @@ public class LoginBean {
 	public String do_Logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		
-		return "/pages/Register?faces-redirect=true";
+		return "Register?faces-redirect=true";
 	}
 
 	public boolean isLogged_In() {

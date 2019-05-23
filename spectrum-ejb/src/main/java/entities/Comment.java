@@ -19,8 +19,9 @@ public class Comment implements Serializable {
 	private String msg;
 	private Date date;
 	@ManyToOne
-	@JoinColumn(name="post_id")
 	private Post post;
+	@OneToOne
+	private User user;
 	private static final long serialVersionUID = 1L;
 
 	public Comment() {
@@ -52,6 +53,12 @@ public class Comment implements Serializable {
 	}
 	public void setPost(Post post) {
 		this.post = post;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
    
 }

@@ -20,7 +20,7 @@ public class Message implements Serializable {
 	private Date date;
 	private boolean seen;
 	@ManyToOne
-	@JoinColumn(name="receiver_id")
+	private User sender;
 	private User receiver;
 	private static final long serialVersionUID = 1L;
 

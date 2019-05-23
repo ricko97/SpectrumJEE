@@ -8,12 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 import javax.mail.Transport;
-
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
@@ -32,10 +33,14 @@ import javax.servlet.http.Part;
 import enterpriseServices.EntrepriseDao;
 import enterpriseServices.EntrepriseDaoRemote;
 import enterpriseServices.userDao;
+import entities.Candidate;
+import entities.Coach;
 import entities.Enterprise;
 import entities.Role;
 import entities.Sexe;
 import entities.User;
+import jobservices.InterviewService;
+import jobservices.VerifyRecaptcha;
 
 @ManagedBean
 @SessionScoped
@@ -80,8 +85,95 @@ public class Enterprisebean {
 	private String message3;
 	private String messagelogin;
 	//..................
-	
+	private User userSignup;
+	private String roleSignup="";
+	private String passwdConfirm="";
+	private int verifNumber;
+	private String emailCode="";
+	@EJB
+	VerifyRecaptcha verifyRecaptcha;
+	@EJB
+	InterviewService interviewService;
+	//..................
 
+	@PostConstruct
+	public void init() {
+		setUserSignup(new User());
+	}
+	
+	public String signup() {
+		User u1=dao.findUserByUserName(userSignup.getUsername());
+		User u2=dao.findUserByEmail(userSignup.getEmail());
+		if(u1.getUsername().equals(userSignup.getUsername()))
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Username already taken"));
+		else if(u2.getEmail().equals(userSignup.getEmail()))
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("This email already exist"));
+		else if(!validation_Password(userSignup.getPassword()))
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Please, enter a strong password.\n"
+					+ "A digit must occur at least once.\n"
+					+ "A lower case letter must occur at least once.\n"
+					+ "An upper case letter must occur at least once.\n"
+					+ "No whitespace allowed in the entire string.\n"
+					+ "A special character must occur at least once.\n"
+					+ "At least 8 characters."));
+		else if(!userSignup.getPassword().equals(passwdConfirm))
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Passwords are not the same"));
+		else if(!("Success").equals(validate_captcha()))
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Incorrect Captcha"));
+		else {
+			verifNumber = (int) ((Math.random()+17)*100);
+			verifNumber+=verifNumber*verifNumber*5;
+			interviewService.envoyerMail(userSignup.getEmail(), "Spectrum-Registration", 
+					"Registration password is: "+verifNumber+"\n\n"
+							+ "Spectrum team.");
+			return "validate?faces-redirect=true";
+		}
+		return null;
+	}
+	
+	public String validateAccount() {
+		if (!(Integer.parseInt(emailCode)==verifNumber))
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("You entered a wrong code"));
+		else {
+			userSignup.setPassword(BCrypt.hashpw(userSignup.getPassword(), BCrypt.gensalt(6)));
+			if (roleSignup.equals(Role.candidate.toString())) {
+				userSignup.setRole(Role.candidate);
+				Candidate c = new Candidate();
+				c.setUser(userSignup);
+				dao.addCandidate(c);
+			}else if(roleSignup.equals(Role.coach.toString())) {
+				userSignup.setRole(Role.coach);
+				Coach c = new Coach();
+				c.setUser(userSignup);
+				dao.addCoach(c);
+			}else if(roleSignup.equals(Role.enterpriseAdmin.toString())) {
+				userSignup.setRole(Role.enterpriseAdmin);
+				Enterprise e = new Enterprise();
+				e.setUser(userSignup);
+				dao.addEnterprise(e);
+			}
+			return "login?faces-redirect=true";	
+		}
+		return null;
+	}
+	
+	public String validate_captcha(){
+        try {
+       String gRecaptchaResponse = FacesContext.getCurrentInstance().
+       getExternalContext().getRequestParameterMap().get("g-recaptcha-response");
+       boolean verify = verifyRecaptcha.verify(gRecaptchaResponse);
+       if(verify){
+            return "Success";
+       }else{
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage( "Incorrect Captcha") );
+            return null;
+         }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+       return null;
+    }
 	public void loadEnterprise(){
 		this.enterprise=dao2.findEnterprise(2);
 		//user=dao.findUser(26);
@@ -433,6 +525,7 @@ public class Enterprisebean {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -624,6 +717,36 @@ public class Enterprisebean {
 	}
 	public void setDomain(String domain) {
 		this.domain = domain;
+	}
+	public String getRoleSignup() {
+		return roleSignup;
+	}
+
+	public void setRoleSignup(String roleSignup) {
+		this.roleSignup = roleSignup;
+	}
+
+	public User getUserSignup() {
+		return userSignup;
+	}
+	public void setUserSignup(User userSignup) {
+		this.userSignup = userSignup;
+	}
+
+	public String getPasswdConfirm() {
+		return passwdConfirm;
+	}
+
+	public void setPasswdConfirm(String passwdConfirm) {
+		this.passwdConfirm = passwdConfirm;
+	}
+
+	public String getEmailCode() {
+		return emailCode;
+	}
+
+	public void setEmailCode(String emailCode) {
+		this.emailCode = emailCode;
 	}
 
 }

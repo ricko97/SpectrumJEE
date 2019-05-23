@@ -21,7 +21,7 @@ public class Enterprise implements Serializable {
 	private String activity;
 	private String domain;
 	private String skypeVC;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private User user;
 	@OneToMany(mappedBy="enterprise", cascade = CascadeType.ALL, 
 			fetch = FetchType.EAGER)

@@ -11,7 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-
+import entities.Candidate;
+import entities.Coach;
+import entities.Enterprise;
 import entities.User;
 
 /**
@@ -98,5 +100,23 @@ public void deleteUser(int id) {
 public List<User> findAlluser() {
 	 
 	return em.createQuery("select e from user e",User.class).getResultList()  ;
+}
+
+@Override
+public void addCandidate(Candidate candidate) {
+	em.persist(candidate);
+	
+}
+
+@Override
+public void addCoach(Coach coach) {
+	em.persist(coach);
+	
+}
+
+@Override
+public void addEnterprise(Enterprise enterprise) {
+	em.persist(enterprise);
+	
 }
 }

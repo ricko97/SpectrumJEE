@@ -19,7 +19,6 @@ public class Complaint implements Serializable {
 	private String object;
 	private String msg;
 	@ManyToOne
-	@JoinColumn(name="user_id")
 	private User user;
 	private static final long serialVersionUID = 1L;
 

@@ -38,16 +38,18 @@ public class User implements Serializable {
 	private Enterprise enterprise;
 	@OneToOne(mappedBy="user")
 	private Coach coach;
-	@OneToMany(targetEntity=Complaint.class,cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private List<Complaint>complaints;
-	@OneToMany(targetEntity=Post.class,cascade=CascadeType.ALL)
-	private List<Post>posts;
-	@OneToMany(targetEntity=Message.class,cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Post>likedPosts;
+	@OneToMany(mappedBy="sender",cascade=CascadeType.ALL)
 	private List<Message>messages;
-	@OneToMany(targetEntity=Notification.class,cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Notification>notifications;
 	@OneToMany
 	private List<User>followings;
+	@OneToMany
+	private List<User>followers;
 	@OneToMany(fetch=FetchType.EAGER)
 	Set<Actualite>actualites;
 	@OneToMany

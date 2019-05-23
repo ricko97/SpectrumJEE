@@ -13,8 +13,8 @@ import javax.faces.context.FacesContext;
 import entities.Actualite;
 import entities.Commentaire;
 import entities.User;
-import services.ServiceActualite;
-import services.ServiceUser;
+import actualite.ServiceActualite;
+import actualite.ServiceUser;
 
 
 @ManagedBean(name = "ajoutembean")

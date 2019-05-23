@@ -17,7 +17,7 @@ public class Candidate implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private User user;
 	private String bio;
 	@OneToMany

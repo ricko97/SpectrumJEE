@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/templateLogin.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+
+
+	<ui:define name="title">Account validation</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+	<div class="wrap-input100 validate-input">
+						<h:inputText required="true" requiredMessage="Enter the code sent in your mailbox" class="input100" 
+						a:placeholder="Email code" 
+						value="#{enterprisebean.emailCode}"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-key" aria-hidden="true"></i>
+						</span>
+					</div>
+					<h:messages style="color:red;"></h:messages>
+					<div class="container-login100-form-btn" >
+							<h:commandButton style="background:#2196F3;cursor: pointer;" class="login100-form-btn" value="validate" 
+							action="#{enterprisebean.validateAccount}"/>
+					</div>
+			
+
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/templateRegister.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+
+
+	<ui:define name="title">Register</ui:define>
+	<ui:define name="content">
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+		<h:form>
+	<div class="wrap-input100 validate-input" data-validate="Valid email is required">
+						<h:inputText required="true" requiredMessage="Full name required" class="input100"  a:placeholder="Full name" 
+						value="#{enterprisebean.userSignup.name}"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required">
+						<h:inputText required="true" requiredMessage="Username required" class="input100"  a:placeholder="Username" 
+						value="#{enterprisebean.userSignup.username}"/>
+						
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<h:inputText required="true" requiredMessage="Email required" class="input100"  a:placeholder="Email" 
+						value="#{enterprisebean.userSignup.email}"
+						validatorMessage="Enter a valid email address">
+						<f:validateRegex pattern=".+\@.+\..+"></f:validateRegex>
+						</h:inputText>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<h:selectOneMenu class="input100" required="true" value="#{enterprisebean.roleSignup}">
+							<f:selectItem itemValue = "candidate" itemLabel = "Candidate"></f:selectItem>
+							<f:selectItem itemValue = "coach" itemLabel = "Coach"></f:selectItem>
+							<f:selectItem itemValue = "enterpriseAdmin" itemLabel = "Enterprise"></f:selectItem>
+						</h:selectOneMenu>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<h:inputSecret required="true" requiredMessage="Password required"  class="input100" a:placeholder="password" 
+						value="#{enterprisebean.userSignup.password}"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<h:inputSecret required="true" requiredMessage="Confirm password" class="input100" 
+						a:placeholder="Re enter the password"  value="#{enterprisebean.passwdConfirm}"/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div style="margin-left:30px;" class="g-recaptcha" data-sitekey="6LfA44sUAAAAADoXe-8VYytnwwvZVQNEEZ9VL1Kt"></div>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<h:messages style="color:red;"></h:messages>
+					</div>
+					<div class="container-login100-form-btn" >
+							
+							<h:commandButton style="background:#2196F3;cursor: pointer;" class="login100-form-btn" value="Register" 
+							action="#{enterprisebean.signup}"/>
+					</div>
+
+			
+
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>
