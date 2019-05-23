@@ -11,9 +11,9 @@ import javax.faces.context.FacesContext;
 import entities.User;
 import actualite.ServiceUserRemote;
 
-@ManagedBean(name = "loginBean", eager = true)
+@ManagedBean(name = "loginBean1", eager = true)
 @SessionScoped
-public class LoginBean implements Serializable {
+public class LoginBean1 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String login;
 	private String password;
@@ -77,7 +77,7 @@ public class LoginBean implements Serializable {
 		return serialVersionUID;
 	}
 
-	public LoginBean() {
+	public LoginBean1() {
 		super();
 	}
 

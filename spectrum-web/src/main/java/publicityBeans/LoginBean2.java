@@ -35,9 +35,9 @@ import publicityRec.ReclamationService;
 import publicityRec.TargetService;
 import publicityRec.UserService;
 
-@ManagedBean(name = "loginBean")
+@ManagedBean(name = "loginBean2")
 @SessionScoped
-public class LoginBean implements Serializable
+public class LoginBean2 implements Serializable
 { private static final long serialVersionUID = 1L; 
 
 private String login;

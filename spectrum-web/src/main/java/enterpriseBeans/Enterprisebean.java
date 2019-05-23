@@ -196,6 +196,13 @@ public class Enterprisebean {
 		
 		
 	}
+	public String singIn2(User u) {
+		 
+		//	this.enterprise=dao2.findEnterpriseByName(u.getEnterpriseName());
+		//	user=u;
+			return"enterprise/index?faces-redirect=true";
+		
+	}
 	public Part getImageG() {
 		return imageG;
 	}
@@ -245,8 +252,6 @@ public class Enterprisebean {
 			messagelogin="Done";
 			loadEnterprise();
 			return "index";
-		
-		
 			}
 		
 		

@@ -21,13 +21,16 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.http.Part;
 
+import coachBeans.LoginBean;
 import entities.Publicity;
 import entities.Reclamation;
 import entities.Target;
 import entities.User;
+import jobBeans.CandidacyBean;
 import publicityRec.PublicityService;
 import publicityRec.ReclamationService;
 import publicityRec.TargetService;
@@ -40,13 +43,16 @@ public class PublicityBean implements Serializable
 
 private User loggedin;
 
+@ManagedProperty("#{loginBean}")
+private LoginBean loginBean;
+
 public List<Publicity> publicities = new ArrayList<>();
 public List<Publicity> mine = new ArrayList<>();
 public List<Target> targets = new ArrayList<>();
 public User postedBy;
 public int targetSelected;
-private Part uploadedFile;
-private String folder = "D:\\JEE\\workspace\\pi\\pi-web\\src\\main\\webapp\\resources\\files";
+private Part uploadedFile;//D:\\JEE\\workspace\\pi\\pi-web\\src\\main\\webapp\\
+private String folder = "resources\\files";
 
 public String name;
 public String description;
@@ -86,7 +92,7 @@ publicity.setName(name);
 Set<Target> selected = new HashSet<>();
 Target s = targetService.findTargetById(targetSelected);
 selected.add(s);
-//publicity.setPostedBy(postedBy);
+publicity.setPostedBy(loginBean.getCurrentUser());
 //publicity.setTargetAudience(selected);
 publicity.setDescription(description);
 publicityService.addPublicity(publicity);
@@ -194,6 +200,12 @@ public int getTargetSelected() {
 
 public void setTargetSelected(int targetSelected) {
 	this.targetSelected = targetSelected;
+}
+public LoginBean getLoginBean() {
+	return loginBean;
+}
+public void setLoginBean(LoginBean loginBean) {
+	this.loginBean = loginBean;
 }
 
 
