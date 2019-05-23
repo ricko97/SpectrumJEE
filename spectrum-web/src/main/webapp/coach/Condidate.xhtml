@@ -1,193 +1,272 @@
-<ui:composition 
-xmlns="http://www.w3.org/1999/xhtml"
- xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      template="/template/template.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
 
-<ui:define name="content">
-	<div class="cover-sec">
-			<h:graphicImage value="/images/cover-img.jpg" alt=""/>
+	<ui:define name="content">
+		<div class="cover-sec">
+			<h:graphicImage value="/resources/images/resources/cover-img.jpg"
+				alt="" />
 		</div>
-			<div class="main-section-data">
-						<div class="row">
-							<div class="col-lg-3">
-		<div class="main-left-sidebar">
-<div class="user_profile">
-										<div class="user-pro-img">
-											<h:graphicImage value="/images/user-pro-img.png" />
-										</div><!--user-pro-img end-->
-										<div class="user_pro_status">
-											<ul class="flw-hr">
-												<li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
-												<li><a href="#" title="" class="hre">Hire</a></li>
-											</ul>
-											<ul class="flw-status">
-												<li>
-													<span>Following</span>
-													<b>34</b>
-												</li>
-												<li>
-													<span>Followers</span>
-													<b>155</b>
-												</li>
-											</ul>
-										</div><!--user_pro_status end-->
-										<ul class="social_links">
-											<li><a href="#" title=""><i class="la la-globe"></i> www.example.com</a></li>
-											<li><a href="#" title=""><i class="fa fa-facebook-square"></i> Http://www.facebook.com/john...</a></li>
-											<li><a href="#" title=""><i class="fa fa-twitter"></i> Http://www.Twitter.com/john...</a></li>
-											<li><a href="#" title=""><i class="fa fa-google-plus-square"></i> Http://www.googleplus.com/john...</a></li>
-											<li><a href="#" title=""><i class="fa fa-behance-square"></i> Http://www.behance.com/john...</a></li>
-											<li><a href="#" title=""><i class="fa fa-pinterest"></i> Http://www.pinterest.com/john...</a></li>
-											<li><a href="#" title=""><i class="fa fa-instagram"></i> Http://www.instagram.com/john...</a></li>
-											<li><a href="#" title=""><i class="fa fa-youtube"></i> Http://www.youtube.com/john...</a></li>
-										</ul>
-									</div><!--user_profile end-->
-<div class="suggestions full-width">
-										<div class="sd-title">
-											<h3>Suggestions</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div><!--sd-title end-->
-										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<h:graphicImage value="/images/s1.png" alt=""/>
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<h:graphicImage value="/images/s2.png" alt=""/>
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-											<h:graphicImage value="/images/s3.png" alt=""/>
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<h:graphicImage value="/images/s4.png" alt=""/>
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C  C++ Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<h:graphicImage value="/images/s5.png" alt=""/>
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<h:graphicImage value="/images/s6.png" alt=""/>
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="#" title="">View More</a>
-											</div>
-										</div><!--suggestions-list end-->
-									</div><!--suggestions end--></div></div>
-										<div class="col-lg-6">
-								<div class="main-ws-sec">
-									<div class="user-tab-sec">
-										<h3>Wolfgang Ficzko</h3>
-										<div class="star-descp">
-											<span>Candidate</span>
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-											</ul>
-										</div><!--star-descp end-->
-									<div class="tab-feed">
-											<ul>
-												<li data-tab="feed-dd" class="active">
-													<a href="#" title="">
-														<h:graphicImage value="/images/ic1.png" alt=""/>
-														s<span>Feed</span>
-													</a>
-												</li>
-												<li data-tab="info-dd">
-													<a href="#" title="">
-														<h:graphicImage value="/images/ic2.png" alt=""/>
-														<span>Info</span>
-													</a>
-												</li>
-												<li data-tab="portfolio-dd">
-													<a href="#" title="">
-														<h:graphicImage value="/images/ic3.png" alt=""/>
-														<span>Portfolio</span>
-													</a>
-												</li>
-											</ul>
-										</div><!-- tab-feed end-->
-										
-										
-										
-										
-										<div class="product-feed-tab" id="info-dd">
-										<div class="user-profile-ov">
-											<h3>Overview</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
-										</div><!--user-profile-ov end-->
-										<div class="user-profile-ov st2">
-											<h3>Experience</h3>
-											<h4>Web designer</h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-											<h4>UI / UX Designer</h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id.</p>
-											<h4>PHP developer</h4>
-											<p class="no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-										</div><!--user-profile-ov end-->
-										<div class="user-profile-ov">
-											<h3>Education</h3>
-											<h4>Master of Computer Science</h4>
-											<span>2015 - 2017</span>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-										</div><!--user-profile-ov end-->
-										<div class="user-profile-ov">
-											<h3>Location</h3>
-											<h4>India</h4>
-											<p>151/4 BT Chownk, Delhi </p>
-										</div><!--user-profile-ov end-->
-										<div class="user-profile-ov">
-											<h3>Skills</h3>
-											<ul>
-												<li><a href="#" title="">HTML</a></li>
-												<li><a href="#" title="">PHP</a></li>
-												<li><a href="#" title="">CSS</a></li>
-												<li><a href="#" title="">Javascript</a></li>
-												<li><a href="#" title="">Wordpress</a></li>
-												<li><a href="#" title="">Photoshop</a></li>
-												<li><a href="#" title="">Illustrator</a></li>
-												<li><a href="#" title="">Corel Draw</a></li>
-											</ul>
-										</div><!--user-profile-ov end-->
-									</div><!--product-feed-tab end-->
-										</div></div></div>
-										<div class="col-lg-3">
-										</div>
-									</div></div>
+		<div class="main-section-data">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="main-left-sidebar">
+						<div class="user_profile">
+							<div class="user-pro-img">
+								<h:graphicImage
+									value="/resources/images/resources/user-pro-img.png" />
+							</div>
+							<!--user-pro-img end-->
+							<div class="user_pro_status">
+								<ul class="flw-hr">
+									<li><a href="#" title="" class="flww"><i
+											class="la la-plus"></i> Follow</a></li>
+									<li><a href="#" title="" class="hre">Hire</a></li>
+								</ul>
+								<ul class="flw-status">
+									<li><span>Following</span> <b>34</b></li>
+									<li><span>Followers</span> <b>155</b></li>
+								</ul>
+							</div>
+							<!--user_pro_status end-->
+							<ul class="social_links">
+								<li><a href="#" title=""><i class="la la-globe"></i>
+										www.Spectrum.com</a></li>
+								<li><a href="#" title=""><i
+										class="fa fa-facebook-square"></i>
+										Http://www.facebook.com/john...</a></li>
+								<li><a href="#" title=""><i class="fa fa-twitter"></i>
+										Http://www.Twitter.com/john...</a></li>
+							
+							
+							</ul>
+						</div>
+						<!--user_profile end-->
+						<div class="suggestions full-width">
+							<div class="sd-title">
+								<h3>Suggestions</h3>
+								<i class="la la-ellipsis-v"></i>
+							</div>
+							<!--sd-title end-->
+							<div class="suggestions-list">
+								<div class="suggestion-usd">
+									<h:graphicImage value="/resources/images/resources/s1.png"
+										alt="" />
+									<div class="sgt-text">
+										<h4>Jessica William</h4>
+										<span>Graphic Designer</span>
+									</div>
+									<span><i class="la la-plus"></i></span>
+								</div>
+								<div class="suggestion-usd">
+									<h:graphicImage value="/resources/images/resources/s2.png"
+										alt="" />
+									<div class="sgt-text">
+										<h4>John Doe</h4>
+										<span>PHP Developer</span>
+									</div>
+									<span><i class="la la-plus"></i></span>
+								</div>
+								<div class="suggestion-usd">
+									<h:graphicImage value="/resources/images/resources/s3.png"
+										alt="" />
+									<div class="sgt-text">
+										<h4>Poonam</h4>
+										<span>Wordpress Developer</span>
+									</div>
+									<span><i class="la la-plus"></i></span>
+								</div>
+								<div class="suggestion-usd">
+									<h:graphicImage value="/resources/images/resources/s4.png"
+										alt="" />
+									<div class="sgt-text">
+										<h4>Bill Gates</h4>
+										<span>C C++ Developer</span>
+									</div>
+									<span><i class="la la-plus"></i></span>
+								</div>
+								<div class="suggestion-usd">
+									<h:graphicImage value="/resources/images/resources/s5.png"
+										alt="" />
+									<div class="sgt-text">
+										<h4>Jessica William</h4>
+										<span>Graphic Designer</span>
+									</div>
+									<span><i class="la la-plus"></i></span>
+								</div>
+								<div class="suggestion-usd">
+									<h:graphicImage value="/resources/images/resources/s6.png"
+										alt="" />
+									<div class="sgt-text">
+										<h4>John Doe</h4>
+										<span>PHP Developer</span>
+									</div>
+									<span><i class="la la-plus"></i></span>
+								</div>
+								<div class="view-more">
+									<a href="#" title="">View More</a>
+								</div>
+							</div>
+							<!--suggestions-list end-->
+						</div>
+						<!--suggestions end-->
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="main-ws-sec">
+						<div class="user-tab-sec">
 						
-	
-</ui:define>
+							<h:outputText style="font-size:25px;"
+								value="#{sendToCoach.user.name}" />
+							<div class="star-descp">
+								<span>Candidate</span>
+								<ul>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star-half-o"></i></li>
+								</ul>
+							</div>
+							<!--star-descp end-->
+							<div class="tab-feed">
+								<ul>
+									<li data-tab="feed-dd" class="active"><a href="#" title="">
+											<h:graphicImage value="/resources/images/ic1.png" alt="" />
+											<span>Feed</span>
+									</a></li>
+									<li data-tab="info-dd"><a href="#" title=""> <h:graphicImage
+												value="/resources/images/ic2.png" alt="" /> <span>Info</span>
+									</a></li>
+									<li data-tab="portfolio-dd"><a href="#" title=""> <h:graphicImage
+												value="/resources/images/ic3.png" alt="" /> <span>Portfolio</span>
+									</a></li>
+								</ul>
+							</div>
+							<!-- tab-feed end-->
+
+
+
+
+							<div class="product-feed-tab" id="info-dd">
+								<div class="user-profile-ov">
+							  <span style="font-weight:bold">Overview</span>
+									
+                              <h:inputTextarea value="#{medecinBean.name}" styleClass="form-control" />	
+                              <h:outputLabel>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</h:outputLabel>
+                              									
+								</div>
+								<!--user-profile-ov end-->
+								<div class="user-profile-ov st2">
+									<h3>Experience</h3>
+									<h4>Web designer</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Quisque tempor aliquam felis, nec condimentum ipsum commodo
+										id. Vivamus sit amet augue nec urna efficitur tincidunt.
+										Vivamus consectetur aliquam lectus commodo viverra.</p>
+									<h4>UI / UX Designer</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Quisque tempor aliquam felis, nec condimentum ipsum commodo
+										id.</p>
+									<h4>PHP developer</h4>
+									<p class="no-margin">Lorem ipsum dolor sit amet,
+										consectetur adipiscing elit. Quisque tempor aliquam felis, nec
+										condimentum ipsum commodo id. Vivamus sit amet augue nec urna
+										efficitur tincidunt. Vivamus consectetur aliquam lectus
+										commodo viverra.</p>
+								</div>
+								<!--user-profile-ov end-->
+								<div class="user-profile-ov">
+									<h3>Education</h3>
+									<h4>Master of Computer Science</h4>
+									<span>2015 - 2017</span>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Quisque tempor aliquam felis, nec condimentum ipsum commodo
+										id. Vivamus sit amet augue nec urna efficitur tincidunt.
+										Vivamus consectetur aliquam lectus commodo viverra.</p>
+								</div>
+								<!--user-profile-ov end-->
+								<div class="user-profile-ov">
+									<h3>Location</h3>
+									<h4>India</h4>
+									<p>151/4 BT Chownk, Delhi</p>
+								</div>
+								<!--user-profile-ov end-->
+								<div class="user-profile-ov">
+									<h3>Skills</h3>
+									<ul>
+										<li><a href="#" title="">HTML</a></li>
+										<li><a href="#" title="">PHP</a></li>
+										<li><a href="#" title="">CSS</a></li>
+										<li><a href="#" title="">Javascript</a></li>
+										<li><a href="#" title="">Wordpress</a></li>
+										<li><a href="#" title="">Photoshop</a></li>
+										<li><a href="#" title="">Illustrator</a></li>
+										<li><a href="#" title="">Corel Draw</a></li>
+									</ul>
+								</div>
+								<!--user-profile-ov end-->
+							</div>
+							<!--product-feed-tab end-->
+							<div class="product-feed-tab" id="feed-dd">
+								<h:dataTable value="#{sendToCoach.listemed}" var="r1" target="#{sendToCoach.userSelected}">
+
+									<h:column>
+										<div class="brows-job-list">
+											<div class="col-md-6 col-sm-5">
+												<div class="brows-job-position">
+
+
+													<a href="job-detail.html"><h3>
+															<!--  #{disponible.offer.title}-->
+															Spectrum
+														</h3></a>
+													<p>
+														<h:outputText value="#{r1.name}"></h:outputText>
+														<span class="brows-job-sallery"> <!-- <i class="fa fa-money"></i> #{disponible.horaireDispo}-->
+														</span>
+														<!--  <span class="job-type bg-trans-warning cl-warning" >#{disponible.type}</span>-->
+													</p>
+													<h:outputText value="#{sendToCoach.user.name}"></h:outputText>
+
+
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3">
+												<div class="brows-job-location">
+													<p>
+														<i class="fa fa-map-marker"> </i>
+														<!-- #{disponible.nomEmploye}-->
+													</p>
+												</div>
+											</div>
+											<div class="col-md-2 col-sm-2">
+												<div class="brows-job-link">
+												
+													<h:button action="#{sendToCoach.doSupp1()}"
+														value="Delete">
+													</h:button>
+
+
+
+
+												</div>
+											</div>
+										</div>
+									</h:column>
+								</h:dataTable>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3"></div>
+			</div>
+		</div>
+
+	</ui:define>
 </ui:composition>

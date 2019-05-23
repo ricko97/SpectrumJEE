@@ -32,6 +32,11 @@ public class Course implements Serializable {
 	public Course() {
 		super();
 	}   
+	
+	public Course(String description) {
+		super();
+		this.description = description;
+	}
 	public int getId() {
 		return this.id;
 	}

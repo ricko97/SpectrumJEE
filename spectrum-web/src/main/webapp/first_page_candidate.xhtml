@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+>
+<h:head>
+    <meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+	<link rel="stylesheet" href="job-stock/assets/plugins/css/plugins.css"/>
+    
+    <!-- Custom style -->
+    <link href="job-stock/assets/css/style.css" rel="stylesheet"/>
+	<link type="text/css" rel="stylesheet" id="jssDefault" href="job-stock/assets/css/colors/blue-style.css"/>
+</h:head> 
+
+<h:body class="simple-bg-screen" style="background-image:url(job-stock/assets/img/banner-10.jpg);">
+		<div class="Loader"></div>
+		<div class="wrapper">  
+			
+			<!-- Title Header Start    -->
+		
+				<div class="container">
+					<div class="signup-screen">
+						<a href="index.html"><img src="job-stock/assets/img/siwar.png" class="img-responsive" alt=""/></a>
+						
+						
+						
+			<h:form>
+		 <h:commandButton action="#{goTo.GotoInterviewk()}"  type="submit"  class="btn-login" value="Courses" />
+			 <h:commandButton action="#{goTo.GotoAppreciationsDetails()}"  type="submit"  class="btn-login" value="Candidate List" />
+			 	 
+			 	 <h:commandButton action="#{goTo.GotoRecrute()}"  type="submit" class="btn-login" value="Report" />
+		</h:form>
+		
+			</div>
+				</div>
+				
+				
+				
+				
+		
+					
+					
+			
+			<!-- Scripts
+			================================================== -->
+			<script type="text/javascript" src="job-stock/assets/plugins/js/jquery.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/viewportchecker.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/bootsnav.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/select2.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/wysihtml5-0.3.0.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/bootstrap-wysihtml5.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/datedropper.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/dropzone.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/loader.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/owl.carousel.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/slick.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/gmap3.min.js"></script>
+			<script type="text/javascript" src="job-stock/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
+			
+			<!-- Custom Js -->
+			<script src="job-stock/assets/js/custom.js"></script>
+			<script src="job-stock/assets/js/jQuery.style.switcher.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#styleOptions').styleSwitcher();
+				});
+			</script>
+			<script>
+				function openRightMenu() {
+					document.getElementById("rightMenu").style.display = "block";
+				}
+
+				function closeRightMenu() {
+					document.getElementById("rightMenu").style.display = "none";
+				}
+			</script>
+		</div>
+		
+</h:body> 
+</ui:composition>
