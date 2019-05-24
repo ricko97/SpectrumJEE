@@ -7,8 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import coach.RegisterRemote;
 import entities.Course;
+import coach.RegisterRemote;
 
 
 

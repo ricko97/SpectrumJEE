@@ -148,7 +148,9 @@ public class Enterprisebean {
 				dao.addCoach(c);
 			}else if(roleSignup.equals(Role.enterpriseAdmin.toString())) {
 				userSignup.setRole(Role.enterpriseAdmin);
+				userSignup.setEnterpriseName(userSignup.getName());
 				Enterprise e = new Enterprise();
+				e.setName(userSignup.getName());
 				e.setUser(userSignup);
 				dao.addEnterprise(e);
 			}
@@ -175,14 +177,15 @@ public class Enterprisebean {
        return null;
     }
 	public void loadEnterprise(){
-		this.enterprise=dao2.findEnterprise(2);
+		user=dao.findUser(4);
+		this.enterprise=dao2.findEnterpriseByName(user.getEnterpriseName());
 		//user=dao.findUser(26);
-		user=dao.findUser(11);
+		
 		this.enterprise=dao2.findEnterpriseByName(user.getEnterpriseName());
 		if(user.getRole()==Role.enterpriseAdmin) {
 			admin="true";
 		}
-		coworkerList=dao.findAllUserByEnterpriseName("spectrum");
+		coworkerList=dao.findAllUserByEnterpriseName(user.getEnterpriseName());
 		
 		//this.user=enterprise.getUser();
 		//user.setPhone("23884365");
@@ -198,9 +201,10 @@ public class Enterprisebean {
 	}
 	public String singIn2(User u) {
 		 
-		//	this.enterprise=dao2.findEnterpriseByName(u.getEnterpriseName());
-		//	user=u;
-			return"enterprise/index?faces-redirect=true";
+			//this.enterprise=dao2.findEnterpriseByName(u.getEnterpriseName());
+			//user=u;
+			//return"enterprise/index?faces-redirect=true";
+			return "enterprise/index?faces-redirect=true";
 		
 	}
 	public Part getImageG() {

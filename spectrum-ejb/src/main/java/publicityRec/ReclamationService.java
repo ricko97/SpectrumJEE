@@ -46,6 +46,5 @@ public List<Reclamation> findReclamationByCompany(int id) {
 	List<Reclamation> publicities = new ArrayList<Reclamation>();
 	publicities = em.createQuery("from Reclamation", Reclamation.class).getResultList();
 	return publicities;
-		
 }
 }

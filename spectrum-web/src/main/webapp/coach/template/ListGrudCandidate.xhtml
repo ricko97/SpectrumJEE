@@ -1,0 +1,61 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        template="template.xhtml">
+    <ui:param name="pageTitle" value="Example"/>
+    <ui:define name="content">
+        <p:growl id="growl" globalOnly="true"/>
+        <h:form>
+           	<h:panelGrid columns="2">
+	
+	
+	<h:outputText value="Name" />
+	<p:inputText value="#{sendToCoach.name}" > 
+<!-- 	<f:convertDateTime pattern="dd/MM/yyyy"/> -->
+	</p:inputText>
+	
+	<h:outputText value="Username" />
+	<p:inputText value="#{sendToCoach.username}" />
+	
+	<h:outputText value="Email" />
+	<p:inputText value="#{sendToCoach.email}" />	
+	<tr><td  colspan="2"><p:commandButton  value="Add Candidate" action="#{sendToCoach.addCandidate()}"  /></td></tr>
+	</h:panelGrid>
+            
+            
+        </h:form>
+        <h:form id="frmEmployees">
+            <p:dataTable value="#{sendToCoach.listemed}" var="emp" styleClass="employee-table"
+                         rows="10" paginator="true">
+                <p:column sortBy="#{emp.name}">
+                    <f:facet name="header">ID</f:facet>
+                    <h:link value="#{emp.id}" >
+                        <f:param name="empid" value="#{emp.id}"/>
+                    </h:link>
+                </p:column>
+                <p:column sortBy="#{emp.name}">
+                    <f:facet name="header">Name</f:facet>
+                    #{emp.name}
+                </p:column>
+                 <p:column sortBy="#{emp.username}">
+                    <f:facet name="header">userame</f:facet>
+                    #{emp.username}
+                </p:column>
+                <p:column sortBy="#{emp.email}">
+                    <f:facet name="header">Email</f:facet>
+                    #{emp.email}
+                </p:column>
+               
+                <p:column width="80" style="text-align: center">
+                    <p:commandButton action="#{sendToCoach.removeUser(emp.id)}" icon="ui-icon-trash"
+                                     update="@form growl"
+                                     style="width: 24px; height: 24px"/>
+                </p:column>
+                
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

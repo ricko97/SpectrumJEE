@@ -6,21 +6,18 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
 	<ui:param name="page_name" value="Connexion" />
-	
-	
-	<ui:define name="menu">
+	<ui:define name="content">
 		<h:body>
-
-			<section class="profile-account-setting">
+				<section class="profile-account-setting">
 				<div class="container">
 					<div class="account-tabs-setting">
 						<div class="row">
 							<div class="col-lg-3">
 								<div class="acc-leftbar">
-								<h:form>
+									<h:form>
 									<div class="nav nav-tabs" id="nav-tab" role="tablist">
 									
-									<h:commandLink action="/mesStats?faces-redirect=true" value="my stats"
+									<h:commandLink action="mesStats?faces-redirect=true" value="my stats"
 									class="nav-item nav-link active" id="nav-acc-tab"
 											data-toggle="tab" role="tab"
 											aria-controls="nav-acc" aria-selected="true" >
@@ -30,7 +27,7 @@
 									</h:form>
 									<h:form>
 									<div class="nav nav-tabs" id="nav-tab" role="tablist">
-										<h:commandLink action="/mesReclamations?faces-redirect=true" value="My reclamations"
+										<h:commandLink action="mesReclamations?faces-redirect=true" value="My reclamations"
 									class="nav-item nav-link active" id="nav-acc-tab"
 											data-toggle="tab" role="tab"
 											aria-controls="nav-acc" aria-selected="true" >
@@ -39,7 +36,7 @@
 									</h:form>
 									<h:form>
 									<div class="nav nav-tabs" id="nav-tab" role="tablist">
-										<h:commandLink action="/mesPublicites?faces-redirect=true" value="My publicities"
+										<h:commandLink action="mesPublicites?faces-redirect=true" value="My publicities"
 									class="nav-item nav-link active" id="nav-acc-tab"
 											data-toggle="tab" role="tab"
 											aria-controls="nav-acc" aria-selected="true" >
@@ -49,14 +46,13 @@
 									
 									<h:form>
 									<div class="nav nav-tabs" id="nav-tab" role="tablist">
-										<h:commandLink action="/addPublicite?faces-redirect=true" value="New Publicity"
+										<h:commandLink action="addPublicite?faces-redirect=true" value="New Publicity"
 									class="nav-item nav-link active" id="nav-acc-tab"
 											data-toggle="tab" role="tab"
 											aria-controls="nav-acc" aria-selected="true" >
 									</h:commandLink>
 									</div>
 									</h:form>
-									
 								</div>
 								<!--acc-leftbar end-->
 							</div>
@@ -143,9 +139,10 @@
 					<!--account-tabs-setting end-->
 				</div>
 			</section>
-
+			
 		</h:body>
 	</ui:define>
 </ui:composition>
 <!-- Mirrored from colorlib.com/etc/lf/Login_v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Apr 2019 18:40:13 GMT -->
+
 

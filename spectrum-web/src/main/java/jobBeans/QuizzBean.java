@@ -46,7 +46,7 @@ public class QuizzBean{
 	private Test test;
 	private Integer enterpriseId = 1;
 	private Enterprise enterprise;
-	private Integer candidateId;
+	private Integer candidateId=1;
 	private String email;
 	private Test_t testType;
 	private Integer min,minutes;
@@ -75,6 +75,7 @@ public class QuizzBean{
     	minutes = 0;//test.getDuration()-1;
     	sec = 59;
     	System.out.println(totalQuestion+"*****************"+questions.size());
+    	test = interviewService.searchTest(1, testType.Technical);
     }
     
     public String nextQuestion() {
@@ -101,14 +102,14 @@ public class QuizzBean{
     	FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     	TestResultPk pk = new TestResultPk();
     	TestResult result = new TestResult();
-    	pk.setTestId(test.getId());
+    	pk.setTestId(1);//test.getId()
     	pk.setCandidateId(candidateId);
     	result.setTestResultPk(pk);
     	DecimalFormat df = new DecimalFormat("0.00");
     	result.setScore(Float.parseFloat(df.format(calculScore())));
     	interviewService.addTestResult(pk, result);
     	Interview interview = interviewService.plannifyInterviewAuto(result);
-    	Date dateInt = interview.getDate();
+    	Date dateInt = new Date();//interview.getDate();
     	if (result.getScore()>=0.5) {
     		interviewService.envoyerMail(interviewService.getCandidateById(candidateId).getUser().getEmail(), 
     				test.getEnterprise().getUser().getName()+" Interview Scheduled", 

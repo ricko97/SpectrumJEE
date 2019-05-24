@@ -24,7 +24,7 @@ EntityManager em;
 @Override
 public User getUser(String email, String password) {
 	TypedQuery<User> query = 
-	em.createQuery("select e from User e WHERE e.email=:email and e.password=:password ", User.class); 
+	em.createQuery("select e from user e WHERE e.email=:email and e.password=:password ", User.class); 
 	query.setParameter("email", email); 
 	query.setParameter("password", password); 
 	User employe = null; 
@@ -45,7 +45,7 @@ public User findUserById(int id) {
 @Override
 public List<User> findCompanies() {
 	TypedQuery<User> query= em.createQuery(
-			"select r from User r where r.role =:role", 
+			"select r from user r where r.role =:role", 
 			User.class);
 			query.setParameter("role", Role.enterpriseAdmin);
 			return query.getResultList();

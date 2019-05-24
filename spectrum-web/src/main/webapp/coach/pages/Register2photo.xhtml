@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"	
+	template="/template/Coach.xhtml">
+	
+	<ui:define name="title">SING IN</ui:define>
+	<ui:define name="title-header">Add New Account</ui:define>
+	<ui:define name="content">
+        <!-- /.row -->
+            <div class="col-lg-7">
+              <div class="panel panel-default">
+              	<div class="panel-heading"> Enter the informations below </div>
+                <div class="panel-body">
+						<h:form enctype="multipart/form-data">
+		     				
+					 		<h:panelGrid columns="2" cellspacing="5" styleClass="col-lg-12">
+							
+								
+
+
+<h:outputLabel value="Id:" />
+<h:inputText value="#{medecinBean.id}" styleClass="form-control" />
+	
+
+<h:outputLabel value="Name:" />
+<h:inputText value="#{medecinBean.user.name}" styleClass="form-control"/>
+
+
+<h:outputLabel value="Email:" />
+<h:inputText value="#{medecinBean.user.email}" styleClass="form-control"/>
+	
+
+	
+
+
+
+<h:outputLabel value="Password:" />
+<h:inputSecret value="#{medecinBean.user.password}" styleClass="form-control"/>
+
+
+<h:outputLabel value="Re_enter Password:" />
+<h:inputSecret value="#{medecinBean.user.password}" styleClass="form-control"/>
+
+
+
+<h:outputLabel value="photo" /> 				
+		<h:inputFile value="#{compteRenduBean.user.picture}" mode="simple" />		
+		
+
+<h:commandButton action="#{medecinBean.verifierpass()}" styleClass="btn btn-primary btn-md btn-block" type="submit" value="add account" />
+
+
+</h:panelGrid>
+
+</h:form>
+</div>
+			</div>
+	      </div>
+  <div class="col-lg-5">
+                   
+                               	<div>
+	                            	<button class="btn btn-info btn-md"  type="submit">View all sent reports</button>
+	                           	</div>
+                         
+                        <!-- .panel-body -->
+                    </div>
+         
+    	<!-- /.row -->
+	</ui:define>
+
+
+</ui:composition>
+            

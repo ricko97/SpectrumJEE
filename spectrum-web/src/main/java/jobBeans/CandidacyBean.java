@@ -48,7 +48,7 @@ public class CandidacyBean {
 	
 	public String launchVC() {
 		String link = interviewService.getEnterpriseById(enterpriseId).getSkypeVC();
-		String msg = "Hello Mme, Mr "+selectedCandidacy.getCandidate().getUser().getName()+"\n\n"
+		String msg = "Hello Mme, Mr Rick Lionel/*+selectedCandidacy.getCandidate().getUser().getName()+*/\n\n"
 				+ "You're invited to rejoin this interview.\n"
 				+ "Click on the link below\n"
 				+ link+"\n\n\n"

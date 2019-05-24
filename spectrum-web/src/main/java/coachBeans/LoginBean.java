@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import coach.RegisterRemote;
 import enterpriseBeans.BCrypt;
 import enterpriseBeans.Enterprisebean;
+import enterpriseServices.EntrepriseDao;
 import enterpriseServices.userDao;
 import entities.Role;
 import entities.User;
@@ -31,6 +32,8 @@ public class LoginBean {
 	RegisterRemote userService;
 	@EJB
 	userDao dao;
+	@EJB
+	EntrepriseDao  dao2 ;
 	@ManagedProperty("#{enterpriseBean}")
 	private Enterprisebean enterpriseBean;
 	
@@ -56,14 +59,17 @@ public class LoginBean {
 		currentUser = dao.findUserByUserName(login);
 		if(currentUser.getUsername().equals(login) && BCrypt.checkpw(password,currentUser.getPassword())){
 			if (currentUser.getRole()==Role.candidate)
-				navigate_To = "candidate/home?faces-redirect=true";
+				navigate_To = "publicity/home?faces-redirect=true";
 			else if(currentUser.getRole()==Role.coach)
-				navigate_To = "coach/home?faces-redirect=true";
-			else if(!currentUser.getEnterpriseName().isEmpty()) {
-				navigate_To =enterpriseBean.singIn2(currentUser);
+				navigate_To = "coach/first_page_coach?faces-redirect=true";
+			else if(currentUser.getRole()==Role.enterpriseAdmin/*!currentUser.getEnterpriseName().isEmpty()*/) {
+				//navigate_To =enterpriseBean.singIn2(currentUser);
+				//enterpriseBean.setUser(getCurrentUser());
+				//enterpriseBean.setEnterprise(dao2.findEnterpriseByName(currentUser.getEnterpriseName()));
+				navigate_To = "publicity/mesReclamations?faces-redirect=true";
 			}
-			else
-				navigate_To = "admin/home?faces-redirect=true";
+			else if(("admin").equals(login) && ("admin").equals(password))
+				navigate_To = "publicity/targets?faces-redirect=true";
 			setLogged_In(true);
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bad credentials"));

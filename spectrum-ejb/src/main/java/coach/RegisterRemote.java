@@ -17,7 +17,7 @@ public interface RegisterRemote {
 
 	void createCoach(User coach);
 
-	List<User> findAllUsers(int id);
+	List<User> findAllUsers();
 
 	void updateparameter(String email, int userId);
 
@@ -65,7 +65,7 @@ public interface RegisterRemote {
 
 	List<Coaching> findAllcoaching();
 
-	void deletecourse(Course p);
+	void deletecourse(int id);
 
 	void deletecoaching(Coaching p);
 
@@ -91,6 +91,8 @@ public interface RegisterRemote {
 	void deleteUser(int id);
 	User getUserPassword(String password);
 	List<Course> getAllCourse();
+
+	void deletecoursee(Course p);
 
 
 }

@@ -52,7 +52,7 @@ public List<Target> targets = new ArrayList<>();
 public User postedBy;
 public int targetSelected;
 private Part uploadedFile;//D:\\JEE\\workspace\\pi\\pi-web\\src\\main\\webapp\\
-private String folder = "resources\\files";
+private String folder = "C:\\Users\\Ricko\\Documents\\GitHub\\SpectrumJEE\\spectrum-web\\src\\main\\webapp\\resources\\files";
 
 public String name;
 public String description;
@@ -79,6 +79,7 @@ System.out.println("uploadedFile.getSubmittedFileName : " + fileName );
 System.out.println("uploadedFile.getName() : " + uploadedFile.getName() ); 
 
 String[] t = fileName.split("\\\\");
+//String[] t = fileName.split("\\");
 
         Files.copy(input, new File(folder, t[t.length-1]).toPath());
 

@@ -16,11 +16,11 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+import entities.User;
 import coach.MailSender;
 import coach.Register;
 import coach.RegisterLocal;
 import coach.RegisterRemote;
-import entities.User;
 
 
 @ManagedBean

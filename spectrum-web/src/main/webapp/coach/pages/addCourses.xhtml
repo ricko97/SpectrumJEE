@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"	
+	template="/template/Coach.xhtml">
+	
+	<ui:define name="title">Courses</ui:define>
+	<ui:define name="title-header">Add New Account</ui:define>
+	<ui:define name="content">
+        <!-- /.row -->
+            <div class="col-lg-7">
+              <div class="panel panel-default">
+              	<div class="panel-heading"> Enter the informations below </div>
+                <div class="panel-body">
+						<h:form enctype="multipart/form-data">
+		     				
+					 		<h:panelGrid columns="2" cellspacing="5" styleClass="col-lg-12">
+							
+								<h:outputLabel value="" /> <h:outputLabel value="" /> 
+
+
+<h:outputLabel value="Id:" />
+<h:inputText value="#{courseBean.course.id}"  styleClass="form-control" />
+<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+
+<h:outputLabel value="Date:" />
+<h:inputText value="#{courseBean.course.added_at}" styleClass="form-control">
+	<f:convertDateTime pattern="dd/MM/yyyy"/>
+	<p:calendar/>
+</h:inputText>
+<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+
+<h:outputLabel value="Description:" />
+<h:inputText value="#{courseBean.course.description}" styleClass="form-control"/>
+<h:outputLabel value="" /> <h:outputLabel value="" /> 	
+
+<h:outputLabel value="Course File" /> 				
+		<h:inputFile value="#{courseBean.course.description}" mode="simple" />		
+			<h:outputLabel value="" /> <h:outputLabel value="" /> 
+
+<h:commandButton action="#{courseBean.doAdd()}" styleClass="btn btn-primary btn-md btn-block" type="submit" value="add course" />
+
+
+</h:panelGrid>
+
+</h:form>
+</div>
+			</div>
+	      </div>
+  <div class="col-lg-5">
+                   
+                               	<div>
+	                            	<button class="btn btn-info btn-md" value="" type="submit">Delete course</button>
+	                           	</div>
+                         
+                        <!-- .panel-body -->
+                    </div>
+         
+    	<!-- /.row -->
+	</ui:define>
+
+
+</ui:composition>
+            

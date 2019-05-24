@@ -96,7 +96,9 @@ public class InterviewService implements InterviewServiceRemote {
 
 	@Override
 	public List<Question> getQuestionsFromTest(int testId) {
-		return  em.find(Test.class, testId).getQuestions();
+		List<Question>questions = new ArrayList<Question>();
+		questions = em.find(Test.class, testId).getQuestions();
+		return questions;
 	}
 
 	@Override

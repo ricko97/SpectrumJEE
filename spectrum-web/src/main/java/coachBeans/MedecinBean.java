@@ -1,9 +1,13 @@
 package coachBeans;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -13,8 +17,8 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import coach.RegisterLocal;
 import entities.User;
+import coach.RegisterLocal;
 
 
 @ManagedBean
@@ -24,6 +28,7 @@ public class MedecinBean implements Serializable{
 	private String address; 
 	private Date birth;
 	private String Name; 
+	
 	private String password; 
 	private boolean logged_In;
 
@@ -102,6 +107,7 @@ public class MedecinBean implements Serializable{
 		//user = RegisterLocal.getUserPassword( password);
 		
 		if(!validation_Password(password)){
+			user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(6)));
 			//password =BCrypt.hashpw("string", BCrypt.gensalt(6));
 			RegisterLocal.createCoach(user);
 			navigate_To = "/pages/login2?faces-redirect=true";
@@ -112,6 +118,33 @@ public class MedecinBean implements Serializable{
 		
 		return navigate_To;
 	}
+	
+	
+	
+	 private String getCryptedPassword(String notCryptedPassword) {
+	        MessageDigest md=null;
+	        try {
+	            md = MessageDigest.getInstance("MD5");
+	        } catch (NoSuchAlgorithmException ex) {
+	            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	        if (md == null)
+	            return notCryptedPassword;
+	 
+	        md.update(notCryptedPassword.getBytes());
+	 
+	        byte input[] = md.digest();
+	 
+	        // Convert the byte variable to hexadecimal format
+	        StringBuilder hexaString = new StringBuilder();
+	    	for (int i=0;i<input.length;i++) {
+	    		String hexaChar=Integer.toHexString(0xff & input[i]);
+	   	     	if(hexaChar.length()==1) hexaString.append('0');
+	   	     	hexaString.append(hexaChar);
+	    	}
+	        return hexaString.toString();
+	    }
+
 	
 	
 	

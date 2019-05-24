@@ -26,6 +26,10 @@ public class Register implements RegisterLocal, RegisterRemote {
 	@PersistenceContext(unitName="spectrum-ejb")
 	private EntityManager em;
 	/////////////////////MANAGE COACH(ADD NEW COACH)/////////////////////////
+	public  void  deleteEmployeById(int  id)
+	{User  e  =  em.find(User.class,id); 
+	em.remove(e);
+	}
 	
 	@Override
 	public  void login(String login , String pass) {
@@ -145,14 +149,13 @@ public class Register implements RegisterLocal, RegisterRemote {
 	}
 	
 	
+	
 	@Override
-	public List<User> findAllUsers(int id) {
-		List<User> users = em.createQuery("SELECT c FROM user c WHERE c.id=:id", User.class).getResultList();
-		
-		System.out.println(users);
-		
-		return users;
-	} 
+	public List<User> findAllUsers() {
+		String jpql = "SELECT u FROM user u";
+		Query query = em.createQuery(jpql);
+		return query.getResultList();
+	}
 	
 	@Override
 	public void updatepara(User p ) {
@@ -255,14 +258,14 @@ public class Register implements RegisterLocal, RegisterRemote {
 
 	}
 	
-	/*@Override
+	@Override
 	public void deletecourse(int id) {
 
 		em.remove(em.find(Course.class,id));
-	}*/
+	}
 	
 	@Override
-	public void deletecourse(Course p ) {
+	public void deletecoursee(Course p ) {
 
 		em.remove(em.merge(p));
 	}
@@ -385,9 +388,10 @@ public class Register implements RegisterLocal, RegisterRemote {
 	@Override
 	public void deleteUser(int id) {
 
-		em.remove(em.find(Post.class,id));
+		em.remove(em.find(User.class,id));
 	}
 	/////////////////////MANAGE POSTS/////////////////////////
+	@Override
 	public void addposts(Post post) {
 		em.persist(post);
 		

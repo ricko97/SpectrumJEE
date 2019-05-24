@@ -11,7 +11,7 @@
 			<section class="companies-info">
 			<div class="container">
 				<div class="company-title">
-					<h3>Top 5 Companies</h3>
+					<h3>Companies</h3>
 				</div><!--company-title end-->
 				<div class="companies-list">
 					<div class="row">
@@ -20,13 +20,13 @@
 						<div class="col-lg-3 col-md-4 col-sm-6">
 							<div class="company_profile_info">
 								<div class="company-up-info">
-									<img src="resources/images/cmp-icon1.png" alt=""/>
-									<h3>#{company.nom}</h3>
+									<img src="../resources/images/ic6.png" alt=""/>
+									<h3>#{company.name}</h3>
 								</div>
 								 <h:form>
-								<h:commandLink action="#{reclamationBean.toDetails()}" class="view-more-pro" value="View Profile">
+								<h:commandButton  action="rateEntreprise" class="view-more-pro" value="View Profile">
 								<f:setPropertyActionListener target="#{reclamationBean.id}" value="#{company.id}" />
-								</h:commandLink>
+								</h:commandButton>
 								</h:form>
 								
 							</div><!--company_profile_info end-->

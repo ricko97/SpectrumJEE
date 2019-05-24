@@ -43,8 +43,8 @@ public class LineChartBean {
     	int nb=0;
     	for (Integer integer : ratings) {
 			if (integer.intValue()==rating)
-				nb++;
-		}
+				 {nb++;
+		}}
     	return nb;
     }
     public void createLineModel() {
@@ -86,16 +86,16 @@ public class LineChartBean {
         //lineChartModel.addLabel("Saturday");
         //lineChartModel.addLabel("Sunday");
         LineChartSeries lineChartSeries1 = new LineChartSeries();
-        lineChartSeries1.setName("Series 1");
-        lineChartSeries1.set(getNumber(1, ratings));
-        lineChartSeries1.set(getNumber(2, ratings));
-        lineChartSeries1.set(getNumber(3, ratings));
-        lineChartSeries1.set(getNumber(4, ratings));
-        lineChartSeries1.set(getNumber(5, ratings));
+        lineChartSeries1.setName("RatingLogistic");
+        lineChartSeries1.set(getNumber(10, ratings));
+        lineChartSeries1.set(getNumber(20, ratings));
+        lineChartSeries1.set(getNumber(30, ratings));
+        lineChartSeries1.set(getNumber(40, ratings));
+        lineChartSeries1.set(getNumber(50, ratings));
        // lineChartSeries1.set(getNumber(1, ratings));
         //lineChartSeries1.set(getNumber(1, ratings));
         LineChartSeries lineChartSeries2 = new LineChartSeries();
-        lineChartSeries2.setName("Series 2");
+        lineChartSeries2.setName("RatingRH");
         lineChartSeries2.set(getNumber(1, ratings1));
         lineChartSeries2.set(getNumber(2, ratings1));
         lineChartSeries2.set(getNumber(3, ratings1));
@@ -105,14 +105,14 @@ public class LineChartBean {
         //lineChartSeries2.set(getNumber(1, ratings));
        // lineChartSeries2.set();
         LineChartSeries lineChartSeries3 = new LineChartSeries();
-        lineChartSeries3.setName("Series 2");
+        lineChartSeries3.setName("RatingSalary");
         lineChartSeries3.set(getNumber(1, ratings2));
         lineChartSeries3.set(getNumber(2, ratings2));
         lineChartSeries3.set(getNumber(3, ratings2));
         lineChartSeries3.set(getNumber(4, ratings2));
         lineChartSeries3.set(getNumber(5, ratings2));
         LineChartSeries lineChartSeries4 = new LineChartSeries();
-        lineChartSeries4.setName("Series 2");
+        lineChartSeries4.setName("RatingSchedule");
         lineChartSeries4.set(getNumber(1, ratings3));
         lineChartSeries4.set(getNumber(2, ratings3));
         lineChartSeries4.set(getNumber(3, ratings3));
