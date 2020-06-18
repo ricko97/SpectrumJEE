@@ -288,9 +288,9 @@ public class InterviewService implements InterviewServiceRemote {
         // Recipient's email ID needs to be mentioned.
           String to = receiver;
           // Sender's email ID needs to be mentioned
-          String from = "oricklionel.97@gmail.com";
-          final String username = "oricklionel.97@gmail.com"; // "obil2014@yahoo.fr"; change accordingly
-          final String password = "NKolmintag2017"; // "Nadal@2015";change accordingly
+          String from = "email";
+          final String username = "email";
+          final String password = "password";
           // Assuming you are sending email through relay.gmail.com
           String host = "smtp.gmail.com"; // "smtp.mail.yahoo.fr";
           String port = "587";
